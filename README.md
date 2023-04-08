@@ -1,1 +1,1 @@
-🐟 You caught a sea bass! No, wait—it's at least a C+!
+🦤 Delta Oscar Delta Oscar is go
