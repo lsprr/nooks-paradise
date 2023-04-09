@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 /* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  --skyBlue: #8edce6;
+  --beige: #f5eadd;
+  --darkSlateGray: #2f3939;
+  --darkSeaGreen: #a0cda2;
+  --sienna: #78512c;
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -25,3 +27,25 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+.menu-transition-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.menu-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.menu-transition-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-transition-exit-active {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 300ms, transform 300ms;
+}

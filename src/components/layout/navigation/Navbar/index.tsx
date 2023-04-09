@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import Wilbur from '@assets/brand/logo.png';
 import MenuItem from '@components/layout/navigation/MenuItem';
 import ToggleThemeButton from '@components/layout/navigation/buttons/ToggleTheme';
@@ -45,11 +46,19 @@ const Navbar = ({ menuItems }: NavbarProps) => {
                         <ToggleThemeButton colorTheme={colorTheme} setTheme={setTheme} />
                         <MobileMenuButton onToggle={() => setIsExpanded(!isExpanded)} isExpanded={isExpanded} />
                     </div>
-                    <div className={`${isExpanded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} fixed inset-0 z-10 bg-[#F5EADD] dark:bg-[#2F3939] flex items-center justify-center transition-all duration-300`} id="navbar-default">
-                        <ul className="flex flex-col space-y-4">
-                            {menu}
-                        </ul>
-                    </div>
+                    <CSSTransition
+                        in={isExpanded}
+                        timeout={300}
+                        classNames="menu-transition"
+                        unmountOnExit
+                    >
+                        <div
+                            className={`fixed inset-0 z-10 bg-[#F5EADD] dark:bg-[#2F3939] flex items-center justify-center`}
+                            id="navbar-default"
+                        >
+                            <ul className="flex flex-col space-y-4">{menu}</ul>
+                        </div>
+                    </CSSTransition>
                 </div>
             </nav>
         </header>
