@@ -4,12 +4,13 @@ interface MenuItem {
     label: string;
     href: string;
     isExternal?: boolean;
+    active: boolean;
 }
 
-const MenuItem = ({ label, href, isExternal }: MenuItem) => {
+const MenuItem = ({ label, href, isExternal, active }: MenuItem) => {
     const linkProps: React.AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps = {
         href,
-        className: 'text-xl whitespace-nowrap',
+        className: `text-xl whitespace-nowrap ${active ? 'block border-b-4 border-[#78512C] dark:border-[#A0CDA2]' : ''}`,
         'aria-label': `${label} page`,
     };
 
@@ -20,7 +21,9 @@ const MenuItem = ({ label, href, isExternal }: MenuItem) => {
 
     return (
         <li>
-            <Link {...linkProps}>{label}</Link>
+            <Link {...linkProps}>
+                {label}
+            </Link>
         </li>
     );
 };

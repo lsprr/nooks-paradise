@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Wilbur from '@assets/brand/logo.png';
 import MenuItem from '@components/layout/navigation/MenuItem';
@@ -20,6 +20,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ menuItems }: NavbarProps) => {
+    const menuRef = useRef(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const [colorTheme, setTheme] = useDarkMode();
     const router = useRouter();
@@ -29,8 +30,8 @@ const Navbar = ({ menuItems }: NavbarProps) => {
         setIsExpanded(false)
     }, [pathname])
 
-    const menu = menuItems.map((item, index) => (
-        <MenuItem key={index} {...item} />
+    const menu = menuItems.map((item) => (
+        <MenuItem key={item.href} {...item} active={pathname === item.href} />
     ));
 
     return (
@@ -51,12 +52,13 @@ const Navbar = ({ menuItems }: NavbarProps) => {
                         timeout={300}
                         classNames="menu-transition"
                         unmountOnExit
+                        nodeRef={menuRef}
                     >
                         <div
                             className={`fixed inset-0 z-10 bg-[#F5EADD] dark:bg-[#2F3939] flex items-center justify-center`}
                             id="navbar-default"
                         >
-                            <ul className="flex flex-col space-y-4">{menu}</ul>
+                            <ul ref={menuRef} className="flex flex-col space-y-4">{menu}</ul>
                         </div>
                     </CSSTransition>
                 </div>

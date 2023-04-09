@@ -10,7 +10,7 @@ const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenu) => {
             onClick={onToggle}
             className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2F3939] ml-2 dark:focus:ring-[#F5EADD] z-20"
             aria-expanded={isExpanded}
-            aria-controls="mobile-menu"
+            aria-controls="navbar-default"
         >
             <span className="sr-only">Open main menu</span>
             {isExpanded ? (

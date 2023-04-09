@@ -8,10 +8,17 @@ import Navbar from '@components/layout/navigation/Navbar';
 */
 const menuItems = [
   { label: 'Home', href: '/' },
-  { label: 'Museum', href: '/museum' },
-  { label: 'Category', href: '/category' },
-  { label: 'Songs', href: '/songs' },
-  { label: 'Characters', href: '/characters' },
+  { label: 'Achievements', href: '/achievements' },
+  { label: 'All', href: '/all' },
+  { label: 'Construction', href: '/construction' },
+  { label: 'Creatures', href: '/creatures' },
+  { label: 'Items', href: '/items' },
+  { label: 'Message Cards', href: '/message-Cards' },
+  { label: 'Reactions', href: '/reactions' },
+  { label: 'Recipes', href: '/recipes' },
+  { label: 'Season and Events', href: '/season-and-Events' },
+  { label: 'Special Npcs', href: '/special-Npcs' },
+  { label: 'Villagers', href: '/villagers' },
 ];
 
 
