@@ -35,7 +35,7 @@ const Navbar = ({ menuItems }: NavbarProps) => {
     ));
 
     return (
-        <header className='m-auto max-w-screen-lg py-12 px-4'>
+        <header className='m-auto py-12 px-4'>
             <nav className="border-gray-200">
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
                     <div className="flex items-center self-center text-2xl whitespace-nowrap z-20">
@@ -43,7 +43,7 @@ const Navbar = ({ menuItems }: NavbarProps) => {
                             <Image src={Wilbur} alt='Wilbur' width={75} height={75} />
                         </Link>
                     </div>
-                    <div className='flex items-center md:ml-auto md:mr-8 transition-all duration-300'>
+                    <div className='flex items-center md:ml-auto transition-all duration-300'>
                         <ToggleThemeButton colorTheme={colorTheme} setTheme={setTheme} />
                         <MobileMenuButton onToggle={() => setIsExpanded(!isExpanded)} isExpanded={isExpanded} />
                     </div>
