@@ -1,30 +1,18 @@
 {
   "name": "wilbur",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "frontend": "npm run dev --prefix frontend",
+    "backend": "npm run start --prefix backend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
   "dependencies": {
-    "animal-crossing": "^8.2.0",
-    "next": "13.3.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-transition-group": "^4.4.5"
-  },
-  "devDependencies": {
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.33",
-    "@types/react-dom": "18.0.11",
-    "@types/react-transition-group": "^4.4.5",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
-    "postcss": "8.4.21",
-    "tailwindcss": "3.3.1",
-    "typescript": "5.0.4"
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22"
   }
 }

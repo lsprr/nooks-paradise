@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --skyBlue: #8edce6;
+  --beige: #f5eadd;
+  --darkSlateGray: #2f3939;
+  --darkSeaGreen: #a0cda2;
+  --sienna: #78512c;
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+.menu-transition-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.menu-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.menu-transition-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-transition-exit-active {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 300ms, transform 300ms;
+}
