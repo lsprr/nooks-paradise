@@ -1,61 +1,79 @@
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
+const {
+    achievements,
+    construction,
+    creatures,
+    items,
+    reactions,
+    recipes,
+    seasonsAndEvents,
+    translations,
+    villagers,
+    npcs
+} = require('animal-crossing');
 
 const app = express();
-const port = 3001;
-
 app.use(cors());
 
-app.get('/api/combined/:filename', (req, res) => {
-    const filename = req.params.filename;
+/*
+* This function takes an array of items as input and returns an object
+* where the items are grouped by their sourceSheet property
+*/
+function groupBySourceSheet(items) {
+    return items.reduce((accumulator, currentItem) => {
+        const category = currentItem.sourceSheet.replace(/([a-z])([A-Z])/g, '$1 $2');
 
-    fs.readFile(`./json/data/${filename}.json`, 'utf8', (err, data) => {
-        if (err) {
-            res.status(404).send('File not found');
-        } else {
-            try {
-                const jsonData = JSON.parse(data);
-                res.json(jsonData);
-            } catch (e) {
-                res.status(500).send('Error parsing JSON file');
-            }
+        if (!accumulator[category]) {
+            accumulator[category] = [];
         }
-    });
+
+        accumulator[category].push(currentItem);
+        return accumulator;
+    }, {});
+}
+
+app.get('/api/achievements', (req, res) => {
+    res.json(groupBySourceSheet(achievements));
 });
 
-app.get('/api/data', (req, res) => {
-    const directoryPath = './json/data/';
-
-    fs.readdir(directoryPath, (err, files) => {
-        if (err) {
-            res.status(500).send('Error reading directory');
-        } else {
-            const jsonFiles = files.filter(file => path.extname(file) === '.json');
-            const filenames = jsonFiles.map(file => path.basename(file, '.json'));
-            res.json(filenames);
-        }
-    });
+app.get('/api/construction', (req, res) => {
+    res.json(groupBySourceSheet(construction));
 });
 
-app.get('/api/data/:filename', (req, res) => {
-    const filename = req.params.filename;
-
-    fs.readFile(`./json/data/${filename}.json`, 'utf8', (err, data) => {
-        if (err) {
-            res.status(404).send('File not found');
-        } else {
-            try {
-                const jsonData = JSON.parse(data);
-                res.json(jsonData);
-            } catch (e) {
-                res.status(500).send('Error parsing JSON file');
-            }
-        }
-    });
+app.get('/api/creatures', (req, res) => {
+    res.json(groupBySourceSheet(creatures));
 });
 
-app.listen(port, () => {
-    console.log(`JSON API server listening at http://localhost:${port}`);
+app.get('/api/items', (req, res) => {
+    res.json(groupBySourceSheet(items));
+});
+
+app.get('/api/reactions', (req, res) => {
+    res.json(groupBySourceSheet(reactions));
+});
+
+app.get('/api/recipes', (req, res) => {
+    res.json(groupBySourceSheet(recipes));
+});
+
+app.get('/api/seasonsAndEvents', (req, res) => {
+    res.json(groupBySourceSheet(seasonsAndEvents));
+});
+
+app.get('/api/translations', (req, res) => {
+    res.json(groupBySourceSheet(translations));
+});
+
+app.get('/api/villagers', (req, res) => {
+    res.json(groupBySourceSheet(villagers));
+});
+
+app.get('/api/npcs', (req, res) => {
+    res.json(groupBySourceSheet(npcs));
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

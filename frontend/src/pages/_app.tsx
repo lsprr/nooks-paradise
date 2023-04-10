@@ -15,10 +15,11 @@ const menuItems = [
   { label: 'Construction', href: '/construction' },
   { label: 'Creatures', href: '/creatures' },
   { label: 'Items', href: '/items' },
+  { label: 'NPCs', href: '/npcs' },
   { label: 'Reactions', href: '/reactions' },
   { label: 'Recipes', href: '/recipes' },
-  { label: 'Seasons and Events', href: '/seasons-and-events' },
-  { label: 'Special Npcs', href: '/npcs' },
+  { label: 'Seasons And Events', href: '/seasons-and-events' },
+  { label: 'Translations', href: '/translations' },
   { label: 'Villagers', href: '/villagers' },
 ];
 
