@@ -3,6 +3,9 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Navbar from '@components/layout/navigation/Navbar';
 
+
+
+
 /**
  * TODO: Need to move this array of menu items in a separate file.
 */

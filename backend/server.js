@@ -25,6 +25,20 @@ app.get('/api/combined/:filename', (req, res) => {
     });
 });
 
+app.get('/api/data', (req, res) => {
+    const directoryPath = './json/data/';
+
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            res.status(500).send('Error reading directory');
+        } else {
+            const jsonFiles = files.filter(file => path.extname(file) === '.json');
+            const filenames = jsonFiles.map(file => path.basename(file, '.json'));
+            res.json(filenames);
+        }
+    });
+});
+
 app.get('/api/data/:filename', (req, res) => {
     const filename = req.params.filename;
 
