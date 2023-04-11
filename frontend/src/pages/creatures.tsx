@@ -1,3 +1,4 @@
+import { fetchData } from '@/utils/api';
 import Filter from '@/components/Filter';
 import { useEffect, useState } from 'react';
 
@@ -5,47 +6,49 @@ export default function Creatures() {
     const [fish, setFish] = useState(null);
     const [insects, setInsects] = useState(null);
     const [seaCreatures, setSeaCreatures] = useState(null);
-    const [whichItem, setWhichItem] = useState<Array<any> | null>(null);
-    const [findItem, setFindItem] = useState('');
+    const [displayedItems, setDisplayedItems] = useState<Array<any> | null>(null);
+    const [filterKeyword, setFilterKeyword] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/creatures')
-            .then((response) => response.json())
+        fetchData('creatures')
             .then((data) => {
                 setFish(data['Fish']);
                 setInsects(data['Insects']);
                 setSeaCreatures(data['Sea Creatures']);
-                setWhichItem(data['Fish']);
+                setDisplayedItems(data['Fish']);
+            })
+            .catch((error) => {
+                console.error('Error fetching creatures:', error);
             });
     }, []);
 
-    const handleFinditemChange = (value: string) => {
-        setFindItem(value);
+    const handleFilterKeywordChange = (value: string) => {
+        setFilterKeyword(value);
     };
 
-    const handleWhichIndividualChange = (value: string) => {
+    const handleDisplayedItemsChange = (value: string) => {
         switch (value) {
             case 'fish':
-                setWhichItem(fish);
+                setDisplayedItems(fish);
                 break;
             case 'insects':
-                setWhichItem(insects);
+                setDisplayedItems(insects);
                 break;
             case 'seaCreatures':
-                setWhichItem(seaCreatures);
+                setDisplayedItems(seaCreatures);
                 break;
             default:
-                setWhichItem(fish);
+                setDisplayedItems(fish);
         }
     };
 
     return (
         <Filter
             title={'Creatures'}
-            whichItem={whichItem}
-            findItem={findItem}
-            onFindItemChange={handleFinditemChange}
-            onWhichItemChange={handleWhichIndividualChange}
+            displayedItems={displayedItems}
+            filterKeyword={filterKeyword}
+            onFilterKeywordChange={handleFilterKeywordChange}
+            onDisplayedItemsChange={handleDisplayedItemsChange}
         />
     );
 }
