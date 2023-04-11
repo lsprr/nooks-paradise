@@ -11,8 +11,6 @@ export default function Translations() {
             });
     }, []);
 
-    console.log(category);
-
     return (
         <>
             <h1>Translations</h1>

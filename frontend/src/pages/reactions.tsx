@@ -11,8 +11,6 @@ export default function Reactions() {
             });
     }, []);
 
-    console.log(category);
-
     return (
         <>
             <h1>Reactions</h1>

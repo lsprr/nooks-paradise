@@ -11,8 +11,6 @@ export default function Recipes() {
             });
     }, []);
 
-    console.log(category);
-
     return (
         <>
             <h1>Recipes</h1>

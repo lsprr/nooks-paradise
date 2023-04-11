@@ -11,8 +11,6 @@ export default function SeasonsAndEvents() {
             });
     }, []);
 
-    console.log(category);
-
     return (
         <>
             <h1>SeasonsAndEvents</h1>

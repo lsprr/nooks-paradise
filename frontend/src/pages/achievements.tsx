@@ -11,8 +11,6 @@ export default function Achievements() {
             });
     }, []);
 
-    console.log(category)
-
     return (
         <>
             <h1>Achievements</h1>

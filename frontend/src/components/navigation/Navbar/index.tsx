@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Wilbur from '@assets/brand/logo.png';
-import MenuItem from '@components/layout/navigation/MenuItem';
-import ToggleThemeButton from '@components/layout/navigation/buttons/ToggleTheme';
-import MobileMenuButton from '@components/layout/navigation/buttons/MobileMenu';
+import MenuItem from '@components/navigation/MenuItem';
+import ToggleThemeButton from '@components/navigation/buttons/ToggleTheme';
+import MobileMenuButton from '@components/navigation/buttons/MobileMenu';
 import useDarkMode from '@utils/useDarkMode';
 
 interface MenuItemLink {

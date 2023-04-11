@@ -11,8 +11,6 @@ export default function Villagers() {
             });
     }, []);
 
-    console.log(category);
-
     return (
         <>
             <h1>Villagers</h1>

@@ -11,8 +11,6 @@ export default function Items() {
             });
     }, []);
 
-    console.log(category);
-
     return (
         <>
             <h1>Items</h1>

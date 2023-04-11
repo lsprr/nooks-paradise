@@ -11,8 +11,6 @@ export default function NPCs() {
             });
     }, []);
 
-    console.log(category);
-
     return (
         <>
             <h1>NPCs</h1>

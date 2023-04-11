@@ -11,8 +11,6 @@ export default function Construction() {
             });
     }, []);
 
-    console.log(category)
-
     return (
         <>
             <h1>Construction</h1>
