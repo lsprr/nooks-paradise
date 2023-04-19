@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { fetchData } from '@/utils/api';
 import Filter from '@/components/Filter';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import anchBg from '@assets/images/background.jpg';
 
 export default function Creatures() {
@@ -29,7 +29,14 @@ export default function Creatures() {
         setFilterKeyword(value);
     };
 
-    console.log(displayedItems);
+    const filteredItems = useMemo(() => {
+        if (!displayedItems || filterKeyword === '') return displayedItems;
+
+        return displayedItems.filter((item) =>
+            item.name.toLowerCase().includes(filterKeyword.toLowerCase())
+        );
+    }, [displayedItems, filterKeyword]);
+
 
     const handleDisplayedItemsChange = (value: string) => {
         switch (value) {
@@ -165,7 +172,7 @@ export default function Creatures() {
     return (
         <Filter
             title={'Creatures'}
-            displayedItems={displayedItems}
+            displayedItems={filteredItems}
             filterKeyword={filterKeyword}
             onFilterKeywordChange={handleFilterKeywordChange}
             renderItem={renderItem}
