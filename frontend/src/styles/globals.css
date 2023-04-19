@@ -2,32 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --skyBlue: #8edce6;
-  --beige: #f5eadd;
-  --darkSlateGray: #2f3939;
-  --darkSeaGreen: #a0cda2;
-  --sienna: #78512c;
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
 .menu-transition-enter {
   opacity: 0;
   transform: scale(0.95);
@@ -48,4 +22,16 @@ body {
   opacity: 0;
   transform: scale(0.95);
   transition: opacity 300ms, transform 300ms;
+}
+
+.anchBorder {
+	background-color: rgb(249, 246, 229);
+	box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+	border-color: currentcolor;
+	border-style: solid;
+	border-width: 12px;
+	border-image: url("../assets/images/name-tag-border.svg") 40 / 12px / 0 round;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 700;
 }
