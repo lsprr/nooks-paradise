@@ -22,7 +22,7 @@ const InfoElement = ({ src, alt, text }: InfoElementProps) => (
 );
 
 type CardProps = {
-    secondaryImage: string;
+    secondaryImage?: string;
     primaryImage: string;
     name: string;
     infoElements: InfoElementProps[];
@@ -33,19 +33,21 @@ export const Card = ({ secondaryImage, primaryImage, name, infoElements }: CardP
         <div className="w-full max-w-sm overflow-hidden rounded-lg shadow-lg dark:bg-[#2F3939]" role="group">
             <div className="relative">
                 <Image src={acnhBg} alt="Background image" className="z-0 absolute h-full" />
-                <div
-                    className="absolute end-4 top-4 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
-                >
-                    <Image
-                        src={secondaryImage}
-                        alt="Icon Image"
-                        className="object-scale-down h-10 w-10"
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                    />
-                </div>
-                <div className="group block overflow-hidden cursor-pointer">
+                {secondaryImage &&
+                    <div
+                        className="absolute end-4 top-4 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+                    >
+                        <Image
+                            src={secondaryImage}
+                            alt="Icon Image"
+                            className="object-scale-down h-10 w-10"
+                            width={40}
+                            height={40}
+                            loading="lazy"
+                        />
+                    </div>
+                }
+                <div className="group block overflow-hidden">
                     <Image
                         src={primaryImage}
                         alt={name}

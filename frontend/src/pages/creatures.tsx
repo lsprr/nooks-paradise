@@ -3,12 +3,15 @@ import { mergeAllArrays } from '@utils/arrayUtils';
 import Filter from '@/components/Filter';
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/Card';
-import acnhBells from '@assets/images/bells.png';
 import acnhLocation from '@assets/images/location.png';
 import northHemisphere from '@assets/images/north.png';
 import southHemisphere from '@assets/images/south.png';
+import acnhCranny from '@assets/images/cranny.png';
+import acnhFlick from '@assets/images/flick.png';
+import acnhCJ from '@assets/images/cj.png';
 
 type Creature = {
+    sourceSheet: string;
     iconImage: string;
     critterpediaImage: string;
     name: string;
@@ -42,36 +45,55 @@ export default function Creatures() {
         setFilterKeyword(value);
     };
 
-    const renderItem = (item: Creature) => (
-        <Card
-            secondaryImage={item.iconImage}
-            primaryImage={item.critterpediaImage}
-            name={item.name}
-            infoElements={[
-                {
-                    src: northHemisphere,
-                    alt: 'North Hemisphere availability',
-                    text: `${item.hemispheres.north.months[0]} (${item.hemispheres.north.time[0]})`,
-                },
-                {
-                    src: southHemisphere,
-                    alt: 'South Hemisphere availability',
-                    text: `${item.hemispheres.south.months[0]} (${item.hemispheres.south.time[0]})`,
-                },
-                {
-                    src: acnhLocation,
-                    alt: 'Location and method of capture',
-                    text: item.whereHow,
-                },
-                {
-                    src: acnhBells,
-                    alt: 'Selling price in Bells',
-                    text: `${item.sell} Bells`,
-                },
-            ]}
-        />
-    );
+    console.log(displayedItems);
 
+    const renderItem = (item: Creature) => {
+        const infoElements = [
+            {
+                src: northHemisphere,
+                alt: 'North Hemisphere availability',
+                text: `${item.hemispheres.north.months[0]} (${item.hemispheres.north.time[0]})`,
+            },
+            {
+                src: southHemisphere,
+                alt: 'South Hemisphere availability',
+                text: `${item.hemispheres.south.months[0]} (${item.hemispheres.south.time[0]})`,
+            },
+            {
+                src: acnhLocation,
+                alt: 'Location and method of capture',
+                text: item.whereHow,
+            },
+            {
+                src: acnhCranny,
+                alt: 'Selling price in Bells',
+                text: `${item.sell} Bells`,
+            },
+        ];
+
+        if (item.sourceSheet === 'Insects') {
+            infoElements.push({
+                src: acnhFlick,
+                alt: 'Selling price * 1.5 in Bells to Flick',
+                text: `${item.sell * 1.5} Bells`,
+            });
+        } else if (item.sourceSheet === 'Fish') {
+            infoElements.push({
+                src: acnhCJ,
+                alt: 'Selling price * 1.5 in Bells to C.J',
+                text: `${item.sell * 1.5} Bells`,
+            });
+        }
+
+        return (
+            <Card
+                secondaryImage={item.iconImage}
+                primaryImage={item.critterpediaImage}
+                name={item.name}
+                infoElements={infoElements}
+            />
+        );
+    };
 
     const renderFilters = () => {
         return (
