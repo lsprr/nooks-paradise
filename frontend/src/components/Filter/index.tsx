@@ -12,15 +12,23 @@ const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderIt
     const [filteredItems, setFilteredItems] = useState(displayedItems);
 
     useEffect(() => {
-        if (displayedItems && filterKeyword) {
-            const filtered = displayedItems.filter((item: any) =>
-                item.name.toLowerCase().includes(filterKeyword.toLowerCase()),
-            );
-            setFilteredItems(filtered);
-        } else {
-            setFilteredItems(displayedItems);
+        if (!displayedItems) {
+            setFilteredItems(null);
+            return;
         }
+
+        if (filterKeyword === '') {
+            setFilteredItems(displayedItems);
+            return;
+        }
+
+        const filtered = displayedItems.filter((item) =>
+            item.name.toLowerCase().includes(filterKeyword.toLowerCase())
+        );
+
+        setFilteredItems(filtered);
     }, [displayedItems, filterKeyword]);
+
 
     return (
         <>
@@ -32,7 +40,7 @@ const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderIt
                         </h1>
                     </header> */}
 
-                    {/* <div className="mt-8 sm:flex sm:items-center sm:justify-between">
+                    <div className="mt-8 sm:flex sm:items-center sm:justify-between">
                         <div>
                             <label className="sr-only" htmlFor="search">Search</label>
                             <input
@@ -44,12 +52,16 @@ const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderIt
                             />
                         </div>
                         {filters}
-                    </div> */}
+                    </div>
 
                     <div className="lg:col-span-4">
                         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                            {filteredItems?.map((item, index) =>
-                                <li className='rounded relative' key={index}>{renderItem(item)}</li>
+                            {filteredItems?.length ? (
+                                filteredItems.map((item, index) =>
+                                    <li className='rounded relative' key={index}>{renderItem(item)}</li>
+                                )
+                            ) : (
+                                <p className="text-center w-full">No items found.</p>
                             )}
                         </ul>
                     </div>
