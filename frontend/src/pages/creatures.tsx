@@ -45,8 +45,6 @@ export default function Creatures() {
         setFilterKeyword(value);
     };
 
-    console.log(displayedItems);
-
     const renderItem = (item: Creature) => {
         const infoElements = [
             {
