@@ -24,6 +24,7 @@ export default function Creatures() {
     const [displayedItems, setDisplayedItems] = useState<Array<any> | null>(null);
     const [filterKeyword, setFilterKeyword] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         fetchData('creatures')
@@ -32,6 +33,7 @@ export default function Creatures() {
                 setIsLoading(false);
             })
             .catch((error) => {
+                setErrorMessage('Error fetching creatures. Please try again.');
                 console.error('Error fetching creatures:', error);
             });
     }, []);
@@ -77,26 +79,39 @@ export default function Creatures() {
         );
     };
 
+    const FilterWithLoadingIndicator = () => {
+        if (errorMessage) {
+            return (
+                <div className="text-red-500 flex justify-center">
+                    {errorMessage}
+                </div>
+            );
+        } else {
+            return (
+                <>
+                    {isLoading ? (
+                        <div className="flex items-center justify-center space-x-2 animate-bounce">
+                            <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
+                            <div className="w-8 h-8 bg-green-400 rounded-full"></div>
+                            <div className="w-8 h-8 bg-black rounded-full"></div>
+                        </div>
+                    ) : (
+                        <Filter
+                            displayedItems={displayedItems}
+                            filterKeyword={filterKeyword}
+                            onFilterKeywordChange={handleFilterKeywordChange}
+                            renderItem={renderItem}
+                            filters={renderFilters()}
+                        />
+                    )}
+                </>
+            );
+        }
+    }
 
     return (
         <>
-            {isLoading ? (
-                <div className="flex items-center justify-center space-x-2 animate-bounce">
-                    <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
-                    <div className="w-8 h-8 bg-green-400 rounded-full"></div>
-                    <div className="w-8 h-8 bg-black rounded-full"></div>
-                </div>
-
-            ) : (
-                <Filter
-                    displayedItems={displayedItems}
-                    filterKeyword={filterKeyword}
-                    onFilterKeywordChange={handleFilterKeywordChange}
-                    renderItem={renderItem}
-                    filters={renderFilters()}
-                />
-            )}
+            {FilterWithLoadingIndicator()}
         </>
     );
-
 }
