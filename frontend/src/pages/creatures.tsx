@@ -1,7 +1,7 @@
 import { fetchData } from '@/utils/api';
 import { mergeAllArrays } from '@utils/arrayUtils';
 import Filter from '@/components/Filter';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from '@/components/Card';
 import acnhBells from '@assets/images/bells.png';
 import acnhLocation from '@assets/images/location.png';
@@ -36,14 +36,6 @@ export default function Creatures() {
             });
     }, []);
 
-    const filteredItems = useMemo(() => {
-        if (!displayedItems || filterKeyword === '') return displayedItems;
-
-        return displayedItems.filter((item) =>
-            item.name.toLowerCase().includes(filterKeyword.toLowerCase())
-        );
-    }, [displayedItems, filterKeyword]);
-
     const handleFilterKeywordChange = (value: string) => {
         setFilterKeyword(value);
     };
@@ -56,22 +48,22 @@ export default function Creatures() {
             infoElements={[
                 {
                     src: northHemisphere,
-                    alt: 'North Hemisphere',
+                    alt: 'North Hemisphere availability',
                     text: `${item.hemispheres.north.months[0]} (${item.hemispheres.north.time[0]})`,
                 },
                 {
                     src: southHemisphere,
-                    alt: 'South Hemisphere',
+                    alt: 'South Hemisphere availability',
                     text: `${item.hemispheres.south.months[0]} (${item.hemispheres.south.time[0]})`,
                 },
                 {
                     src: acnhLocation,
-                    alt: 'location',
+                    alt: 'Location and method of capture',
                     text: item.whereHow,
                 },
                 {
                     src: acnhBells,
-                    alt: 'bells',
+                    alt: 'Selling price in Bells',
                     text: `${item.sell} Bells`,
                 },
             ]}
@@ -97,7 +89,7 @@ export default function Creatures() {
 
             ) : (
                 <Filter
-                    displayedItems={filteredItems}
+                    displayedItems={displayedItems}
                     filterKeyword={filterKeyword}
                     onFilterKeywordChange={handleFilterKeywordChange}
                     renderItem={renderItem}
