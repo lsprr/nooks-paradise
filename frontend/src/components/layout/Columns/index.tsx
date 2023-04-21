@@ -1,4 +1,4 @@
-interface Props {
+type Props = {
     leftColumn: React.ReactNode,
     rightColumn: React.ReactNode
 }

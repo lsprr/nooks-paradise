@@ -1,4 +1,4 @@
-interface MobileMenu {
+type MobileMenu = {
     onToggle: () => void;
     isExpanded: boolean;
 }

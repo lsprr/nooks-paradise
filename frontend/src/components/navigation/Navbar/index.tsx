@@ -9,13 +9,13 @@ import ToggleThemeButton from '@components/navigation/buttons/ToggleTheme';
 import MobileMenuButton from '@components/navigation/buttons/MobileMenu';
 import useDarkMode from '@utils/useDarkMode';
 
-interface MenuItemLink {
+type MenuItemLink = {
     label: string;
     href: string;
     isExternal?: boolean;
 }
 
-interface NavbarProps {
+type NavbarProps = {
     menuItems: MenuItemLink[];
 }
 

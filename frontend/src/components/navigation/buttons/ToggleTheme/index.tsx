@@ -1,4 +1,4 @@
-interface ToggleTheme {
+type ToggleTheme = {
     colorTheme: string;
     setTheme: () => void;
 }

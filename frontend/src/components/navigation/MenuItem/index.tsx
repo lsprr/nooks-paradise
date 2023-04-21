@@ -1,6 +1,6 @@
 import Link, { LinkProps } from 'next/link';
 
-interface MenuItem {
+type MenuItem = {
     label: string;
     href: string;
     isExternal?: boolean;
