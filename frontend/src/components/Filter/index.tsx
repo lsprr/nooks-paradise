@@ -40,7 +40,7 @@ const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderIt
                         </h1>
                     </header> */}
 
-                    <div className="mt-8 sm:flex sm:items-center sm:justify-between">
+                    {/* <div className="mt-8 sm:flex sm:items-center sm:justify-between">
                         <div>
                             <label className="sr-only" htmlFor="search">Search</label>
                             <input
@@ -52,14 +52,17 @@ const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderIt
                             />
                         </div>
                         {filters}
-                    </div>
+                    </div> */}
 
                     <div className="lg:col-span-4">
                         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             {filteredItems?.length ? (
-                                filteredItems.map((item, index) =>
-                                    <li className='rounded relative' key={index}>{renderItem(item)}</li>
-                                )
+                                filteredItems.flatMap((item, index) => {
+                                    const renderedItem = renderItem(item);
+                                    return renderedItem ? (
+                                        <li className='rounded relative' key={index}>{renderedItem}</li>
+                                    ) : [];
+                                })
                             ) : (
                                 <p className="text-center w-full">No items found.</p>
                             )}
