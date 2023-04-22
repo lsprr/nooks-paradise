@@ -1,5 +1,6 @@
 import { fetchData } from '@/utils/api';
 import { mergeAllArrays } from '@utils/arrayUtils';
+import { toCommas } from '@/utils/numberWithCommas';
 import Filter from '@/components/Filter';
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/Card';
@@ -65,7 +66,7 @@ export default function Creatures() {
             {
                 src: acnhCranny,
                 alt: 'Selling price in Bells',
-                text: `${item.sell} Bells`,
+                text: `${toCommas(item.sell)} Bells`,
             },
         ];
 
@@ -73,13 +74,13 @@ export default function Creatures() {
             infoElements.push({
                 src: acnhFlick,
                 alt: 'Selling price * 1.5 in Bells to Flick',
-                text: `${item.sell * 1.5} Bells`,
+                text: `${toCommas(item.sell * 1.5)} Bells`,
             });
         } else if (item.sourceSheet === 'Fish') {
             infoElements.push({
                 src: acnhCJ,
                 alt: 'Selling price * 1.5 in Bells to C.J',
-                text: `${item.sell * 1.5} Bells`,
+                text: `${toCommas(item.sell * 1.5)} Bells`,
             });
         }
 
