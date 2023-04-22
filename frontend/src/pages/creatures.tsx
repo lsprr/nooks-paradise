@@ -99,7 +99,7 @@ export default function Creatures() {
         );
     };
 
-    const FilterWithLoadingIndicator = () => {
+    const FilteredItemsWithLoadingIndicator = () => {
         if (errorMessage) {
             return (
                 <div className="text-red-500 flex justify-center">
@@ -131,7 +131,7 @@ export default function Creatures() {
 
     return (
         <>
-            {FilterWithLoadingIndicator()}
+            {FilteredItemsWithLoadingIndicator()}
         </>
     );
 }
