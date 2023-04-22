@@ -4,7 +4,7 @@ type Props = {
     displayedItems: Array<any> | null,
     filterKeyword: string,
     onFilterKeywordChange: Function,
-    renderItem: (item: any) => JSX.Element,
+    renderItem: (item: any) => JSX.Element | null;
     filters: JSX.Element,
 };
 
