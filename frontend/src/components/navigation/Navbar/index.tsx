@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Wilbur from '@assets/brand/logo.png';
-import MenuItem from '@components/navigation/MenuItem';
-import ToggleThemeButton from '@components/navigation/buttons/ToggleTheme';
-import MobileMenuButton from '@components/navigation/buttons/MobileMenu';
+import { MenuItem } from '@components/navigation/MenuItem';
+import { ToggleThemeButton } from '@components/navigation/buttons/ToggleTheme';
+import { MobileMenuButton } from '@components/navigation/buttons/MobileMenu';
 import useDarkMode from '@utils/useDarkMode';
 
 type MenuItemLink = {
@@ -19,7 +19,7 @@ type NavbarProps = {
     menuItems: MenuItemLink[];
 }
 
-const Navbar = ({ menuItems }: NavbarProps) => {
+export const Navbar = ({ menuItems }: NavbarProps) => {
     const menuRef = useRef(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const [colorTheme, setTheme] = useDarkMode();
@@ -66,5 +66,3 @@ const Navbar = ({ menuItems }: NavbarProps) => {
         </header>
     );
 };
-
-export default Navbar;

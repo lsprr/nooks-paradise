@@ -8,7 +8,7 @@ type Props = {
     filters: JSX.Element,
 };
 
-const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderItem, filters }: Props) => {
+export const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderItem, filters }: Props) => {
     const [filteredItems, setFilteredItems] = useState(displayedItems);
 
     useEffect(() => {
@@ -74,5 +74,3 @@ const Filter = ({ displayedItems, filterKeyword, onFilterKeywordChange, renderIt
         </>
     );
 };
-
-export default Filter;

@@ -7,7 +7,7 @@ type MenuItem = {
     active: boolean;
 }
 
-const MenuItem = ({ label, href, isExternal, active }: MenuItem) => {
+export const MenuItem = ({ label, href, isExternal, active }: MenuItem) => {
     const linkProps: React.AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps = {
         href,
         className: `text-xl whitespace-nowrap ${active ? 'block border-b-4 border-[#78512C] dark:border-[#A0CDA2]' : ''}`,
@@ -27,5 +27,3 @@ const MenuItem = ({ label, href, isExternal, active }: MenuItem) => {
         </li>
     );
 };
-
-export default MenuItem;

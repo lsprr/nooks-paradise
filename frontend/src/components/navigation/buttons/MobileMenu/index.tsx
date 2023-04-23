@@ -3,7 +3,7 @@ type MobileMenu = {
     isExpanded: boolean;
 }
 
-const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenu) => {
+export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenu) => {
     return (
         <button
             type="button"
@@ -49,5 +49,3 @@ const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenu) => {
         </button>
     );
 };
-
-export default MobileMenuButton;

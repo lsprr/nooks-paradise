@@ -1,7 +1,7 @@
 import { fetchData } from '@/utils/api';
 import { mergeAllArrays } from '@utils/arrayUtils';
 import { toCommas } from '@/utils/numberWithCommas';
-import Filter from '@/components/Filter';
+import { Filter } from '@/components/Filter';
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/Card';
 import acnhBg from '@assets/images/background.jpg';

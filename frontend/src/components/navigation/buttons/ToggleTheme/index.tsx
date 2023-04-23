@@ -3,7 +3,7 @@ type ToggleTheme = {
     setTheme: () => void;
 }
 
-const ToggleThemeButton = ({ colorTheme, setTheme }: ToggleTheme) => {
+export const ToggleThemeButton = ({ colorTheme, setTheme }: ToggleTheme) => {
     return (
         <button
             onClick={() => setTheme()}
@@ -38,5 +38,3 @@ const ToggleThemeButton = ({ colorTheme, setTheme }: ToggleTheme) => {
         </button>
     );
 };
-
-export default ToggleThemeButton;
