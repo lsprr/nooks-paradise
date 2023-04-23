@@ -4,12 +4,20 @@ import { toCommas } from '@/utils/numberWithCommas';
 import Filter from '@/components/Filter';
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/Card';
+import acnhBg from '@assets/images/background.jpg';
 import acnhQuestion from '@assets/images/question.png';
 import acnhResidentService from '@assets/images/services.png';
 
+type StaticImageData = {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+}
+
 type Creature = {
-    image: string;
     name: string;
+    image: StaticImageData;
     source: string;
     buy: number;
 };
@@ -57,8 +65,9 @@ export default function Construction() {
 
         return (
             <Card
-                primaryImage={item.image}
                 name={item.name}
+                image={item.image}
+                backgroundImage={acnhBg}
                 infoElements={infoElements}
             />
         );

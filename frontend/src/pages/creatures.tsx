@@ -4,6 +4,7 @@ import { toCommas } from '@/utils/numberWithCommas';
 import Filter from '@/components/Filter';
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/Card';
+import acnhBg from '@assets/images/background.jpg';
 import acnhLocation from '@assets/images/location.png';
 import northHemisphere from '@assets/images/north.png';
 import southHemisphere from '@assets/images/south.png';
@@ -11,11 +12,19 @@ import acnhCranny from '@assets/images/cranny.png';
 import acnhFlick from '@assets/images/flick.png';
 import acnhCJ from '@assets/images/cj.png';
 
+type StaticImageData = {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+}
+
 type Creature = {
     sourceSheet: string;
-    iconImage: string;
-    critterpediaImage: string;
     name: string;
+    critterpediaImage: StaticImageData;
+    iconImage: StaticImageData;
+    backgroundImage: StaticImageData;
     hemispheres: {
         north: { months: string[]; time: string[] };
         south: { months: string[]; time: string[] };
@@ -86,9 +95,10 @@ export default function Creatures() {
 
         return (
             <Card
-                secondaryImage={item.iconImage}
-                primaryImage={item.critterpediaImage}
                 name={item.name}
+                image={item.critterpediaImage}
+                iconImage={item.iconImage}
+                backgroundImage={acnhBg}
                 infoElements={infoElements}
             />
         );

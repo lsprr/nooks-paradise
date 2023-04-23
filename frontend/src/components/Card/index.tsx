@@ -15,8 +15,8 @@ type InfoElementData = {
 
 type CardProps = {
     name: string;
-    image: StaticImageData;
-    iconImage: StaticImageData;
+    image?: StaticImageData;
+    iconImage?: StaticImageData;
     backgroundImage: StaticImageData;
     infoElements: InfoElementData[];
 }
