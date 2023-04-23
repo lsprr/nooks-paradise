@@ -8,16 +8,16 @@ type StaticImageData = {
 }
 
 type InfoElementData = {
-    src: string | StaticImageData;
-    alt: string;
     text: string;
+    alt: string;
+    src: StaticImageData;
 }
 
 type CardProps = {
     name: string;
-    image: string;
-    iconImage: string;
-    backgroundImage: string;
+    image: StaticImageData;
+    iconImage: StaticImageData;
+    backgroundImage: StaticImageData;
     infoElements: InfoElementData[];
 }
 
@@ -28,7 +28,7 @@ const InfoElement = ({ src, alt, text }: InfoElementData) => (
     </div>
 );
 
-const CardHeader = ({ name, image, iconImage, backgroundImage }: { name: string; image?: string; iconImage?: string; backgroundImage: string; }) => (
+const CardHeader = ({ name, image, iconImage, backgroundImage }: { name: string; image?: StaticImageData; iconImage?: StaticImageData; backgroundImage: StaticImageData; }) => (
     <div className="relative h-[300px]">
         <Image src={backgroundImage} alt="Background image" className="z-0 absolute" fill loading="lazy" />
         {iconImage && (
