@@ -10,7 +10,7 @@ type StaticImageData = {
 export const Header = ({ name, image, iconImage, backgroundImage }: { name: string; image?: StaticImageData; iconImage?: StaticImageData; backgroundImage: StaticImageData; }) => {
     return (
         <div className="relative h-[300px]">
-            <Image src={backgroundImage} alt="Background image" className="z-0 absolute" loading="lazy" />
+            <Image src={backgroundImage} alt="Background image" className="z-0 absolute" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" loading="lazy" />
             {iconImage && (
                 <div
                     className="absolute end-4 top-4 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
