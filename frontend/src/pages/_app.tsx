@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Navbar } from '@components/navigation/Navbar';
+import { Navigation } from '@components/Navigation';
 
 /**
  * TODO: Need to move this array of menu items in a separate file.
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:description"
           content="🦤 Delta Oscar Delta Oscar is go" />
       </Head>
-      <Navbar menuItems={menuItems} />
+      <Navigation menuItems={menuItems} />
       <main>
         <Component {...pageProps} />
       </main>
