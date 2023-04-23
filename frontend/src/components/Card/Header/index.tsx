@@ -7,7 +7,7 @@ type StaticImageData = {
     blurDataURL?: string;
 }
 
-export const Header = ({ name, image, iconImage, backgroundImage }: { name: string; image?: StaticImageData; iconImage?: StaticImageData; backgroundImage: StaticImageData; }) => {
+export const Header = ({ image, iconImage, backgroundImage }: { name?: string; image?: StaticImageData; iconImage?: StaticImageData; backgroundImage: StaticImageData; }) => {
     return (
         <div className="relative h-[300px]">
             <Image src={backgroundImage} alt="Background image" className="z-0 absolute" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" loading="lazy" />
@@ -29,7 +29,7 @@ export const Header = ({ name, image, iconImage, backgroundImage }: { name: stri
                 <div className="group block overflow-hidden">
                     <Image
                         src={image}
-                        alt={name}
+                        alt='Primary Image'
                         className="h-[300px] w-28 object-contain transition duration-500 group-hover:scale-150 m-auto relative"
                         width={100}
                         height={350}

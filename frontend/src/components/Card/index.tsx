@@ -16,7 +16,7 @@ type InfoElementData = {
 }
 
 type CardProps = {
-    name: string;
+    name?: string;
     image?: StaticImageData;
     iconImage?: StaticImageData;
     backgroundImage: StaticImageData;
@@ -26,7 +26,7 @@ type CardProps = {
 export const Card = ({ name, image, iconImage, backgroundImage, infoElements }: CardProps) => {
     return (
         <div className="w-full max-w-sm overflow-hidden rounded-lg shadow-lg dark:bg-[#2F3939]" role="group">
-            <Header name={name} image={image} iconImage={iconImage} backgroundImage={backgroundImage} />
+            <Header image={image} iconImage={iconImage} backgroundImage={backgroundImage} />
             <Title name={name} />
             <Info infoElements={infoElements} />
         </div>
