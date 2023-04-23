@@ -46,8 +46,8 @@ export default function Creatures() {
                 setIsLoading(false);
             })
             .catch((error) => {
-                setErrorMessage('Error fetching creatures. Please try again.');
-                console.error('Error fetching creatures:', error);
+                setErrorMessage('Error fetching Creatures. Please try again.');
+                console.error('Error fetching Creatures:', error);
             });
     }, []);
 

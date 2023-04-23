@@ -35,8 +35,8 @@ export default function Construction() {
                 setIsLoading(false);
             })
             .catch((error) => {
-                setErrorMessage('Error fetching construction. Please try again.');
-                console.error('Error fetching construction:', error);
+                setErrorMessage('Error fetching Construction. Please try again.');
+                console.error('Error fetching Construction:', error);
             });
     }, []);
 

@@ -32,8 +32,8 @@ export default function Reactions() {
                 setIsLoading(false);
             })
             .catch((error) => {
-                setErrorMessage('Error fetching reactions. Please try again.');
-                console.error('Error fetching reactions:', error);
+                setErrorMessage('Error fetching Reactions. Please try again.');
+                console.error('Error fetching Reactions:', error);
             });
     }, []);
 

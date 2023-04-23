@@ -19,7 +19,7 @@ type CardProps = {
     name?: string;
     image?: StaticImageData;
     iconImage?: StaticImageData;
-    backgroundImage: StaticImageData;
+    backgroundImage?: StaticImageData;
     infoElements: InfoElementData[];
 }
 
