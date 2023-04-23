@@ -40,7 +40,7 @@ export const Navbar = ({ menuItems }: NavbarProps) => {
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
                     <div className="flex items-center self-center text-2xl whitespace-nowrap z-20">
                         <Link href="/">
-                            <Image src={Wilbur} alt='Wilbur' width={75} height={75} />
+                            <Image src={Wilbur} alt='Wilbur' className='w-[80px] h-[75px]' />
                         </Link>
                     </div>
                     <div className='flex items-center md:ml-auto transition-all duration-300'>

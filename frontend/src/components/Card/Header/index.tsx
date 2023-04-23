@@ -1,9 +1,16 @@
 import Image from 'next/image';
 
+type StaticImageData = {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+}
+
 export const Header = ({ name, image, iconImage, backgroundImage }: { name: string; image?: StaticImageData; iconImage?: StaticImageData; backgroundImage: StaticImageData; }) => {
     return (
         <div className="relative h-[300px]">
-            <Image src={backgroundImage} alt="Background image" className="z-0 absolute" fill loading="lazy" />
+            <Image src={backgroundImage} alt="Background image" className="z-0 absolute" loading="lazy" />
             {iconImage && (
                 <div
                     className="absolute end-4 top-4 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
