@@ -1,19 +1,76 @@
+import { fetchData } from '@/utils/api';
+import { mergeAllArrays } from '@utils/arrayUtils';
 import { useEffect, useState } from 'react';
+import { ItemGrids } from '@/components/ItemGrids';
+import { Card } from '@/components/Card';
+import { ErrorAPI } from '@/components/Errors/API';
+import { Loading } from '@/components/Loading';
+import question from '@assets/images/questionMark.png';
 
-export default function Items() {
-    const [category, setCategory] = useState({});
+type StaticImageData = {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+}
+
+type Item = {
+    name: string;
+    image: StaticImageData;
+};
+
+type DataFetchProps = {
+    category: string;
+};
+
+const DataFetch = ({ category }: DataFetchProps) => {
+    const [displayedItems, setDisplayedItems] = useState<Array<Item> | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState<Error | null>(null);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/items')
-            .then((response) => response.json())
+        fetchData(category)
             .then((data) => {
-                setCategory({ data })
+                setDisplayedItems(mergeAllArrays(data));
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                setErrorMessage(new Error(`Error fetching data. Please try again.`));
+                console.error(`Error fetching ${category.toUpperCase}:`, error);
             });
-    }, []);
+    }, [category]);
+
+    const renderItem = (item: Item) => {
+
+        const isImageExist = () => {
+            if (item.image) {
+                return item.image
+            } else {
+                return question;
+            }
+        }
+
+        return (
+            <Card
+                name={item.name}
+                image={isImageExist()}
+            />
+        );
+    };
 
     return (
         <>
-            <h1>Items</h1>
+            {errorMessage ? (
+                <ErrorAPI />
+            ) : isLoading ? (
+                <Loading />
+            ) : (
+                <ItemGrids data={displayedItems} renderItem={renderItem} />
+            )}
         </>
     );
+}
+
+export default function Items() {
+    return <DataFetch category="items" />;
 }
