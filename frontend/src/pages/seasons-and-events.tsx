@@ -5,18 +5,6 @@ import { CustomTable } from '@/components/Tables/Custom';
 import { ErrorAPI } from '@/components/Errors/API';
 import { Loading } from '@/components/Loading';
 
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
-
-type Item = {
-    name: string;
-    image: StaticImageData;
-};
-
 type DataFetchProps = {
     category: string;
 };
@@ -53,18 +41,40 @@ const DataFetch = ({ category }: DataFetchProps) => {
     );
 
     const renderBody = (item: SeasonAndEvent, index: number) => {
+
+        const renderHemisphereDates = () => {
+            if (
+                item.datesNorthernHemisphere !== null &&
+                item.datesSouthernHemisphere !== null &&
+                item.datesNorthernHemisphere.valueOf() === item.datesSouthernHemisphere.valueOf()
+            ) {
+                return (
+                    <td colSpan={6} className="p-2 border-t border-dashed border-darkGray dark:border-white">
+                        {item.datesNorthernHemisphere}
+                    </td>
+                );
+            } else {
+                return (
+                    <>
+                        <td colSpan={3} className="p-2 border-t border-dashed border-darkGray dark:border-white">
+                            {item.datesNorthernHemisphere || "-"}
+                        </td>
+                        <td colSpan={3} className="p-2 border-t border-dashed border-darkGray dark:border-white">
+                            {item.datesSouthernHemisphere || "-"}
+                        </td>
+                    </>
+                );
+            }
+        };
+
+
         return (
             <>
                 <tr key={`${index}-title`} className="border-t border-b border-dashed border-darkGray dark:border-white">
                     <td rowSpan={1} className="p-2 rounded-bl-2xl border-r border-dashed border-darkGray dark:border-white">
                         <b>{item.name}</b>
                     </td>
-                    <td colSpan={3} className="p-2 border-t border-dashed border-darkGray dark:border-white">
-                        {item.datesNorthernHemisphere}
-                    </td>
-                    <td colSpan={3} className="p-2 border-t border-dashed border-darkGray dark:border-white">
-                        {item.datesSouthernHemisphere}
-                    </td>
+                    {renderHemisphereDates()}
                 </tr>
             </>
         );
