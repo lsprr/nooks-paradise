@@ -1,5 +1,5 @@
 import ReactPaginate from 'react-paginate';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 type PaginationProps = {
     data: any[] | null;
@@ -28,17 +28,22 @@ export const Pagination = ({ data, setCurrentItems }: PaginationProps) => {
         }
     }, [currentPage, setCurrentItems, data, itemsPerPage]);
 
+    const isPageChange = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
     const paginate = ({ selected }: PaginateProps) => {
         setCurrentPage(selected + 1);
     };
 
     return (
         <ReactPaginate
+            onClick={isPageChange}
             onPageChange={paginate}
             pageCount={pageCount}
             previousLabel={'Previous'}
             nextLabel={'Next'}
-            pageRangeDisplayed={10}
+            breakClassName={'font-semibold text-darkGray hidden md:block'}
             containerClassName={'flex justify-center mb-20'}
             pageLinkClassName={'font-semibold hidden px-4 py-2 mx-1 text-darkGray transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-darkGray dark:text-gray-200 hover:bg-darkGray dark:hover:bg-white hover:text-white dark:hover:text-darkGray'}
             previousLinkClassName={'font-semibold px-4 py-2 mx-1 text-gray-500 capitalize bg-white rounded-md cursor-not-allowed dark:bg-darkGray dark:text-gray-600'}

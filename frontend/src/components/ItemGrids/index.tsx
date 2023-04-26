@@ -15,7 +15,7 @@ export const ItemGrids = ({ data, renderItem }: ItemGridsProps) => {
                             data.flatMap((item, index) => {
                                 const renderedItem = renderItem(item);
                                 return renderedItem ? (
-                                    <li className='rounded relative' key={index}>{renderedItem}</li>
+                                    <li className='rounded relative flex justify-center' key={index}>{renderedItem}</li>
                                 ) : [];
                             })
                         ) : (
