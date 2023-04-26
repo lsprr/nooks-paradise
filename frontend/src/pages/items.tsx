@@ -5,6 +5,7 @@ import { ItemGrids } from '@/components/ItemGrids';
 import { Card } from '@/components/Card';
 import { ErrorAPI } from '@/components/Errors/API';
 import { Loading } from '@/components/Loading';
+import { Pagination } from '@/components/Pagination';
 import question from '@assets/images/questionMark.png';
 
 type StaticImageData = {
@@ -25,6 +26,7 @@ type DataFetchProps = {
 
 const DataFetch = ({ category }: DataFetchProps) => {
     const [displayedItems, setDisplayedItems] = useState<Array<Item> | null>(null);
+    const [currentItems, setCurrentItems] = useState<Array<Item> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<Error | null>(null);
 
@@ -65,7 +67,10 @@ const DataFetch = ({ category }: DataFetchProps) => {
             ) : isLoading ? (
                 <Loading />
             ) : (
-                <ItemGrids data={displayedItems} renderItem={renderItem} />
+                <>
+                    <ItemGrids data={currentItems} renderItem={renderItem} />
+                    <Pagination data={displayedItems} setCurrentItems={setCurrentItems} />
+                </>
             )}
         </>
     );

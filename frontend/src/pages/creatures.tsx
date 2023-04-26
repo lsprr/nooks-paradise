@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { fetchData } from '@/utils/api';
 import { mergeAllArrays } from '@utils/arrayUtils';
 import { useEffect, useState } from 'react';
@@ -70,7 +69,3 @@ const DataFetch = ({ category }: DataFetchProps) => {
 export default function Creatures() {
     return <DataFetch category="creatures" />;
 }
-
-DataFetch.propTypes = {
-    category: PropTypes.string.isRequired,
-};
