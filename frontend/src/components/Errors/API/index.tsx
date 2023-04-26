@@ -1,6 +1,17 @@
+import Image from 'next/image';
+import dalCrew from '@assets/images/orvilleAndWilbur.png';
+
 export const ErrorAPI = () => {
     return (
-        <section className="w-screen flex items-center justify-center mt-40 text-center">
+        <section className="w-screen flex items-center justify-center mt-10 text-center flex-col">
+            <Image
+                src={dalCrew}
+                alt='Primary Image'
+                className="mb-8 w-40"
+                width={500}
+                height={500}
+                loading="lazy"
+            />
             <div className="container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700">
                 <div className="text-base font-semibold text-darkGray dark:text-white capitalize">
                     <div className="text-5xl">
