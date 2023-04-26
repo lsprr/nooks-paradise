@@ -30,8 +30,14 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
         setIsExpanded(false)
     }, [pathname])
 
+    const closeMenuIfActive = (isActive: boolean) => {
+        if (isActive) {
+            setIsExpanded(false);
+        }
+    };
+
     const menu = menuItems.map((item) => (
-        <MenuItem key={item.href} {...item} active={pathname === item.href} />
+        <MenuItem key={item.href} {...item} active={pathname === item.href} onLinkClick={() => closeMenuIfActive(pathname === item.href)} />
     ));
 
     return (
@@ -40,7 +46,7 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
                     <div className="flex items-center self-center text-2xl whitespace-nowrap z-20">
                         <Link href="/">
-                            <Image src={Wilbur} alt='Wilbur' className='w-[80px] h-[75px]' />
+                            <Image src={Wilbur} alt='Wilbur' className='w-[80px] h-[75px] md:w-[120px] md:h-[120px]' />
                         </Link>
                     </div>
                     <div className='flex items-center md:ml-auto transition-all duration-300'>
