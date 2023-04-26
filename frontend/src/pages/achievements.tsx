@@ -1,7 +1,7 @@
 import { fetchData } from '@/utils/api';
 import { mergeAllArrays } from '@utils/arrayUtils';
 import { useEffect, useState } from 'react';
-import { CustomTable } from '@/components/Table/Custom';
+import { CustomTable } from '@/components/Tables/Custom';
 import { ErrorAPI } from '@/components/Errors/API';
 import { Loading } from '@/components/Loading';
 
