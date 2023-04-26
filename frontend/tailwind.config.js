@@ -8,9 +8,19 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'lightBg': "url('/lightBackground.jpg')",
+        'darkBg': "url('/darkBackground.jpg')",
+      },
+      colors: {
+        'skyBlue': '#8EDCE6',
+        'beige': '#F5EADD',
+        'darkGray': '#2F3939',
+        'darkGreen': '#017069',
+        'sienna': '#78512C',
+        'creamWhite': '#f8f8f0',
+        'creamGreen': '#e9f4ec',
+        'limeGreen': '#A0CDA2',
+        'brightBlue': '#1c99cf',
       },
     },
   },

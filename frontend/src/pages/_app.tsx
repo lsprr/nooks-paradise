@@ -16,7 +16,6 @@ const menuItems = [
   { label: 'Reactions', href: '/reactions' },
   { label: 'Recipes', href: '/recipes' },
   { label: 'Seasons And Events', href: '/seasons-and-events' },
-  { label: 'Translations', href: '/translations' },
   { label: 'Villagers', href: '/villagers' },
 ];
 

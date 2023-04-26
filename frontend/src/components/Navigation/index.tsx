@@ -55,7 +55,7 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
                         nodeRef={menuRef}
                     >
                         <div
-                            className={`fixed inset-0 z-10 bg-[#F5EADD] dark:bg-[#2F3939] flex items-center justify-center`}
+                            className={`fixed inset-0 z-10 bg-lightBg dark:bg-darkBg flex items-center justify-center`}
                             id="navbar-default"
                         >
                             <ul ref={menuRef} className="flex flex-col space-y-4">{menu}</ul>
