@@ -6,6 +6,7 @@ import { Card } from '@/components/Card';
 import { ErrorAPI } from '@/components/Errors/API';
 import { Loading } from '@/components/Loading';
 import { Pagination } from '@/components/Pagination';
+import { Summary } from '@/components/Summary';
 import question from '@assets/images/questionMark.png';
 
 type StaticImageData = {
@@ -68,6 +69,7 @@ const DataFetch = ({ category }: DataFetchProps) => {
                 <Loading />
             ) : (
                 <>
+                    <Summary category={category} data={displayedItems} />
                     <ItemGrids data={currentItems} renderItem={renderItem} />
                     <Pagination data={displayedItems} setCurrentItems={setCurrentItems} />
                 </>

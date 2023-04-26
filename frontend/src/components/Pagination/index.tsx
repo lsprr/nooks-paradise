@@ -44,7 +44,7 @@ export const Pagination = ({ data, setCurrentItems }: PaginationProps) => {
             previousLabel={'Previous'}
             nextLabel={'Next'}
             breakClassName={'font-semibold text-darkGray hidden md:block'}
-            containerClassName={'flex justify-center mb-20'}
+            containerClassName={'flex justify-center mb-20 mt-10 md:mt-20'}
             pageLinkClassName={'font-semibold hidden px-4 py-2 mx-1 text-darkGray transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-darkGray dark:text-gray-200 hover:bg-darkGray dark:hover:bg-white hover:text-white dark:hover:text-darkGray'}
             previousLinkClassName={'font-semibold px-4 py-2 mx-1 text-gray-500 capitalize bg-white rounded-md cursor-not-allowed dark:bg-darkGray dark:text-gray-600'}
             nextLinkClassName={'font-semibold px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md dark:bg-darkGray dark:text-gray-200 hover:bg-darkGray dark:hover:bg-white hover:text-white dark:hover:text-darkGray'}
