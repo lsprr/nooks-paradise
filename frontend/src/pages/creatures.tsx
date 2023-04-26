@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { fetchData } from '@/utils/api';
 import { mergeAllArrays } from '@utils/arrayUtils';
 import { useEffect, useState } from 'react';
@@ -5,6 +6,7 @@ import { ItemGrids } from '@/components/ItemGrids';
 import { Card } from '@/components/Card';
 import { ErrorAPI } from '@/components/Errors/API';
 import { Loading } from '@/components/Loading';
+import { Pagination } from '@/components/Pagination';
 
 type StaticImageData = {
     src: string;
@@ -24,6 +26,7 @@ type DataFetchProps = {
 
 const DataFetch = ({ category }: DataFetchProps) => {
     const [displayedItems, setDisplayedItems] = useState<Array<Creature> | null>(null);
+    const [currentItems, setCurrentItems] = useState<Array<Creature> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<Error | null>(null);
 
@@ -55,7 +58,10 @@ const DataFetch = ({ category }: DataFetchProps) => {
             ) : isLoading ? (
                 <Loading />
             ) : (
-                <ItemGrids data={displayedItems} renderItem={renderItem} />
+                <>
+                    <ItemGrids data={currentItems} renderItem={renderItem} />
+                    <Pagination data={displayedItems} setCurrentItems={setCurrentItems} />
+                </>
             )}
         </>
     );
@@ -64,3 +70,7 @@ const DataFetch = ({ category }: DataFetchProps) => {
 export default function Creatures() {
     return <DataFetch category="creatures" />;
 }
+
+DataFetch.propTypes = {
+    category: PropTypes.string.isRequired,
+};
