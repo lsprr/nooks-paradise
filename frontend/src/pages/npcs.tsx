@@ -56,6 +56,10 @@ const DataFetch = ({ category }: DataFetchProps) => {
         );
     };
 
+    const handleCurrentItems = (newCurrentItems: Array<NPC> | null) => {
+        setCurrentItems(newCurrentItems);
+    };
+
     return (
         <>
             {errorMessage ? (
@@ -66,7 +70,7 @@ const DataFetch = ({ category }: DataFetchProps) => {
                 <>
                     <Summary category={category} data={displayedItems} />
                     <ItemGrids data={currentItems} renderItem={renderItem} />
-                    <Pagination data={displayedItems} setCurrentItems={setCurrentItems} />
+                    <Pagination data={displayedItems} setCurrentItems={handleCurrentItems} />
                 </>
             )}
         </>
