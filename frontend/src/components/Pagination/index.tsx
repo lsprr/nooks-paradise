@@ -1,5 +1,6 @@
 import ReactPaginate from 'react-paginate';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
+import usePagination from '@/utils/usePagination';
 
 type PaginationProps = {
     data: any[] | null;
@@ -15,22 +16,22 @@ export const Pagination = ({ data, setCurrentItems }: PaginationProps) => {
     const [pageCount, setPageCount] = useState(0);
     const itemsPerPage = 20;
 
+    const currentItems = usePagination(data, currentPage, itemsPerPage);
+
     useEffect(() => {
         if (data) {
-            const indexOfLastItem = currentPage * itemsPerPage;
-            const indexOfFirstItem = indexOfLastItem - itemsPerPage;
             const getPageCount = Math.ceil(data.length / itemsPerPage);
-            const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-            setCurrentItems(currentItems);
             setPageCount(getPageCount);
-        } else {
-            setCurrentItems([]);
         }
-    }, [currentPage, setCurrentItems, data, itemsPerPage]);
+    }, [data, itemsPerPage]);
+
+    useEffect(() => {
+        setCurrentItems(currentItems);
+    }, [currentItems, setCurrentItems]);
 
     const isPageChange = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     const paginate = ({ selected }: PaginateProps) => {
         setCurrentPage(selected + 1);
@@ -45,10 +46,12 @@ export const Pagination = ({ data, setCurrentItems }: PaginationProps) => {
             nextLabel={'Next'}
             breakClassName={'font-semibold text-darkGray hidden md:block'}
             containerClassName={'flex justify-center mb-20 mt-10 md:mt-20'}
-            pageLinkClassName={'font-semibold hidden px-4 py-2 mx-1 text-darkGray transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-darkGray dark:text-gray-200 hover:bg-darkGray dark:hover:bg-white hover:text-white dark:hover:text-darkGray'}
-            previousLinkClassName={'font-semibold px-4 py-2 mx-1 text-gray-500 capitalize bg-white rounded-md cursor-not-allowed dark:bg-darkGray dark:text-gray-600'}
-            nextLinkClassName={'font-semibold px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md dark:bg-darkGray dark:text-gray-200 hover:bg-darkGray dark:hover:bg-white hover:text-white dark:hover:text-darkGray'}
-            activeLinkClassName={'font-semibold bg-[#2F3939] text-white dark:bg-white dark:text-[#2F3939]'}
+            pageLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white rounded-md sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white'}
+            previousLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white rounded-md sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white'}
+            nextLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white rounded-md sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white'}
+            activeLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition colors duration-300 transform !text-white !bg-darkGray dark:!text-darkGray dark:!bg-white'}
+            disabledClassName={'hidden'}
+            breakLinkClassName={'hidden'}
         />
     )
 }
