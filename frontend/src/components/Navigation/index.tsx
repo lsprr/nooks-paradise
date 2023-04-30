@@ -7,7 +7,7 @@ import Wilbur from '@assets/brand/logo.png';
 import { MenuItem } from '@components/Navigation/MenuItem';
 import { ToggleThemeButton } from '@components/Navigation/buttons/ToggleTheme';
 import { MobileMenuButton } from '@components/Navigation/buttons/MobileMenu';
-import useDarkMode from '@utils/useDarkMode';
+import { useDarkMode } from '@utils/useDarkMode';
 
 type MenuItemLink = {
     label: string;

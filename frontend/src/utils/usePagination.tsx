@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function usePagination(data: any[] | null, currentPage: number, itemsPerPage: number) {
+export function usePagination(data: any[] | null, currentPage: number, itemsPerPage: number) {
     const [currentItems, setCurrentItems] = useState<any[] | null>([]);
 
     useEffect(() => {
@@ -16,6 +16,3 @@ function usePagination(data: any[] | null, currentPage: number, itemsPerPage: nu
 
     return currentItems;
 }
-
-
-export default usePagination;

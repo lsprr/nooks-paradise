@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 type Theme = 'light' | 'dark';
 
-const useDarkMode = (): [Theme, () => void] => {
+export const useDarkMode = (): [Theme, () => void] => {
     const [theme, setTheme] = useState<Theme>('light');
 
     useEffect(() => {
@@ -22,5 +22,3 @@ const useDarkMode = (): [Theme, () => void] => {
 
     return [theme, toggleTheme];
 };
-
-export default useDarkMode;

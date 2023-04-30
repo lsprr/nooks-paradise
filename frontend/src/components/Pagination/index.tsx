@@ -1,6 +1,6 @@
 import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
-import usePagination from '@/utils/usePagination';
+import { usePagination } from '@/utils/usePagination';
 
 type PaginationProps = {
     data: any[] | null;
