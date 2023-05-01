@@ -28,5 +28,5 @@ const renderItem = (item: Creature) => {
 };
 
 export default function Creatures() {
-    return <DataFetch category="creatures" fetchFunction={fetchFunction} renderItem={renderItem} />;
+    return <DataFetch category="creatures" type="grid" fetchFunction={fetchFunction} renderGridItem={renderItem} />;
 }

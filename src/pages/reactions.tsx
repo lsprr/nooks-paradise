@@ -28,5 +28,5 @@ const renderItem = (item: Reaction) => {
 };
 
 export default function Reactions() {
-    return <DataFetch category="reactions" fetchFunction={fetchFunction} renderItem={renderItem} />;
+    return <DataFetch category="reactions" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
 }

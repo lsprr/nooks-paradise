@@ -4,14 +4,18 @@ import { Loading } from "@/components/Loading/Loading";
 import { CategoryItemCount } from "@/components/CategoryItemCount/CategoryItemCount";
 import { ItemGrid } from "@/components/ItemGrid/ItemGrid";
 import { Pagination } from "@/components/Pagination/Pagination";
+import { CustomTable } from "@/components/Table/CustomTable";
 
 type DataFetchProps = {
     category: string;
+    type: "grid" | "table";
     fetchFunction: () => Promise<any>;
-    renderItem: (item: any) => JSX.Element;
+    renderGridItem?: (item: any) => JSX.Element;
+    renderTableHeader?: () => JSX.Element;
+    renderTableBody?: (item: any, index: number) => JSX.Element;
 };
 
-export const DataFetch = ({ category, fetchFunction, renderItem }: DataFetchProps) => {
+export const DataFetch = ({ category, type, fetchFunction, renderGridItem, renderTableHeader, renderTableBody }: DataFetchProps) => {
     const [displayedItems, setDisplayedItems] = useState<Array<any> | null>(null);
     const [currentItems, setCurrentItems] = useState<Array<any> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +38,23 @@ export const DataFetch = ({ category, fetchFunction, renderItem }: DataFetchProp
         setCurrentItems(newCurrentItems);
     };
 
+    const renderContent = () => {
+        switch (type) {
+            case 'grid':
+                return (
+                    <>
+                        <CategoryItemCount data={displayedItems} title={category} />
+                        <ItemGrid data={currentItems} renderItem={renderGridItem} />
+                        <Pagination data={displayedItems} setCurrentItems={handleCurrentItems} />
+                    </>
+                )
+            case 'table':
+                return (
+                    <CustomTable data={displayedItems || []} renderHeader={renderTableHeader} renderBody={renderTableBody} />
+                )
+        }
+    }
+
     return (
         <>
             {errorMessage ? (
@@ -42,9 +63,7 @@ export const DataFetch = ({ category, fetchFunction, renderItem }: DataFetchProp
                 <Loading />
             ) : (
                 <>
-                    <CategoryItemCount data={displayedItems} title={category} />
-                    <ItemGrid data={currentItems} renderItem={renderItem} />
-                    <Pagination data={displayedItems} setCurrentItems={handleCurrentItems} />
+                    {renderContent()}
                 </>
             )}
         </>

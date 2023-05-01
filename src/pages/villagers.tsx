@@ -28,5 +28,5 @@ const renderItem = (item: Villager) => {
 };
 
 export default function Villagers() {
-    return <DataFetch category="villagers" fetchFunction={fetchFunction} renderItem={renderItem} />;
+    return <DataFetch category="villagers" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
 }

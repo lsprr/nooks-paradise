@@ -28,5 +28,5 @@ const renderItem = (item: Construction) => {
 };
 
 export default function Construction() {
-    return <DataFetch category="construction" fetchFunction={fetchFunction} renderItem={renderItem} />;
+    return <DataFetch category="construction" type="grid" fetchFunction={fetchFunction} renderGridItem={renderItem} />;
 }

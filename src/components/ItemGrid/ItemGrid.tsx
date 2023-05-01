@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 type ItemGridProps = {
     data: Array<any> | null,
-    renderItem: (item: any) => ReactNode | null;
+    renderItem?: (item: any) => ReactNode | null;
 };
 
 export const ItemGrid = ({ data, renderItem }: ItemGridProps) => {
@@ -13,7 +13,7 @@ export const ItemGrid = ({ data, renderItem }: ItemGridProps) => {
                     <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {data?.length ? (
                             data.flatMap((item, index) => {
-                                const renderedItem = renderItem(item);
+                                const renderedItem = renderItem && renderItem(item);
                                 return renderedItem ? (
                                     <li className='rounded relative flex justify-center' key={index}>{renderedItem}</li>
                                 ) : [];

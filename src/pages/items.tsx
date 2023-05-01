@@ -37,5 +37,5 @@ const renderItem = (item: Item) => {
 };
 
 export default function Items() {
-    return <DataFetch category="items" fetchFunction={fetchFunction} renderItem={renderItem} />;
+    return <DataFetch category="items" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
 }

@@ -28,5 +28,5 @@ const renderItem = (item: NPC) => {
 };
 
 export default function NPCs() {
-    return <DataFetch category="npcs" fetchFunction={fetchFunction} renderItem={renderItem} />;
+    return <DataFetch category="npcs" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
 }

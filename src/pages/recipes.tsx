@@ -28,5 +28,5 @@ const renderItem = (item: Recipe) => {
 };
 
 export default function Recipes() {
-    return <DataFetch category="recipes" fetchFunction={fetchFunction} renderItem={renderItem} />;
+    return <DataFetch category="recipes" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
 }
