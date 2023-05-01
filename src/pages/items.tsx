@@ -1,11 +1,6 @@
+import { DataFetch } from '@hoc/DataFetch';
 import { fetchData } from '@/utils/api';
-import { useEffect, useState } from 'react';
-import { ItemGrid } from '@/components/ItemGrid/ItemGrid';
-import { Card } from '@/components/Card/Card';
-import { ApiError } from '@/components/Error/ApiError';
-import { Loading } from '@/components/Loading/Loading';
-import { Pagination } from '@/components/Pagination/Pagination';
-import { CategoryItemCount } from '@/components/CategoryItemCount/CategoryItemCount';
+import { Card } from "@/components/Card/Card";
 import question from '@assets/images/questionMark.png';
 
 type StaticImageData = {
@@ -20,67 +15,27 @@ type Item = {
     image: StaticImageData;
 };
 
-type DataFetchProps = {
-    category: string;
+const fetchFunction = () => {
+    return fetchData('items');
 };
 
-const DataFetch = ({ category }: DataFetchProps) => {
-    const [displayedItems, setDisplayedItems] = useState<Array<Item> | null>(null);
-    const [currentItems, setCurrentItems] = useState<Array<Item> | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState<Error | null>(null);
-
-    useEffect(() => {
-        fetchData(category)
-            .then((data) => {
-                setDisplayedItems(data);
-                setIsLoading(false);
-            })
-            .catch((error) => {
-                setErrorMessage(new Error(`Error fetching data. Please try again.`));
-                console.error(`Error fetching ${category.toUpperCase}:`, error);
-            });
-    }, [category]);
-
-    const renderItem = (item: Item) => {
-
-        const isImageExist = () => {
-            if (item.image) {
-                return item.image
-            } else {
-                return question;
-            }
+const renderItem = (item: Item) => {
+    const isImageExist = () => {
+        if (item.image) {
+            return item.image
+        } else {
+            return question;
         }
-
-        return (
-            <Card
-                name={item.name}
-                image={isImageExist()}
-            />
-        );
-    };
-
-    const handleCurrentItems = (newCurrentItems: Array<Item> | null) => {
-        setCurrentItems(newCurrentItems);
-    };
+    }
 
     return (
-        <>
-            {errorMessage ? (
-                <ApiError />
-            ) : isLoading ? (
-                <Loading />
-            ) : (
-                <>
-                    <CategoryItemCount category={category} data={displayedItems} />
-                    <ItemGrid data={currentItems} renderItem={renderItem} />
-                    <Pagination data={displayedItems} setCurrentItems={handleCurrentItems} />
-                </>
-            )}
-        </>
+        <Card
+            name={item.name}
+            image={isImageExist()}
+        />
     );
-}
+};
 
 export default function Items() {
-    return <DataFetch category="items" />;
+    return <DataFetch category="items" fetchFunction={fetchFunction} renderItem={renderItem} />;
 }

@@ -1,11 +1,6 @@
+import { DataFetch } from '@hoc/DataFetch';
 import { fetchData } from '@/utils/api';
-import { useEffect, useState } from 'react';
-import { ItemGrid } from '@/components/ItemGrid/ItemGrid';
-import { Card } from '@/components/Card/Card';
-import { ApiError } from '@/components/Error/ApiError';
-import { Loading } from '@/components/Loading/Loading';
-import { Pagination } from '@/components/Pagination/Pagination';
-import { CategoryItemCount } from '@/components/CategoryItemCount/CategoryItemCount';
+import { Card } from "@/components/Card/Card";
 
 type StaticImageData = {
     src: string;
@@ -19,58 +14,19 @@ type Creature = {
     critterpediaImage: StaticImageData;
 };
 
-type DataFetchProps = {
-    category: string;
+const fetchFunction = () => {
+    return fetchData('creatures');
 };
 
-const DataFetch = ({ category }: DataFetchProps) => {
-    const [displayedItems, setDisplayedItems] = useState<Array<Creature> | null>(null);
-    const [currentItems, setCurrentItems] = useState<Array<Creature> | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState<Error | null>(null);
-
-    useEffect(() => {
-        fetchData(category)
-            .then((data) => {
-                setDisplayedItems(data);
-                setIsLoading(false);
-            })
-            .catch((error) => {
-                setErrorMessage(new Error(`Error fetching data. Please try again.`));
-                console.error(`Error fetching ${category.toUpperCase}:`, error);
-            });
-    }, [category]);
-
-    const renderItem = (item: Creature) => {
-        return (
-            <Card
-                name={item.name}
-                image={item.critterpediaImage}
-            />
-        );
-    };
-
-    const handleCurrentItems = (newCurrentItems: Array<Creature> | null) => {
-        setCurrentItems(newCurrentItems);
-    };
-
+const renderItem = (item: Creature) => {
     return (
-        <>
-            {errorMessage ? (
-                <ApiError />
-            ) : isLoading ? (
-                <Loading />
-            ) : (
-                <>
-                    <CategoryItemCount category={category} data={displayedItems} />
-                    <ItemGrid data={currentItems} renderItem={renderItem} />
-                    <Pagination data={displayedItems} setCurrentItems={handleCurrentItems} />
-                </>
-            )}
-        </>
+        <Card
+            name={item.name}
+            image={item.critterpediaImage}
+        />
     );
-}
+};
 
 export default function Creatures() {
-    return <DataFetch category="creatures" />;
+    return <DataFetch category="creatures" fetchFunction={fetchFunction} renderItem={renderItem} />;
 }

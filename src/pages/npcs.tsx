@@ -1,11 +1,6 @@
+import { DataFetch } from '@hoc/DataFetch';
 import { fetchData } from '@/utils/api';
-import { useEffect, useState } from 'react';
-import { ItemGrid } from '@/components/ItemGrid/ItemGrid';
-import { Card } from '@/components/Card/Card';
-import { ApiError } from '@/components/Error/ApiError';
-import { Loading } from '@/components/Loading/Loading';
-import { Pagination } from '@/components/Pagination/Pagination';
-import { CategoryItemCount } from '@/components/CategoryItemCount/CategoryItemCount';
+import { Card } from "@/components/Card/Card";
 
 type StaticImageData = {
     src: string;
@@ -19,63 +14,19 @@ type NPC = {
     iconImage: StaticImageData;
 };
 
-type DataFetchProps = {
-    category: string;
+const fetchFunction = () => {
+    return fetchData('npcs');
 };
 
-const DataFetch = ({ category }: DataFetchProps) => {
-    const [displayedItems, setDisplayedItems] = useState<Array<NPC> | null>(null);
-    const [currentItems, setCurrentItems] = useState<Array<NPC> | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState<Error | null>(null);
-
-    useEffect(() => {
-        fetchData(category)
-            .then((data) => {
-                setDisplayedItems(data);
-                setIsLoading(false);
-            })
-            .catch((error) => {
-                setErrorMessage(new Error(`Error fetching data. Please try again.`));
-                console.error(`Error fetching ${category.toUpperCase}:`, error);
-            });
-    }, [category]);
-
-    const renderItem = (item: NPC) => {
-
-        if (!item.iconImage) {
-            return null;
-        }
-
-        return (
-            <Card
-                name={item.name}
-                image={item.iconImage}
-            />
-        );
-    };
-
-    const handleCurrentItems = (newCurrentItems: Array<NPC> | null) => {
-        setCurrentItems(newCurrentItems);
-    };
-
+const renderItem = (item: NPC) => {
     return (
-        <>
-            {errorMessage ? (
-                <ApiError />
-            ) : isLoading ? (
-                <Loading />
-            ) : (
-                <>
-                    <CategoryItemCount category={category.toUpperCase()} data={displayedItems} />
-                    <ItemGrid data={currentItems} renderItem={renderItem} />
-                    <Pagination data={displayedItems} setCurrentItems={handleCurrentItems} />
-                </>
-            )}
-        </>
+        <Card
+            name={item.name}
+            image={item.iconImage}
+        />
     );
-}
+};
 
 export default function NPCs() {
-    return <DataFetch category="npcs" />;
+    return <DataFetch category="npcs" fetchFunction={fetchFunction} renderItem={renderItem} />;
 }
