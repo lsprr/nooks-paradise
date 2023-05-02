@@ -3,7 +3,7 @@ import dalCrew from '@assets/images/orvilleAndWilbur.png';
 
 export const NoItemsFound = () => {
     return (
-        <section className="w-screen flex items-center justify-center mt-10 text-center flex-col">
+        <section className="flex items-center justify-center mt-10 text-center flex-col">
             <Image
                 src={dalCrew}
                 alt='Primary Image'
