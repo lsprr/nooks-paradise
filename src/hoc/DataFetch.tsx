@@ -51,9 +51,9 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
         setFilteredItems(results);
     };
 
-
     const renderContent = () => {
         const itemsToDisplay = filteredItems || displayedItems;
+
         switch (type) {
             case 'grid':
                 return (
