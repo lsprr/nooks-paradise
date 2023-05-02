@@ -1,4 +1,4 @@
-import { DataFetch } from '@hoc/DataFetch';
+import { DataFetch } from '@/components/DataFetch';
 import { fetchData } from '@/utils/api';
 
 type SeasonAndEvent = {
