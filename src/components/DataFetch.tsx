@@ -12,7 +12,7 @@ type DataFetchProps = {
     category: string;
     type: "grid" | "table";
     fetchFunction: () => Promise<any>;
-    renderGridItem?: (item: any) => JSX.Element;
+    renderGridItem?: (item: any) => JSX.Element | null;
     renderTableHeader?: () => JSX.Element;
     renderTableBody?: (item: any, index: number) => JSX.Element;
 };

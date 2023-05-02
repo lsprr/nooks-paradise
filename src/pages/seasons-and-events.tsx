@@ -49,7 +49,7 @@ const renderBody = (item: SeasonAndEvent, index: number) => {
 
     return (
         <>
-            <tr key={`${index}-title`} className="border-t border-b border-dashed border-darkGray dark:border-white">
+            <tr key={`${index}-title`} className="border-t border-dashed border-darkGray dark:border-white">
                 <td rowSpan={1} className="p-2 rounded-bl-2xl border-r border-dashed border-darkGray dark:border-white">
                     <b>{item.name}</b>
                 </td>

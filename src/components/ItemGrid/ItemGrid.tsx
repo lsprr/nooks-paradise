@@ -13,7 +13,7 @@ export const ItemGrid = ({ data, renderItem }: ItemGridProps) => {
                 <div className="lg:col-span-4">
                     {data && data.length > 0 ? (
                         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                            {data.flatMap((item, index) => {
+                            {data.map((item, index) => {
                                 const renderedItem = renderItem && renderItem(item);
                                 return renderedItem ? (
                                     <li className='rounded relative flex justify-center' key={index}>{renderedItem}</li>
