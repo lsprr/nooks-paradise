@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { NoItemsFound } from "../Error/NoItemsFound";
 
 type ItemGridProps = {
     data: Array<any> | null,
@@ -19,7 +20,7 @@ export const ItemGrid = ({ data, renderItem }: ItemGridProps) => {
                                 ) : [];
                             })
                         ) : (
-                            <p className="text-center w-full">No items found.</p>
+                            <NoItemsFound />
                         )}
                     </ul>
                 </div>

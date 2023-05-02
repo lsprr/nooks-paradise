@@ -6,6 +6,7 @@ import { ItemGrid } from "@/components/ItemGrid/ItemGrid";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { CustomTable } from "@/components/Table/CustomTable";
 import { Search } from "@/components/Search/Search";
+import { Container } from "./Layout/Container";
 
 type DataFetchProps = {
     category: string;
@@ -58,8 +59,10 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
             case 'grid':
                 return (
                     <>
-                        <CategoryItemCount data={itemsToDisplay} title={category} />
-                        <Search onSearchItem={handleSearchItem} />
+                        <Container>
+                            <CategoryItemCount data={itemsToDisplay} title={category} />
+                            <Search onSearchItem={handleSearchItem} />
+                        </Container>
                         <ItemGrid data={currentItems} renderItem={renderGridItem} />
                         <Pagination data={itemsToDisplay} setCurrentItems={handleCurrentItems} />
                     </>
