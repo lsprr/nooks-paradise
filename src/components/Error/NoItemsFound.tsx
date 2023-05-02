@@ -17,10 +17,10 @@ export const NoItemsFound = () => {
                     <div className="text-5xl">
                         <h1 className="mb-8">Oh dear, a little hiccup!</h1>
                     </div>
-                    <p className="mb-8">
-                        <h2 className="mb-8">It looks like there are no items on this island at the moment! 🍃</h2>
+                    <h2 className="mb-8">
+                        <span className="mb-8">It looks like there are no items on this island at the moment! 🍃</span><br />
                         <strong>Try tweaking your search, and let is discover some delightful treasures together! 🎁🏝️</strong>
-                    </p>
+                    </h2>
                 </div>
             </div>
         </section>

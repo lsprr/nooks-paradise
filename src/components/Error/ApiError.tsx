@@ -17,10 +17,10 @@ export const ApiError = () => {
                     <div className="text-5xl">
                         <h1 className="mb-8">Oh dear, a little hiccup!</h1>
                     </div>
-                    <p className="mb-8">
-                        <h2 className="mb-8">Whoops-a-daisy! It seems we have run into a little snag while gathering data from our API. No worries, though! Please give it another whirl later.</h2>
+                    <h2 className="mb-8">
+                        <p className="mb-8">Whoops-a-daisy! It seems we have run into a little snag while gathering data from our API. No worries, though! Please give it another whirl later.</p>
                         <strong>We are so grateful for your patience and understanding. Have a delightful day! 🍃</strong>
-                    </p>
+                    </h2>
                 </div>
             </div>
         </section>
