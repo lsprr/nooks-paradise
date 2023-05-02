@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^6.0.10",
+    "@mantine/hooks": "^6.0.10",
     "@tailwindcss/forms": "^0.5.3",
     "animal-crossing": "^8.2.0",
     "next": "13.3.0",

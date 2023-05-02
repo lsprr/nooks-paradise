@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { SimpleViewButton } from '../Button/SimpleViewButton';
 
 type StaticImageData = {
     src: string;
@@ -9,24 +10,17 @@ type StaticImageData = {
 
 type CardHeaderProps = {
     image?: StaticImageData;
-    iconImage?: StaticImageData;
+    interactive?: boolean;
 }
 
-export const CardHeader = ({ image, iconImage }: CardHeaderProps) => {
+export const CardHeader = ({ image, interactive }: CardHeaderProps) => {
     return (
-        <div className={`relative bg-darkBg dark:bg-lightBg cursor-pointer h-[300px]`}>
-            {iconImage && (
+        <div className={`relative bg-darkBg dark:bg-lightBg h-[300px]`}>
+            {interactive && (
                 <div
-                    className="absolute end-4 top-4 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+                    className="absolute end-4 top-4 rounded-full bg-white dark:bg-darkGray p-1.5 cursor-pointer"
                 >
-                    <Image
-                        src={iconImage}
-                        alt="Icon Image"
-                        className="object-scale-down h-10 w-10"
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                    />
+                    <SimpleViewButton />
                 </div>
             )}
             {image && (

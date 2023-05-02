@@ -11,13 +11,13 @@ type StaticImageData = {
 type CardProps = {
     name?: string;
     image?: StaticImageData;
-    iconImage?: StaticImageData;
+    interactive?: boolean;
 }
 
-export const Card = ({ name, image, iconImage }: CardProps) => {
+export const Card = ({ name, image, interactive }: CardProps) => {
     return (
         <div className="w-full overflow-hidden rounded-lg shadow-lg dark:bg-[#2F3939]" role="group">
-            <CardHeader image={image} iconImage={iconImage} />
+            <CardHeader image={image} interactive={interactive} />
             <CardTitle name={name} />
         </div>
     );

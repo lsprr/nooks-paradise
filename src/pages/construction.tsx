@@ -23,6 +23,7 @@ const renderItem = (item: Construction) => {
         <Card
             name={item.name}
             image={item.image}
+            interactive={true}
         />
     );
 };
