@@ -41,10 +41,6 @@ const dataSources: DataSource = {
     npcs,
 };
 
-export const config = {
-    runtime: 'edge',
-}
-
 export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
     const searchWord = String(req.query.category);
     const dataSourceKey = Object.keys(dataSources).find(
