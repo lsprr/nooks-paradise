@@ -1,5 +1,5 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 
 type StaticImageData = {
@@ -14,10 +14,6 @@ type Creature = {
     critterpediaImage: StaticImageData;
 };
 
-const fetchFunction = () => {
-    return fetchData('creatures');
-};
-
 const renderItem = (item: Creature) => {
     return (
         <Card
@@ -28,5 +24,12 @@ const renderItem = (item: Creature) => {
 };
 
 export default function Creatures() {
-    return <DataFetch category="creatures" type="grid" fetchFunction={fetchFunction} renderGridItem={renderItem} />;
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="creatures"
+        type='grid'
+        fetchFunction={(page, itemsPerPage) => fetchFunction("creatures", page, itemsPerPage)}
+        renderGridItem={renderItem}
+    />;
 }

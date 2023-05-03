@@ -1,14 +1,10 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 
 type SeasonAndEvent = {
     name: string;
     datesNorthernHemisphere: string;
     datesSouthernHemisphere: string;
-};
-
-const fetchFunction = () => {
-    return fetchData('seasonsandevents');
 };
 
 const renderHeader = () => (
@@ -59,5 +55,13 @@ const renderBody = (item: SeasonAndEvent, index: number) => {
 };
 
 export default function SeasonsAndEvents() {
-    return <DataFetch category="seasonsandevents" type="table" fetchFunction={fetchFunction} renderTableHeader={renderHeader} renderTableBody={renderBody} />;
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="seasonsandevents"
+        type="table"
+        fetchFunction={() => fetchFunction('seasonsandevents', 0, 0)}
+        renderTableHeader={renderHeader}
+        renderTableBody={renderBody}
+    />
 }

@@ -1,5 +1,5 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 import question from '@assets/images/questionMark.png';
 
@@ -13,10 +13,6 @@ type StaticImageData = {
 type NPC = {
     name: string;
     iconImage: StaticImageData;
-};
-
-const fetchFunction = () => {
-    return fetchData('npcs');
 };
 
 const renderItem = (item: NPC) => {
@@ -37,5 +33,12 @@ const renderItem = (item: NPC) => {
 };
 
 export default function NPCs() {
-    return <DataFetch category="npcs" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="npcs"
+        type='grid'
+        fetchFunction={(page, itemsPerPage) => fetchFunction("npcs", page, itemsPerPage)}
+        renderGridItem={renderItem}
+    />;
 }

@@ -1,5 +1,5 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 
 type StaticImageData = {
@@ -14,10 +14,6 @@ type Reaction = {
     image: StaticImageData;
 };
 
-const fetchFunction = () => {
-    return fetchData('reactions');
-};
-
 const renderItem = (item: Reaction) => {
     return (
         <Card
@@ -27,6 +23,13 @@ const renderItem = (item: Reaction) => {
     );
 };
 
-export default function Reactions() {
-    return <DataFetch category="reactions" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
+export default function NPCs() {
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="reactions"
+        type='grid'
+        fetchFunction={(page, itemsPerPage) => fetchFunction("reactions", page, itemsPerPage)}
+        renderGridItem={renderItem}
+    />;
 }

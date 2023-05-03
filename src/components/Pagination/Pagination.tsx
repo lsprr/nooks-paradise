@@ -1,33 +1,24 @@
 import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
-import { usePagination } from '@/hooks/usePagination';
 
 type PaginationProps = {
-    data: any[] | null;
-    setCurrentItems: (items: any[] | null) => void;
+    totalItems: number;
+    itemsPerPage: number;
+    onPageChange: (currentPage: number) => void;
 }
 
 type PaginateProps = {
     selected: number;
 }
 
-export const Pagination = ({ data, setCurrentItems }: PaginationProps) => {
+export const Pagination = ({ totalItems, itemsPerPage, onPageChange }: PaginationProps) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageCount, setPageCount] = useState(0);
-    const itemsPerPage = 20;
-
-    const currentItems = usePagination(data, currentPage, itemsPerPage);
 
     useEffect(() => {
-        if (data) {
-            const getPageCount = Math.ceil(data.length / itemsPerPage);
-            setPageCount(getPageCount);
-        }
-    }, [data, itemsPerPage]);
-
-    useEffect(() => {
-        setCurrentItems(currentItems);
-    }, [currentItems, setCurrentItems]);
+        const getPageCount = Math.ceil(totalItems / itemsPerPage);
+        setPageCount(getPageCount);
+    }, [totalItems, itemsPerPage]);
 
     const isPageChange = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -35,6 +26,7 @@ export const Pagination = ({ data, setCurrentItems }: PaginationProps) => {
 
     const paginate = ({ selected }: PaginateProps) => {
         setCurrentPage(selected + 1);
+        onPageChange(selected + 1);
     };
 
     return (

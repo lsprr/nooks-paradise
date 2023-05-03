@@ -1,5 +1,5 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 
 type Achievement = {
     name: string;
@@ -12,10 +12,6 @@ type Achievement = {
             reward: string;
         };
     };
-};
-
-const fetchFunction = () => {
-    return fetchData('achievements');
 };
 
 const renderHeader = () => (
@@ -77,5 +73,13 @@ const renderBody = (item: Achievement, index: number) => {
 };
 
 export default function Achievements() {
-    return <DataFetch category="achievements" type="table" fetchFunction={fetchFunction} renderTableHeader={renderHeader} renderTableBody={renderBody} />;
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="achievements"
+        type="table"
+        fetchFunction={() => fetchFunction('achievements', 0, 0)}
+        renderTableHeader={renderHeader}
+        renderTableBody={renderBody}
+    />
 }

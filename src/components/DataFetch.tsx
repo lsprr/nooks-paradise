@@ -11,7 +11,7 @@ import { Container } from "./Layout/Container";
 type DataFetchProps = {
     category: string;
     type: "grid" | "table";
-    fetchFunction: () => Promise<any>;
+    fetchFunction: (currentPage: number, itemsPerPage: number) => Promise<any>;
     renderGridItem?: (item: any) => JSX.Element | null;
     renderTableHeader?: () => JSX.Element;
     renderTableBody?: (item: any, index: number) => JSX.Element;
@@ -20,25 +20,27 @@ type DataFetchProps = {
 export const DataFetch = ({ category, type, fetchFunction, renderGridItem, renderTableHeader, renderTableBody }: DataFetchProps) => {
     const [displayedItems, setDisplayedItems] = useState<Array<any> | null>(null);
     const [filteredItems, setFilteredItems] = useState<Array<any> | null>(null);
-    const [currentItems, setCurrentItems] = useState<Array<any> | null>(null);
+    const [totalItems, setTotalItems] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<Error | null>(null);
+    const itemsPerPage = 20;
 
     useEffect(() => {
-        fetchFunction()
+        fetchFunction(currentPage, itemsPerPage)
             .then((data) => {
-                setDisplayedItems(data);
+                setDisplayedItems(data.data);
+                setTotalItems(data.totalCount);
                 setIsLoading(false);
             })
             .catch((error) => {
                 setErrorMessage(new Error(`Error fetching data. Please try again.`));
                 console.error(`Error fetching ${category}:`, error);
             });
-    }, [category, fetchFunction]);
+    }, [category, fetchFunction, currentPage, itemsPerPage]);
 
-
-    const handleCurrentItems = (newCurrentItems: Array<any> | null) => {
-        setCurrentItems(newCurrentItems);
+    const handleCurrentItems = (newCurrentPage: number) => {
+        setCurrentPage(newCurrentPage);
     };
 
     const handleSearchItem = (query: string) => {
@@ -60,11 +62,11 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
                 return (
                     <>
                         <Container>
-                            <CategoryItemCount data={itemsToDisplay} title={category} />
+                            <CategoryItemCount title={category} total={totalItems} />
                             <Search onSearchItem={handleSearchItem} />
                         </Container>
-                        <ItemGrid data={currentItems} renderItem={renderGridItem} />
-                        <Pagination data={itemsToDisplay} setCurrentItems={handleCurrentItems} />
+                        <ItemGrid data={itemsToDisplay} renderItem={renderGridItem} />
+                        <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} onPageChange={handleCurrentItems} />
                     </>
                 )
             case 'table':

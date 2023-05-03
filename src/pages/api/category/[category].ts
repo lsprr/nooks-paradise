@@ -42,13 +42,25 @@ const dataSources: DataSource = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+    const page = Number(req.query.page) || 1;
+    const itemsPerPage = Number(req.query.limit) > 0 ? Number(req.query.limit) : Infinity;
     const searchWord = String(req.query.category);
     const dataSourceKey = Object.keys(dataSources).find(
         key => key.toLowerCase() === searchWord.toLowerCase(),
     );
 
     if (dataSourceKey) {
-        res.status(200).json(dataSources[dataSourceKey]);
+        const data = dataSources[dataSourceKey];
+        const indexOfLastItem = page * itemsPerPage;
+        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+        const paginatedData = data.slice(indexOfFirstItem, indexOfLastItem);
+
+        res.status(200).json({
+            data: paginatedData,
+            totalCount: data.length,
+            currentPage: page,
+            itemsPerPage: itemsPerPage,
+        });
     } else {
         res.status(404).redirect('/404');
     }

@@ -1,5 +1,5 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 
 type StaticImageData = {
@@ -14,20 +14,22 @@ type Construction = {
     image: StaticImageData;
 };
 
-const fetchFunction = () => {
-    return fetchData('construction');
-};
-
 const renderItem = (item: Construction) => {
     return (
         <Card
             name={item.name}
             image={item.image}
-            interactive={true}
         />
     );
 };
 
-export default function Construction() {
-    return <DataFetch category="construction" type="grid" fetchFunction={fetchFunction} renderGridItem={renderItem} />;
+export default function Constructions() {
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="construction"
+        type='grid'
+        fetchFunction={(page, itemsPerPage) => fetchFunction("construction", page, itemsPerPage)}
+        renderGridItem={renderItem}
+    />;
 }

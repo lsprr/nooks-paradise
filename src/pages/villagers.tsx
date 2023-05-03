@@ -1,5 +1,5 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 
 type StaticImageData = {
@@ -14,10 +14,6 @@ type Villager = {
     iconImage: StaticImageData;
 };
 
-const fetchFunction = () => {
-    return fetchData('villagers');
-};
-
 const renderItem = (item: Villager) => {
     return (
         <Card
@@ -27,6 +23,13 @@ const renderItem = (item: Villager) => {
     );
 };
 
-export default function Villagers() {
-    return <DataFetch category="villagers" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
+export default function NPCs() {
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="villagers"
+        type='grid'
+        fetchFunction={(page, itemsPerPage) => fetchFunction("villagers", page, itemsPerPage)}
+        renderGridItem={renderItem}
+    />;
 }

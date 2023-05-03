@@ -5,17 +5,26 @@ function getBaseUrl() {
     return '';
 }
 
-export async function fetchData(endpoint: string) {
+export async function fetchData(
+    endpoint: string,
+    currentPage: number,
+    itemsPerPage: number,
+) {
     try {
         const baseUrl = getBaseUrl();
-        const response = await fetch(`${baseUrl}/${endpoint}`);
+        const response = await fetch(`${baseUrl}/${endpoint}?page=${currentPage}&limit=${itemsPerPage}`);
         if (!response.ok) {
-            throw new Error(`Error fetching data from ${endpoint}: ${response.statusText}`);
+            throw new Error(
+                `Error fetching data from ${endpoint}: ${response.statusText}`
+            );
         }
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error(error);
+        console.error("Error in fetchData:", error);
         throw error;
     }
 }
+
+
+

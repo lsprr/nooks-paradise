@@ -1,5 +1,5 @@
 import { DataFetch } from '@/components/DataFetch';
-import { fetchData } from '@/utils/api';
+import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 import question from '@assets/images/questionMark.png';
 
@@ -13,10 +13,6 @@ type StaticImageData = {
 type Item = {
     name: string;
     image: StaticImageData;
-};
-
-const fetchFunction = () => {
-    return fetchData('items');
 };
 
 const renderItem = (item: Item) => {
@@ -37,5 +33,12 @@ const renderItem = (item: Item) => {
 };
 
 export default function Items() {
-    return <DataFetch category="items" type='grid' fetchFunction={fetchFunction} renderGridItem={renderItem} />;
+    const fetchFunction = useFetchData();
+
+    return <DataFetch
+        category="items"
+        type='grid'
+        fetchFunction={(page, itemsPerPage) => fetchFunction("items", page, itemsPerPage)}
+        renderGridItem={renderItem}
+    />;
 }
