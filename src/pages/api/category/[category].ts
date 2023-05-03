@@ -53,9 +53,3 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
         res.status(404).redirect('/404');
     }
 }
-
-export const config = {
-    api: {
-        responseLimit: false,
-    },
-}
