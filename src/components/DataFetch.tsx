@@ -18,8 +18,10 @@ type DataFetchProps = {
 };
 
 export const DataFetch = ({ category, type, fetchFunction, renderGridItem, renderTableHeader, renderTableBody }: DataFetchProps) => {
+    const [allItems, setAllItems] = useState<Array<any> | null>(null);
     const [displayedItems, setDisplayedItems] = useState<Array<any> | null>(null);
     const [filteredItems, setFilteredItems] = useState<Array<any> | null>(null);
+    const [filteredTotalItems, setFilteredTotalItems] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
@@ -27,17 +29,26 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
     const itemsPerPage = 20;
 
     useEffect(() => {
-        fetchFunction(currentPage, itemsPerPage)
+        fetchFunction(1, -1)
             .then((data) => {
-                setDisplayedItems(data.data);
+                setAllItems(data.data);
                 setTotalItems(data.totalCount);
+                setFilteredTotalItems(data.totalCount);
                 setIsLoading(false);
             })
             .catch((error) => {
                 setErrorMessage(new Error(`Error fetching data. Please try again.`));
                 console.error(`Error fetching ${category}:`, error);
             });
-    }, [category, fetchFunction, currentPage, itemsPerPage]);
+    }, [category, fetchFunction]);
+
+    useEffect(() => {
+        if (allItems) {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            setDisplayedItems(allItems.slice(startIndex, endIndex));
+        }
+    }, [allItems, currentPage, itemsPerPage]);
 
     const handleCurrentItems = (newCurrentPage: number) => {
         setCurrentPage(newCurrentPage);
@@ -46,32 +57,32 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
     const handleSearchItem = (query: string) => {
         if (!query) {
             setFilteredItems(null);
+            setFilteredTotalItems(totalItems);
             return;
         }
-        const results = (displayedItems ?? []).filter((item) => {
+        const results = (allItems ?? []).filter((item) => {
             return item.name && item.name.toLowerCase().includes(query.toLowerCase());
         });
         setFilteredItems(results);
+        setFilteredTotalItems(results.length);
     };
 
     const renderContent = () => {
-        const itemsToDisplay = filteredItems || displayedItems;
-
         switch (type) {
             case 'grid':
                 return (
                     <>
                         <Container>
-                            <CategoryItemCount title={category} total={totalItems} />
+                            <CategoryItemCount title={category} total={filteredTotalItems} />
                             <Search onSearchItem={handleSearchItem} />
                         </Container>
-                        <ItemGrid data={itemsToDisplay} renderItem={renderGridItem} />
-                        <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} onPageChange={handleCurrentItems} />
+                        <ItemGrid data={displayedItems} renderItem={renderGridItem} />
+                        <Pagination totalItems={filteredItems ? filteredTotalItems : totalItems} itemsPerPage={itemsPerPage} onPageChange={handleCurrentItems} />
                     </>
                 )
             case 'table':
                 return (
-                    <CustomTable data={itemsToDisplay || []} renderHeader={renderTableHeader} renderBody={renderTableBody} />
+                    <CustomTable data={displayedItems || []} renderHeader={renderTableHeader} renderBody={renderTableBody} />
                 )
         }
     }
