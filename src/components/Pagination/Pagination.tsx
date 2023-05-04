@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 type PaginationProps = {
     totalItems: number;
     itemsPerPage: number;
+    current: number;
     onPageChange: (currentPage: number) => void;
 }
 
@@ -11,14 +12,18 @@ type PaginateProps = {
     selected: number;
 }
 
-export const Pagination = ({ totalItems, itemsPerPage, onPageChange }: PaginationProps) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [pageCount, setPageCount] = useState(0);
+export const Pagination = ({ totalItems, itemsPerPage, current, onPageChange }: PaginationProps) => {
+    const [currentPage, setCurrentPage] = useState(current);
+    const [pageCount, setPageCount] = useState(1);
 
     useEffect(() => {
         const getPageCount = Math.ceil(totalItems / itemsPerPage);
         setPageCount(getPageCount);
     }, [totalItems, itemsPerPage]);
+
+    useEffect(() => {
+        setCurrentPage(current);
+    }, [current]);
 
     const isPageChange = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -34,6 +39,7 @@ export const Pagination = ({ totalItems, itemsPerPage, onPageChange }: Paginatio
             onClick={isPageChange}
             onPageChange={paginate}
             pageCount={pageCount}
+            forcePage={currentPage - 1}
             previousLabel={'Previous'}
             nextLabel={'Next'}
             breakClassName={'font-semibold text-darkGray hidden md:block'}

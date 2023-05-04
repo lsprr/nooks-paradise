@@ -55,8 +55,8 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
             });
             setFilteredItems(results);
             setFilteredTotalItems(results.length);
+            setCurrentPage(1);
         }
-        setCurrentPage(1);
     };
 
     const renderContent = () => {
@@ -74,7 +74,7 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
                             <Search onSearchItem={handleSearchItem} />
                         </Container>
                         <ItemGrid data={itemsToDisplay} renderItem={renderGridItem} />
-                        <Pagination totalItems={filteredItems ? filteredTotalItems : totalItems} itemsPerPage={itemsPerPage} onPageChange={handleCurrentItems} />
+                        <Pagination totalItems={filteredItems ? filteredTotalItems : totalItems} itemsPerPage={itemsPerPage} current={currentPage} onPageChange={handleCurrentItems} />
                     </>
                 )
             case 'table':
