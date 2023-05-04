@@ -23,3 +23,7 @@
   transform: scale(0.95);
   transition: opacity 300ms, transform 300ms;
 }
+
+.impt-h {
+  height: 100% !important;
+}

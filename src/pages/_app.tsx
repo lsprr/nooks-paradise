@@ -8,7 +8,6 @@ import { Navigation } from '@/components/Navigation/Navigation';
  * TODO: Need to move this array of menu items in a separate file.
 */
 const menuItems = [
-  { label: 'Home', href: '/' },
   { label: 'Achievements', href: '/achievements' },
   { label: 'Construction', href: '/construction' },
   { label: 'Creatures', href: '/creatures' },

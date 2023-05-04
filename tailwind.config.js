@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         'lightBg': "url('/lightBackground.jpg')",
         'darkBg': "url('/darkBackground.jpg')",
+        'pattern': "url('/pattern.jpg')",
       },
       colors: {
         'skyBlue': '#8EDCE6',
@@ -21,6 +22,7 @@ module.exports = {
         'creamGreen': '#e9f4ec',
         'limeGreen': '#A0CDA2',
         'brightBlue': '#1c99cf',
+        'darkYellow': '#f1e26f',
       },
     },
   },

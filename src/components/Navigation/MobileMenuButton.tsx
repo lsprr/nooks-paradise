@@ -8,7 +8,7 @@ export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenuProps) => {
         <button
             type="button"
             onClick={onToggle}
-            className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2F3939] ml-2 dark:focus:ring-[#f8f8f0] z-20"
+            className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2F3939] ml-2 dark:focus:ring-[#f8f8f0]"
             aria-expanded={isExpanded}
             aria-controls="navbar-default"
         >

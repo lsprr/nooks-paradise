@@ -8,6 +8,7 @@ import { MenuItem } from '@/components/Navigation/NavigationMenuItem';
 import { ToggleThemeButton } from '@/components/Navigation/ToggleThemeButton';
 import { MobileMenuButton } from '@/components/Navigation/MobileMenuButton';
 import { useDarkMode } from '@hooks/useDarkMode';
+import { NavigationCategoryList } from './NavigationCategoryList';
 
 type MenuItemLink = {
     label: string;
@@ -41,34 +42,25 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
     ));
 
     return (
-        <header className='m-auto py-12 px-4'>
-            <nav className="border-gray-200">
-                <div className="container flex flex-wrap justify-between items-center mx-auto">
-                    <div className="flex items-center self-center text-2xl whitespace-nowrap z-20">
-                        <Link href="/">
-                            <Image src={Wilbur} alt='Wilbur' className='w-[80px] h-[75px] md:w-[120px] md:h-[120px]' />
-                        </Link>
-                    </div>
-                    <div className='flex items-center md:ml-auto transition-all duration-300'>
-                        <ToggleThemeButton colorTheme={colorTheme} setTheme={setTheme} />
-                        <MobileMenuButton onToggle={() => setIsExpanded(!isExpanded)} isExpanded={isExpanded} />
-                    </div>
-                    <CSSTransition
-                        in={isExpanded}
-                        timeout={300}
-                        classNames="menu-transition"
-                        unmountOnExit
-                        nodeRef={menuRef}
-                    >
-                        <div
-                            className={`fixed inset-0 z-10 bg-lightBg dark:bg-darkBg flex items-center justify-center`}
-                            id="navbar-default"
-                        >
-                            <ul ref={menuRef} className="flex flex-col space-y-4">{menu}</ul>
-                        </div>
-                    </CSSTransition>
+        <>
+            <header className="bg-white shadow-lg h-24 flex sticky top-0 z-[100] justify-between">
+                <Link href="/" className="flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8">
+                    <Image className="w-20 h-20" src={Wilbur} alt="logo" />
+                </Link>
+                <div className="flex items-center px-4 lg:px-6 xl:px-8">
+                    {/* <ToggleThemeButton colorTheme={colorTheme} setTheme={setTheme} /> */}
+                    <MobileMenuButton onToggle={() => setIsExpanded(!isExpanded)} isExpanded={isExpanded} />
                 </div>
-            </nav>
-        </header>
+            </header>
+            <CSSTransition
+                in={isExpanded}
+                timeout={300}
+                classNames="menu-transition"
+                unmountOnExit
+                nodeRef={menuRef}
+            >
+                <NavigationCategoryList>{menu}</NavigationCategoryList>
+            </CSSTransition>
+        </>
     );
 };
