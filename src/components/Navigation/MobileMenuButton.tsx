@@ -8,7 +8,7 @@ export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenuProps) => {
         <button
             type="button"
             onClick={onToggle}
-            className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2F3939] ml-2 dark:focus:ring-[#f8f8f0]"
+            className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2d6895] ml-2"
             aria-expanded={isExpanded}
             aria-controls="navbar-default"
         >
@@ -26,7 +26,7 @@ export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenuProps) => {
                         strokeLinejoin="round"
                         strokeWidth={2}
                         d="M6 18L18 6M6 6l12 12"
-                        className='stroke-[#2F3939] dark:stroke-[#f8f8f0] transition-all duration-300'
+                        className='stroke-[#2d6895] transition-all duration-300'
                     />
                 </svg>
             ) : (
@@ -42,7 +42,7 @@ export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenuProps) => {
                         strokeLinejoin="round"
                         strokeWidth={2}
                         d="M4 6h16M4 12h16M4 18h16"
-                        className='stroke-[#2F3939] dark:stroke-[#f8f8f0] transition-all duration-300'
+                        className='stroke-[#2d6895] transition-all duration-300'
                     />
                 </svg>
             )}

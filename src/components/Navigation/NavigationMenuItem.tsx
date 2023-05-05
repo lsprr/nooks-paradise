@@ -21,7 +21,7 @@ type MenuItemProps = {
 export const MenuItem = ({ label, href, isExternal, active, onLinkClick }: MenuItemProps) => {
     const linkProps: React.AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps = {
         href,
-        className: `h-full transition-all ease-in-out duration-300 block relative top-0 bg-gray-100 rounded-3xl px-4 py-5 text-center group hover:bg-amber-300 hover:-top-1`,
+        className: `h-full transition-all ease-in-out duration-300 block relative top-0 bg-gray-100 rounded-3xl px-4 py-5 text-center group hover:bg-limeGreen hover:-top-1`,
         'aria-label': `${label} page`,
         onClick: onLinkClick ? () => onLinkClick() : undefined,
     };
