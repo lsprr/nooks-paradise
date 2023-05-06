@@ -8,16 +8,15 @@ type CustomTableProps = {
 
 export const CustomTable = ({ data, renderHeader, renderBody }: CustomTableProps) => {
     return (
-        <section className="container mx-auto mt-10 mb-10">
-            <table className="w-full text-center bg-white dark:bg-darkGray text-darkGray dark:text-white rounded-2xl">
+        <section className="container mx-auto mt-10 mb-10" role="table" aria-label="Achievements table">
+            <div className="w-full text-center bg-white dark:bg-darkGray text-darkGray dark:text-white rounded-2xl">
                 {renderHeader && renderBody &&
                     <>
-                        <thead>{renderHeader()}</thead>
-                        <tbody>{data.map((item, index) => React.cloneElement(renderBody(item, index), { key: index }))}</tbody>
-
+                        <div className="header" role="rowgroup">{renderHeader()}</div>
+                        <div className="body" role="rowgroup">{data.map((item, index) => React.cloneElement(renderBody(item, index), { key: index }))}</div>
                     </>
                 }
-            </table>
+            </div>
         </section>
     );
 };

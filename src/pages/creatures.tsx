@@ -10,15 +10,19 @@ type StaticImageData = {
 }
 
 type Creature = {
+    page: string;
+    sourceSheet: string;
     name: string;
-    critterpediaImage: StaticImageData;
+    iconImage: StaticImageData;
 };
 
 const renderItem = (item: Creature) => {
     return (
         <Card
+            page={'creatures'}
+            category={item.sourceSheet}
             name={item.name}
-            image={item.critterpediaImage}
+            image={item.iconImage}
         />
     );
 };

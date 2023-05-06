@@ -10,6 +10,7 @@ type StaticImageData = {
 }
 
 type Construction = {
+    category: string;
     name: string;
     image: StaticImageData;
 };
@@ -17,6 +18,8 @@ type Construction = {
 const renderItem = (item: Construction) => {
     return (
         <Card
+            page={'construction'}
+            category={item.category}
             name={item.name}
             image={item.image}
         />

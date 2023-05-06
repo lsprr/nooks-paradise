@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ApiError } from "@/components/Error/ApiError";
 import { Loading } from "@/components/Loading/Loading";
-import { CategoryItemCount } from "@/components/CategoryItemCount/CategoryItemCount";
+import { Stats } from "@/components/Stats/Stats";
 import { ItemGrid } from "@/components/ItemGrid/ItemGrid";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { CustomTable } from "@/components/Table/CustomTable";
@@ -15,9 +15,10 @@ type DataFetchProps = {
     renderGridItem?: (item: any) => JSX.Element | null;
     renderTableHeader?: () => JSX.Element;
     renderTableBody?: (item: any, index: number) => JSX.Element;
+    customItemsPerPage?: number;
 };
 
-export const DataFetch = ({ category, type, fetchFunction, renderGridItem, renderTableHeader, renderTableBody }: DataFetchProps) => {
+export const DataFetch = ({ category, type, fetchFunction, renderGridItem, renderTableHeader, renderTableBody, customItemsPerPage }: DataFetchProps) => {
     const [allItems, setAllItems] = useState<Array<any> | null>(null);
     const [totalItems, setTotalItems] = useState(0);
     const [filteredItems, setFilteredItems] = useState<Array<any> | null>(null);
@@ -25,7 +26,7 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<Error | null>(null);
-    const itemsPerPage = 20;
+    const itemsPerPage = customItemsPerPage || 20;
 
     useEffect(() => {
         fetchFunction(1, -1)
@@ -70,7 +71,7 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
                 return (
                     <>
                         <Container>
-                            <CategoryItemCount title={category} total={filteredTotalItems} />
+                            <Stats title={category} total={filteredTotalItems} />
                             <Search onSearchItem={handleSearchItem} />
                         </Container>
                         <ItemGrid data={itemsToDisplay} renderItem={renderGridItem} />

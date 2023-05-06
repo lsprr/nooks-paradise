@@ -10,6 +10,8 @@ type StaticImageData = {
 }
 
 type Villager = {
+    page: string;
+    gender: string;
     name: string;
     iconImage: StaticImageData;
 };
@@ -17,6 +19,8 @@ type Villager = {
 const renderItem = (item: Villager) => {
     return (
         <Card
+            page={'villagers'}
+            category={item.gender}
             name={item.name}
             image={item.iconImage}
         />

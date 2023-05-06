@@ -1,7 +1,7 @@
 import { DataFetch } from '@/components/DataFetch';
 import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
-import question from '@assets/images/questionMark.png';
+import question from '@assets/images/question.webp';
 
 type StaticImageData = {
     src: string;
@@ -11,6 +11,8 @@ type StaticImageData = {
 }
 
 type Item = {
+    page: string;
+    sourceSheet: string;
     name: string;
     image: StaticImageData;
 };
@@ -26,6 +28,8 @@ const renderItem = (item: Item) => {
 
     return (
         <Card
+            page={'items'}
+            category={item.sourceSheet}
             name={item.name}
             image={isImageExist()}
         />

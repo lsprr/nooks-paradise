@@ -12,11 +12,11 @@ export const ItemGrid = ({ data, renderItem }: ItemGridProps) => {
             <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:col-span-4">
                     {data && data.length > 0 ? (
-                        <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
                             {data.map((item, index) => {
                                 const renderedItem = renderItem && renderItem(item);
                                 return renderedItem ? (
-                                    <li className='rounded relative flex justify-center' key={index}>{renderedItem}</li>
+                                    <li key={index}>{renderedItem}</li>
                                 ) : [];
                             })}
                         </ul>

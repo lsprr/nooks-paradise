@@ -10,6 +10,8 @@ type StaticImageData = {
 }
 
 type Reaction = {
+    page: string;
+    sourceSheet: string;
     name: string;
     image: StaticImageData;
 };
@@ -17,6 +19,8 @@ type Reaction = {
 const renderItem = (item: Reaction) => {
     return (
         <Card
+            page={'reactions'}
+            category={item.sourceSheet}
             name={item.name}
             image={item.image}
         />

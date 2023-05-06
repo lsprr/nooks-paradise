@@ -1,5 +1,5 @@
-import { CardHeader } from '@/components/Card/CardHeader';
-import { CardTitle } from '@/components/Card/CardTitle';
+import Link from 'next/link';
+import Image from 'next/image';
 
 type StaticImageData = {
     src: string;
@@ -9,16 +9,50 @@ type StaticImageData = {
 }
 
 type CardProps = {
-    name?: string;
-    image?: StaticImageData;
-    interactive?: boolean;
+    page: string;
+    category: string;
+    name: string;
+    image: StaticImageData;
 }
 
-export const Card = ({ name, image, interactive }: CardProps) => {
+export const Card = ({ page, category, name, image }: CardProps) => {
     return (
-        <div className="w-full overflow-hidden rounded-lg shadow-lg dark:bg-[#2F3939]" role="group">
-            <CardHeader image={image} interactive={interactive} />
-            <CardTitle name={name} />
-        </div>
+        <>
+            {name
+                ?
+                <Link href={`/${page}/${name.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase()}`} className="block overflow-hidden group bg-background rounded-2xl">
+                    <Image
+                        src={image}
+                        alt=""
+                        width={500}
+                        height={500}
+                        className="h-[350px] w-full transition duration-500 group-hover:scale-105 object-scale-down"
+                    />
+
+                    <div className="relative pt-3 pb-3 bg-white">
+                        <h3
+                            className="text-base text-center text-darkBlue group-hover:underline group-hover:underline-offset-4 capitalize"
+                        >
+                            {name}
+                        </h3>
+
+                        <p className="mt-2 text-center">
+                            <span className="sr-only">{name}</span>
+                            <span className="tracking-wider text-gray-900">{category}</span>
+                        </p>
+                    </div>
+                </Link>
+                :
+                <div className="block overflow-hidden group bg-background">
+                    <Image
+                        src={image}
+                        alt=""
+                        width={500}
+                        height={500}
+                        className="h-[350px] w-full transition duration-500 group-hover:scale-105 sm:h-[450px] object-scale-down"
+                    />
+                </div>
+            }
+        </>
     );
 };

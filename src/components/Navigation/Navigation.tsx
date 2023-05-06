@@ -1,14 +1,10 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import Wilbur from '@assets/brand/logo.png';
 import { MenuItem } from '@/components/Navigation/NavigationMenuItem';
 import { ToggleThemeButton } from '@/components/Navigation/ToggleThemeButton';
 import { MobileMenuButton } from '@/components/Navigation/MobileMenuButton';
 import { useDarkMode } from '@hooks/useDarkMode';
-import { NavigationCategoryList } from './NavigationCategoryList';
 
 type MenuItemLink = {
     label: string;
@@ -37,30 +33,59 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
         }
     };
 
-    const menu = menuItems.map((item) => (
+    const menuDesktop = menuItems.map((item) => (
         <MenuItem key={item.href} {...item} active={pathname === item.href} onLinkClick={() => closeMenuIfActive(pathname === item.href)} />
+    ));
+
+    const menuMobile = menuItems.map((item) => (
+        <MenuItem key={item.href} {...item} active={pathname === item.href} onLinkClick={() => closeMenuIfActive(pathname === item.href)} mobile />
     ));
 
     return (
         <>
-            <header className="bg-white shadow-lg h-24 flex sticky top-0 z-[100] justify-between">
-                <Link href="/" className="flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8">
-                    <Image className="w-20 h-20" src={Wilbur} alt="logo" />
-                </Link>
-                <div className="flex items-center px-4 lg:px-6 xl:px-8">
-                    {/* <ToggleThemeButton colorTheme={colorTheme} setTheme={setTheme} /> */}
-                    <MobileMenuButton onToggle={() => setIsExpanded(!isExpanded)} isExpanded={isExpanded} />
+            <header aria-label="Site Header" className="bg-white z-50 sticky top-0">
+                <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+                    <div className="flex h-16 items-center justify-between">
+
+                        <div className="md:flex md:items-center md:gap-12 z-[100] w-full justify-end lg:justify-between">
+                            <nav aria-label="Site Nav" className="hidden lg:block">
+                                <ul className="flex items-center gap-6 text-sm">
+                                    {menuDesktop}
+                                </ul>
+                            </nav>
+
+                            <div className="flex items-center gap-4 justify-end">
+                                <div className="flex sm:gap-4 items-center">
+                                    <ToggleThemeButton colorTheme={colorTheme} setTheme={setTheme} />
+                                </div>
+
+                                <div className="block lg:hidden">
+                                    <MobileMenuButton onToggle={() => setIsExpanded(!isExpanded)} isExpanded={isExpanded} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <CSSTransition
+                            in={isExpanded}
+                            timeout={300}
+                            classNames="menu-transition"
+                            unmountOnExit
+                            nodeRef={menuRef}
+                        >
+                            <div className="block lg:hidden fixed inset-0 pt-20 bg-white z-50">
+                                <div className="container mx-auto px-4 transition-all ease-in-out duration-300 flex justify-center items-center overflow-auto impt-h">
+                                    <div className="max-w-6xl transition-all ease-in-out duration-300 impt-h">
+                                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-10 mt-10">
+                                            {menuMobile}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </CSSTransition>
+
+                    </div>
                 </div>
             </header>
-            <CSSTransition
-                in={isExpanded}
-                timeout={300}
-                classNames="menu-transition"
-                unmountOnExit
-                nodeRef={menuRef}
-            >
-                <NavigationCategoryList>{menu}</NavigationCategoryList>
-            </CSSTransition>
         </>
     );
 };

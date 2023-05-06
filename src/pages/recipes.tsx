@@ -10,6 +10,8 @@ type StaticImageData = {
 }
 
 type Recipe = {
+    page: string;
+    category: string;
     name: string;
     image: StaticImageData;
 };
@@ -17,6 +19,8 @@ type Recipe = {
 const renderItem = (item: Recipe) => {
     return (
         <Card
+            page={'recipes'}
+            category={item.category}
             name={item.name}
             image={item.image}
         />

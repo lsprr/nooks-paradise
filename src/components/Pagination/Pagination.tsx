@@ -35,22 +35,24 @@ export const Pagination = ({ totalItems, itemsPerPage, current, onPageChange }: 
     };
 
     return (
-        <ReactPaginate
-            onClick={isPageChange}
-            onPageChange={paginate}
-            pageCount={pageCount}
-            forcePage={currentPage - 1}
-            previousLabel={'Previous'}
-            nextLabel={'Next'}
-            breakClassName={'font-semibold text-darkGray hidden md:block'}
-            containerClassName={'flex justify-center mb-20 mt-10 md:mt-20'}
-            pageLinkClassName={'hidden font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white rounded-md sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white'}
-            previousLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white rounded-md sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white'}
-            nextLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white rounded-md sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white'}
-            activeLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition colors duration-300 transform !text-white !bg-darkGray dark:!text-darkGray dark:!bg-white'}
-            disabledClassName={'hidden'}
-            renderOnZeroPageCount={null}
-            breakLinkClassName={'hidden'}
-        />
+        <nav aria-label="Pagination">
+            <ReactPaginate
+                onClick={isPageChange}
+                onPageChange={paginate}
+                pageCount={pageCount}
+                forcePage={currentPage - 1}
+                previousLabel={'Previous'}
+                nextLabel={'Next'}
+                breakClassName={'font-semibold text-darkGray hidden md:block'}
+                containerClassName={'flex justify-center mb-20 mt-10 md:mt-20'}
+                pageLinkClassName={'hidden font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white rounded-2xl'}
+                previousLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white rounded-2xl'}
+                nextLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform bg-white sm:inline text-darkGray bg-white hover:text-white hover:bg-darkGray dark:text-white dark:bg-darkGray dark:hover:text-darkGray dark:hover:bg-white rounded-2xl'}
+                activeLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition colors duration-300 transform !text-white !bg-darkGray dark:!text-darkGray dark:!bg-white rounded-2xl'}
+                disabledClassName={'hidden'}
+                renderOnZeroPageCount={null}
+                breakLinkClassName={'hidden'}
+            />
+        </nav>
     )
 }

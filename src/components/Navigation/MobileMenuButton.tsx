@@ -8,44 +8,35 @@ export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenuProps) => {
         <button
             type="button"
             onClick={onToggle}
-            className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#2d6895] ml-2"
+            className="rounded p-2 text-gray-600 transition hover:text-gray-600/75"
             aria-expanded={isExpanded}
             aria-controls="navbar-default"
         >
             <span className="sr-only">Open main menu</span>
-            {isExpanded ? (
-                <svg
-                    className="block h-6 w-6 transition-all duration-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                        className='stroke-[#2d6895] transition-all duration-300'
-                    />
-                </svg>
-            ) : (
-                <svg
-                    className="block h-6 w-6 transition-all duration-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 6h16M4 12h16M4 18h16"
-                        className='stroke-[#2d6895] transition-all duration-300'
-                    />
-                </svg>
-            )}
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5">
+                {isExpanded ? (
+                    <>
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </>
+                ) : (
+                    <>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </>
+                )}
+            </svg>
         </button>
     );
 };

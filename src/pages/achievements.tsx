@@ -15,60 +15,62 @@ type Achievement = {
 };
 
 const renderHeader = () => (
-    <tr>
-        <th colSpan={1} className="w-full md:w-1/3 p-2 rounded-tl-2xl text-xs md:text-base">Name &amp; Description</th>
-        <th colSpan={3} className="p-2 rounded-tr-2xl text-xs md:text-base">Details &amp; Rewards</th>
-    </tr>
+    <div className='bg-lightBeige flex flex-wrap p-2 justify-center items-center rounded-2xl' role="row">
+        <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold" role="columnheader">Name &amp; Description</div>
+        <div className="w-full md:w-2/3 p-2 text-xs md:text-base font-bold" role="columnheader">Details &amp; Rewards</div>
+    </div>
 );
 
 const renderBody = (item: Achievement, index: number) => {
     const tiersLength = Object.keys(item.tiers).length;
     return (
-        <>
-            <tr key={`${index}-title`} className="border-t border-b border-dashed border-darkGray dark:border-white">
-                <td rowSpan={tiersLength + 1} className="p-1 md:p-2 rounded-bl-2xl border-r border-dashed border-darkGray dark:border-white text-xs md:text-base">
-                    <b>{item.name}</b> <br /> {item.achievementDescription}
-                </td>
-                <td colSpan={3} className="p-1 md:p-2 border-t border-dashed border-darkGray dark:border-white text-xs md:text-base">
+        <div className='achievement' key={index} role="row">
+            <div className="border-t border-b border-dashed border-darkGray dark:border-white bg-lightBeige flex flex-wrap p-2" role="row">
+                <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold border-r border-dashed border-darkGray dark:border-white" role="cell" tabIndex={0} aria-label={`Name and description: ${item.name}, ${item.achievementDescription}`}>
+                    {item.name}<br />
+                    <span className='font-normal'>{item.achievementDescription}</span>
+                </div>
+                <div className="w-full md:w-2/3 p-2 text-xs md:text-base" role="cell" tabIndex={0} aria-label={`Criteria: ${item.achievementCriteria}`}>
                     <b>Criteria</b><br /> {item.achievementCriteria}
-                </td>
-            </tr>
+                </div>
+            </div>
             {Object.entries(item.tiers).map(([key, tier], tierIndex) => (
-                <tr key={`${index}-${key}`}>
-                    <td className="p-1 md:p-2 text-xs md:text-base">
+                <div className='tier-row flex flex-wrap p-2' key={`${index}-${key}`} role="row">
+                    <div className="w-full md:w-1/3 p-2 text-xs md:text-base" role="cell" tabIndex={0} aria-label={`Milestone: ${key}`}>
                         {tierIndex === 0 && (
-                            <div className="font-bold">Milestones</div>
+                            <div className="font-bold hidden md:block">Milestones</div>
                         )}
+                        <div className="font-bold block md:hidden">Milestones</div>
                         <ol>
-                            <li>
-                                {key}
-                            </li>
+                            <li>{key}</li>
                         </ol>
-                    </td>
-                    <td className="p-1 md:p-2 text-xs md:text-base">
+                    </div>
+                    <div className="w-full md:w-1/3 p-2 text-xs md:text-base" role="cell" tabIndex={0} aria-label={`Passport Titles: ${tier.nouns.map((noun, i) => `${tier.modifier} ${noun}`).join(', ')}`}>
                         {tierIndex === 0 && (
-                            <div className="font-bold">Passport Titles</div>
+                            <div className="font-bold hidden md:block">Passport Titles</div>
                         )}
+                        <div className="font-bold block md:hidden">Passport Titles</div>
                         <ol>
                             {tier.nouns.map((noun, i) => (
                                 <li key={`${noun}-${i}`}>
-                                    <span className="bg-green-100 text-green-700 border border-green-300 border-r-0 rounded-l px-1 py-0.5 mr-1 inline-block text-xs md:text-sm">{tier.modifier}</span>
-                                    <span className="bg-green-100 text-green-700 border border-green-300 border-l-0 rounded-r px-1 py-0.5 inline-block text-xs md:text-sm">{noun}</span>
+                                    <span className="bg-darkBlue text-white border border-darkBlue border-r-0 rounded-md px-1 py-0.5 mr-1 inline-block text-xs md:text-sm">{tier.modifier}</span>
+                                    <span className="bg-darkBlue text-white border border-darkBlue border-l-0 rounded-md  px-1 py-0.5 inline-block text-xs md:text-sm">{noun}</span>
                                 </li>
                             ))}
                         </ol>
-                    </td>
-                    <td className="p-1 md:p-2 text-xs md:text-base">
+                    </div>
+                    <div className="w-full md:w-1/3 p-2 text-xs md:text-base" role='cell' tabIndex={0} aria-label={`Nook Mile: ${tier.reward}`}>
                         {tierIndex === 0 && (
-                            <div className="font-bold">Nook Miles</div>
+                            <div className="font-bold hidden md:block">Nook Miles</div>
                         )}
+                        <div className="font-bold block md:hidden">Nook Miles</div>
                         <ol>
                             <li>{tier.reward}</li>
                         </ol>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             ))}
-        </>
+        </div>
     );
 };
 
@@ -81,5 +83,6 @@ export default function Achievements() {
         fetchFunction={() => fetchFunction('achievements', 0, 0)}
         renderTableHeader={renderHeader}
         renderTableBody={renderBody}
+        customItemsPerPage={-1}
     />
 }

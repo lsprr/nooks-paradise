@@ -1,26 +1,24 @@
+import Link from 'next/link';
 import Image from 'next/image';
-import dalCrew from '@assets/images/orvilleAndWilbur.png';
+import wilbur from '@assets/images/wilbur.png';
 
 export const ApiError = () => {
     return (
-        <section className="w-screen flex items-center justify-center mt-10 text-center flex-col">
-            <Image
-                src={dalCrew}
-                alt='Primary Image'
-                className="mb-8 w-40"
-                width={500}
-                height={500}
-                loading="lazy"
-            />
-            <div className="container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700">
-                <div className="text-base font-semibold text-darkGray dark:text-white capitalize">
-                    <div className="text-5xl">
-                        <h1 className="mb-8">Oh dear, a little hiccup!</h1>
-                    </div>
-                    <h2 className="mb-8">
-                        <p className="mb-8">Whoops-a-daisy! It seems we have run into a little snag while gathering data from our API. No worries, though! Please give it another whirl later.</p>
-                        <strong>We are so grateful for your patience and understanding. Have a delightful day! 🍃</strong>
-                    </h2>
+        <section>
+            <div className="grid h-screen px-4 bg-white place-content-center text-center">
+                <div className="flex flex-col items-center">
+                    <Image src={wilbur} alt="wilbur" />
+                    <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        Oh dear, a little hiccup!
+                    </p>
+                    <p className="mt-4 text-gray-500">Whoops-a-daisy! It seems we have run into a little snag while gathering data from our API. No worries, though! Please give it another whirl later.</p>
+                    <strong>We are so grateful for your patience and understanding. Have a delightful day! 🍃</strong>
+                    <Link
+                        href="/"
+                        className="inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-brightBlue rounded hover:bg-brightBlue focus:outline-none focus:ring"
+                    >
+                        Go Back Home
+                    </Link>
                 </div>
             </div>
         </section>

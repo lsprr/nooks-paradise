@@ -8,9 +8,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'lightBg': "url('/lightBackground.jpg')",
-        'darkBg': "url('/darkBackground.jpg')",
         'pattern': "url('/pattern.jpg')",
+        'background': "url('/background.jpg')",
       },
       colors: {
         'skyBlue': '#8EDCE6',
@@ -23,6 +22,8 @@ module.exports = {
         'limeGreen': '#A0CDA2',
         'brightBlue': '#1c99cf',
         'darkYellow': '#f1e26f',
+        'lightBeige': '#fdfad8',
+        'darkBlue': '#2d6895',
       },
     },
   },
