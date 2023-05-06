@@ -29,7 +29,9 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
     const itemsPerPage = customItemsPerPage || 20;
 
     useEffect(() => {
-        fetchFunction(1, -1)
+        const initialItemsPerPage = customItemsPerPage !== undefined ? customItemsPerPage : itemsPerPage;
+
+        fetchFunction(1, initialItemsPerPage)
             .then((data) => {
                 setAllItems(data.data);
                 setTotalItems(data.totalCount);
@@ -40,7 +42,7 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
                 setErrorMessage(new Error(`Error fetching data. Please try again.`));
                 console.error(`Error fetching ${category}:`, error);
             });
-    }, [category, fetchFunction]);
+    }, [category, fetchFunction, customItemsPerPage, itemsPerPage]);
 
     const handleCurrentItems = (newCurrentPage: number) => {
         setCurrentPage(newCurrentPage);
