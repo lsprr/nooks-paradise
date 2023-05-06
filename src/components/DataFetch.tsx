@@ -15,10 +15,9 @@ type DataFetchProps = {
     renderGridItem?: (item: any) => JSX.Element | null;
     renderTableHeader?: () => JSX.Element;
     renderTableBody?: (item: any, index: number) => JSX.Element;
-    customItemsPerPage?: number;
 };
 
-export const DataFetch = ({ category, type, fetchFunction, renderGridItem, renderTableHeader, renderTableBody, customItemsPerPage }: DataFetchProps) => {
+export const DataFetch = ({ category, type, fetchFunction, renderGridItem, renderTableHeader, renderTableBody }: DataFetchProps) => {
     const [allItems, setAllItems] = useState<Array<any> | null>(null);
     const [totalItems, setTotalItems] = useState(0);
     const [filteredItems, setFilteredItems] = useState<Array<any> | null>(null);
@@ -26,12 +25,10 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<Error | null>(null);
-    const itemsPerPage = customItemsPerPage || 20;
+    const itemsPerPage = 20;
 
     useEffect(() => {
-        const initialItemsPerPage = customItemsPerPage !== undefined ? customItemsPerPage : itemsPerPage;
-
-        fetchFunction(1, initialItemsPerPage)
+        fetchFunction(1, -1)
             .then((data) => {
                 setAllItems(data.data);
                 setTotalItems(data.totalCount);
@@ -42,7 +39,7 @@ export const DataFetch = ({ category, type, fetchFunction, renderGridItem, rende
                 setErrorMessage(new Error(`Error fetching data. Please try again.`));
                 console.error(`Error fetching ${category}:`, error);
             });
-    }, [category, fetchFunction, customItemsPerPage, itemsPerPage]);
+    }, [category, fetchFunction, itemsPerPage]);
 
     const handleCurrentItems = (newCurrentPage: number) => {
         setCurrentPage(newCurrentPage);
