@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import { NoItemsFound } from "../Error/NoItemsFound";
 
-type ItemGridProps = {
-    data: Array<any> | null,
-    renderItem?: (item: any) => ReactNode | null;
+type ItemGridProps<T> = {
+    data: Array<T> | null,
+    renderItem?: (item: T) => ReactNode | null;
 };
 
-export const ItemGrid = ({ data, renderItem }: ItemGridProps) => {
+export const ItemGrid = <T extends {}>({ data, renderItem }: ItemGridProps<T>): JSX.Element => {
     return (
         <section>
             <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">

@@ -4,26 +4,26 @@ import { Loading } from "@/components/Loading/Loading";
 import { GridDataView } from "./GridDataView";
 import { TableDataView } from "./TableDataView";
 
-type DataViewProps = {
+type DataViewProps<T extends { name: string }> = {
     category: string;
     viewType: "grid" | "table";
-    fetchFunction: (currentPage: number, itemsPerPage: number) => Promise<any>;
-    renderGridItem?: (item: any) => JSX.Element | null;
+    fetchFunction: (currentPage: number, itemsPerPage: number) => Promise<{ data: T[]; totalCount: number }>;
+    renderGridItem?: (item: T) => JSX.Element | null;
     renderTableHeader?: () => JSX.Element;
-    renderTableBody?: (item: any, index: number) => JSX.Element;
+    renderTableBody?: (item: T, index: number) => JSX.Element;
 };
 
-export const DataView = ({
+export const DataView = <T extends { name: string }>({
     category,
     viewType,
     fetchFunction,
     renderGridItem,
     renderTableHeader,
     renderTableBody,
-}: DataViewProps) => {
-    const [allItems, setAllItems] = useState<Array<any> | null>(null);
-    const [visibleItems, setVisibleItems] = useState<Array<any> | null>(null);
-    const [filteredItems, setFilteredItems] = useState<Array<any> | null>(null);
+}: DataViewProps<T>) => {
+    const [allItems, setAllItems] = useState<T[] | null>(null);
+    const [visibleItems, setVisibleItems] = useState<T[] | null>(null);
+    const [filteredItems, setFilteredItems] = useState<T[] | null>(null);
     const [totalItems, setTotalItems] = useState(0);
     const [filteredTotalItems, setFilteredTotalItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);

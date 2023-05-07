@@ -4,18 +4,18 @@ import { Container } from "./Layout/Container";
 import { Stats } from "@/components/Stats/Stats";
 import { Search } from "@/components/Search/Search";
 
-type GridDataViewProps = {
+type GridDataViewProps<T> = {
     category: string;
     totalItems: number;
-    sourceItems: Array<any>;
+    sourceItems: T[];
     itemsPerPage: number;
     currentPage: number;
     handleSearchItem: (query: string) => void;
     handleCurrentItems: (newCurrentPage: number) => void;
-    renderGridItem?: (item: any) => JSX.Element | null;
+    renderGridItem?: (item: T) => JSX.Element | null;
 };
 
-export const GridDataView = ({
+export const GridDataView = <T extends {}>({
     category,
     totalItems,
     sourceItems,
@@ -24,7 +24,7 @@ export const GridDataView = ({
     handleSearchItem,
     handleCurrentItems,
     renderGridItem,
-}: GridDataViewProps) => (
+}: GridDataViewProps<T>) => (
     <>
         <Container>
             <Stats title={category} total={totalItems} />

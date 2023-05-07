@@ -1,12 +1,12 @@
 import React from 'react';
 
-type CustomTableProps = {
-    data: any[];
+type CustomTableProps<T> = {
+    data: T[];
     renderHeader?: () => JSX.Element;
-    renderBody?: (item: any, index: number) => JSX.Element;
+    renderBody?: (item: T, index: number) => JSX.Element;
 }
 
-export const CustomTable = ({ data, renderHeader, renderBody }: CustomTableProps) => {
+export const CustomTable = <T extends {}>({ data, renderHeader, renderBody }: CustomTableProps<T>): JSX.Element => {
     return (
         <section className="container mx-auto mt-10 mb-10" role="table" aria-label="Achievements table">
             <div className="w-full text-center bg-white dark:bg-darkGray text-darkGray dark:text-white rounded-2xl">
