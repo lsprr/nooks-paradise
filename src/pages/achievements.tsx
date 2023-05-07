@@ -25,7 +25,7 @@ const renderBody: (item: Achievement, index: number) => JSX.Element = (item, ind
     return (
         <div className='achievement' key={index} role="row">
             <div className="border-t border-b border-dashed border-darkGray dark:border-white bg-lightBeige flex flex-wrap p-2" role="row">
-                <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold border-r border-dashed border-darkGray dark:border-white" role="cell" tabIndex={0} aria-label={`Name and description: ${item.name}, ${item.achievementDescription}`}>
+                <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold md:border-r border-dashed border-darkGray dark:border-white" role="cell" tabIndex={0} aria-label={`Name and description: ${item.name}, ${item.achievementDescription}`}>
                     {item.name}<br />
                     <span className='font-normal'>{item.achievementDescription}</span>
                 </div>
