@@ -1,4 +1,4 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
 
 type Achievement = {
@@ -14,15 +14,14 @@ type Achievement = {
     };
 };
 
-const renderHeader = () => (
+const renderHeader: () => JSX.Element = () => (
     <div className='bg-lightBeige flex flex-wrap p-2 justify-center items-center rounded-2xl' role="row">
         <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold" role="columnheader">Name &amp; Description</div>
         <div className="w-full md:w-2/3 p-2 text-xs md:text-base font-bold" role="columnheader">Details &amp; Rewards</div>
     </div>
 );
 
-const renderBody = (item: Achievement, index: number) => {
-    const tiersLength = Object.keys(item.tiers).length;
+const renderBody: (item: Achievement, index: number) => JSX.Element = (item, index) => {
     return (
         <div className='achievement' key={index} role="row">
             <div className="border-t border-b border-dashed border-darkGray dark:border-white bg-lightBeige flex flex-wrap p-2" role="row">
@@ -77,12 +76,13 @@ const renderBody = (item: Achievement, index: number) => {
 export default function Achievements() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="achievements"
-        type="table"
-        fetchFunction={() => fetchFunction('achievements', 0, 0)}
-        renderTableHeader={renderHeader}
-        renderTableBody={renderBody}
-        customItemsPerPage={-1}
-    />
+    return (
+        <DataView
+            category="achievements"
+            viewType="table"
+            fetchFunction={() => fetchFunction('achievements', 0, 0)}
+            renderTableHeader={renderHeader}
+            renderTableBody={renderBody}
+        />
+    );
 }

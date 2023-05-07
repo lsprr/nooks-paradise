@@ -1,13 +1,6 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
-
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
 
 type Creature = {
     page: string;
@@ -16,7 +9,7 @@ type Creature = {
     iconImage: StaticImageData;
 };
 
-const renderItem = (item: Creature) => {
+const renderItem: (item: Creature) => JSX.Element = (item) => {
     return (
         <Card
             page={'creatures'}
@@ -30,10 +23,12 @@ const renderItem = (item: Creature) => {
 export default function Creatures() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="creatures"
-        type='grid'
-        fetchFunction={(page, itemsPerPage) => fetchFunction("creatures", page, itemsPerPage)}
-        renderGridItem={renderItem}
-    />;
+    return (
+        <DataView
+            category="creatures"
+            viewType='grid'
+            fetchFunction={(page, itemsPerPage) => fetchFunction("creatures", page, itemsPerPage)}
+            renderGridItem={renderItem}
+        />
+    );
 }

@@ -1,13 +1,6 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
-
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
 
 type Villager = {
     page: string;
@@ -16,7 +9,7 @@ type Villager = {
     iconImage: StaticImageData;
 };
 
-const renderItem = (item: Villager) => {
+const renderItem: (item: Villager) => JSX.Element = (item) => {
     return (
         <Card
             page={'villagers'}
@@ -30,10 +23,12 @@ const renderItem = (item: Villager) => {
 export default function NPCs() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="villagers"
-        type='grid'
-        fetchFunction={(page, itemsPerPage) => fetchFunction("villagers", page, itemsPerPage)}
-        renderGridItem={renderItem}
-    />;
+    return (
+        <DataView
+            category="villagers"
+            viewType='grid'
+            fetchFunction={(page, itemsPerPage) => fetchFunction("villagers", page, itemsPerPage)}
+            renderGridItem={renderItem}
+        />
+    );
 }

@@ -1,4 +1,4 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
 
 type SeasonAndEvent = {
@@ -7,7 +7,7 @@ type SeasonAndEvent = {
     datesSouthernHemisphere: string;
 };
 
-const renderHeader = () => (
+const renderHeader: () => JSX.Element = () => (
     <div className='bg-lightBeige flex flex-wrap p-2 justify-center items-center rounded-2xl' role="row">
         <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold" role="columnheader">Name</div>
         <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold" role="columnheader">Northern Hemisphere Date</div>
@@ -15,8 +15,7 @@ const renderHeader = () => (
     </div>
 );
 
-const renderBody = (item: SeasonAndEvent, index: number) => {
-
+const renderBody: (item: SeasonAndEvent, index: number) => JSX.Element = (item, index) => {
     const renderHemisphereDates = () => {
         if (
             item.datesNorthernHemisphere !== null &&
@@ -55,12 +54,13 @@ const renderBody = (item: SeasonAndEvent, index: number) => {
 export default function SeasonsAndEvents() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="seasonsandevents"
-        type="table"
-        fetchFunction={() => fetchFunction('seasonsandevents', 0, 0)}
-        renderTableHeader={renderHeader}
-        renderTableBody={renderBody}
-        customItemsPerPage={-1}
-    />
+    return (
+        <DataView
+            category="seasonsandevents"
+            viewType="table"
+            fetchFunction={() => fetchFunction('seasonsandevents', 0, 0)}
+            renderTableHeader={renderHeader}
+            renderTableBody={renderBody}
+        />
+    );
 }

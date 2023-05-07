@@ -1,13 +1,6 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
-
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
 
 type Recipe = {
     page: string;
@@ -16,7 +9,7 @@ type Recipe = {
     image: StaticImageData;
 };
 
-const renderItem = (item: Recipe) => {
+const renderItem: (item: Recipe) => JSX.Element = (item) => {
     return (
         <Card
             page={'recipes'}
@@ -30,10 +23,12 @@ const renderItem = (item: Recipe) => {
 export default function NPCs() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="recipes"
-        type='grid'
-        fetchFunction={(page, itemsPerPage) => fetchFunction("recipes", page, itemsPerPage)}
-        renderGridItem={renderItem}
-    />;
+    return (
+        <DataView
+            category="recipes"
+            viewType='grid'
+            fetchFunction={(page, itemsPerPage) => fetchFunction("recipes", page, itemsPerPage)}
+            renderGridItem={renderItem}
+        />
+    );
 }

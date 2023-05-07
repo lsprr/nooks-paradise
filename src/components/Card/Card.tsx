@@ -1,13 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
-
 type CardProps = {
     page: string;
     category: string;

@@ -1,13 +1,6 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
-
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
 
 type Reaction = {
     page: string;
@@ -16,7 +9,7 @@ type Reaction = {
     image: StaticImageData;
 };
 
-const renderItem = (item: Reaction) => {
+const renderItem: (item: Reaction) => JSX.Element = (item) => {
     return (
         <Card
             page={'reactions'}
@@ -30,10 +23,12 @@ const renderItem = (item: Reaction) => {
 export default function NPCs() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="reactions"
-        type='grid'
-        fetchFunction={(page, itemsPerPage) => fetchFunction("reactions", page, itemsPerPage)}
-        renderGridItem={renderItem}
-    />;
+    return (
+        <DataView
+            category="reactions"
+            viewType='grid'
+            fetchFunction={(page, itemsPerPage) => fetchFunction("reactions", page, itemsPerPage)}
+            renderGridItem={renderItem}
+        />
+    );
 }

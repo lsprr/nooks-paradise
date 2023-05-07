@@ -11,13 +11,6 @@ import seasonsAndEvents from '@assets/images/categories/seasons-and-events.png';
 import npcs from '@assets/images/categories/npcs.png';
 import villagers from '@assets/images/categories/villagers.png';
 
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
-
 type MenuItemProps = {
     label: string;
     href: string;

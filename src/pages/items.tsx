@@ -1,14 +1,7 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 import question from '@assets/images/question.webp';
-
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
 
 type Item = {
     page: string;
@@ -17,7 +10,7 @@ type Item = {
     image: StaticImageData;
 };
 
-const renderItem = (item: Item) => {
+const renderItem: (item: Item) => JSX.Element = (item) => {
     const isImageExist = () => {
         if (item.image) {
             return item.image
@@ -39,10 +32,12 @@ const renderItem = (item: Item) => {
 export default function Items() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="items"
-        type='grid'
-        fetchFunction={(page, itemsPerPage) => fetchFunction("items", page, itemsPerPage)}
-        renderGridItem={renderItem}
-    />;
+    return (
+        <DataView
+            category="items"
+            viewType='grid'
+            fetchFunction={(page, itemsPerPage) => fetchFunction("items", page, itemsPerPage)}
+            renderGridItem={renderItem}
+        />
+    );
 }

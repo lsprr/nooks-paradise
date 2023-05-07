@@ -1,13 +1,6 @@
-import { DataFetch } from '@/components/DataFetch';
+import { DataView } from '@/components/DataView';
 import { useFetchData } from '@/hooks/useFetchData';
-import { Card } from "@/components/Card/Card";
-
-type StaticImageData = {
-    src: string;
-    height: number;
-    width: number;
-    blurDataURL?: string;
-}
+import { Card } from '@/components/Card/Card';
 
 type Construction = {
     category: string;
@@ -15,7 +8,7 @@ type Construction = {
     image: StaticImageData;
 };
 
-const renderItem = (item: Construction) => {
+const renderItem: (item: Construction) => JSX.Element = (item) => {
     return (
         <Card
             page={'construction'}
@@ -29,10 +22,12 @@ const renderItem = (item: Construction) => {
 export default function Constructions() {
     const fetchFunction = useFetchData();
 
-    return <DataFetch
-        category="construction"
-        type='grid'
-        fetchFunction={(page, itemsPerPage) => fetchFunction("construction", page, itemsPerPage)}
-        renderGridItem={renderItem}
-    />;
+    return (
+        <DataView
+            category="construction"
+            viewType="grid"
+            fetchFunction={(page, itemsPerPage) => fetchFunction('construction', page, itemsPerPage)}
+            renderGridItem={renderItem}
+        />
+    );
 }
