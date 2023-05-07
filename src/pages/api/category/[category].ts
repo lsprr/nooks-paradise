@@ -1,4 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { Achievement } from 'animal-crossing/lib/types/Achievement';
+import { Construction } from 'animal-crossing/lib/types/Construction';
+import { Creature } from 'animal-crossing/lib/types/Creature';
+import { Item } from 'animal-crossing/lib/types/Item';
+import { Reaction } from 'animal-crossing/lib/types/Reaction';
+import { Recipe } from 'animal-crossing/lib/types/Recipe';
+import { SeasonsAndEvents } from 'animal-crossing/lib/types/SeasonsAndEvents';
+import { Villager } from 'animal-crossing/lib/types/Villager';
+import { Npc } from 'animal-crossing/lib/types/NPC';
+
 import {
     achievements,
     construction,
@@ -7,24 +17,27 @@ import {
     reactions,
     recipes,
     seasonsAndEvents,
-    translations,
     villagers,
     npcs,
 } from 'animal-crossing';
 
-type ResponseData = any;
+type ResponseData = {
+    data: Achievement[] | Construction[] | Creature[] | Item[] | Reaction[] | Recipe[] | SeasonsAndEvents[] | Villager[] | Npc[];
+    totalCount: number;
+    currentPage: number;
+    itemsPerPage: number;
+};
 
 type DataSource = {
-    achievements: any;
-    construction: any;
-    creatures: any;
-    items: any;
-    reactions: any;
-    recipes: any;
-    seasonsAndEvents: any;
-    translations: any;
-    villagers: any;
-    npcs: any;
+    achievements: Achievement[];
+    construction: Construction[];
+    creatures: Creature[];
+    items: Item[];
+    reactions: Reaction[];
+    recipes: Recipe[];
+    seasonsAndEvents: SeasonsAndEvents[];
+    villagers: Villager[];
+    npcs: Npc[];
     [key: string]: any;
 };
 
@@ -36,7 +49,6 @@ const dataSources: DataSource = {
     reactions,
     recipes,
     seasonsAndEvents,
-    translations,
     villagers,
     npcs,
 };
