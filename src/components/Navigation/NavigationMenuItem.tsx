@@ -74,14 +74,14 @@ export const MenuItem = ({ label, href, isExternal, active, onLinkClick, mobile 
             {mobile ? (
                 <div>
                     <Link {...linkProps}>
-                        <Image src={src} alt={label} className='transition-all ease-in-out duration-300 text-2xl text-slate-600 inline-block w-20 h-20 leading-10 rounded-full relative top-0 group-hover:bg-creamGreen group-hover:-top-1' />
+                        <Image loading='lazy' src={src} alt={label} className='transition-all ease-in-out duration-300 text-2xl text-slate-600 inline-block w-20 h-20 leading-10 rounded-full relative top-0 group-hover:bg-creamGreen group-hover:-top-1' />
                         <h3 className="transition-all ease-in-out duration-300 text-md text-gray-600 group-hover:text-gray-800">{label}</h3>
                     </Link>
                 </div>
             ) : (
                 <li>
                     <Link {...linkProps}>
-                        <Image src={src} alt={label} className='transition-all ease-in-out duration-300 text-2xl text-slate-600 inline-block w-9 h-9 leading-10 rounded-full relative top-0 group-hover:bg-creamGreen group-hover:-top-1' />
+                        <Image loading='lazy' src={src} alt={label} className='transition-all ease-in-out duration-300 text-2xl text-slate-600 inline-block w-9 h-9 leading-10 rounded-full relative top-0 group-hover:bg-creamGreen group-hover:-top-1' />
                         <h3 className="transition-all ease-in-out duration-300 text-md text-gray-600 group-hover:text-gray-800">{label}</h3>
                     </Link>
                 </li>

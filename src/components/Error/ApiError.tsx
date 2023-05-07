@@ -7,7 +7,7 @@ export const ApiError = () => {
         <section>
             <div className="grid h-screen px-4 bg-white place-content-center text-center">
                 <div className="flex flex-col items-center">
-                    <Image src={wilbur} alt="wilbur" />
+                    <Image src={wilbur} alt="wilbur" loading='lazy' />
                     <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                         Oh dear, a little hiccup!
                     </p>

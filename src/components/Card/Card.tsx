@@ -20,6 +20,7 @@ export const Card = ({ page, category, name, image }: CardProps) => {
                         width={500}
                         height={500}
                         className="h-[350px] w-full transition duration-500 group-hover:scale-105 object-scale-down"
+                        loading='lazy'
                     />
 
                     <div className="relative pt-3 pb-3 bg-white">
@@ -43,6 +44,7 @@ export const Card = ({ page, category, name, image }: CardProps) => {
                         width={500}
                         height={500}
                         className="h-[350px] w-full transition duration-500 group-hover:scale-105 sm:h-[450px] object-scale-down"
+                        loading='lazy'
                     />
                 </div>
             }
