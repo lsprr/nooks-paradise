@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { NoItemsFound } from "../Error/NoItemsFound";
+import { Container } from "../Layout/Container";
 
 type ItemGridProps<T> = {
     data: Array<T> | null,
@@ -8,7 +9,7 @@ type ItemGridProps<T> = {
 
 export const ItemGrid = <T extends {}>({ data, renderItem }: ItemGridProps<T>): JSX.Element => {
     return (
-        <section>
+        <Container>
             <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:col-span-4">
                     {data && data.length > 0 ? (
@@ -25,6 +26,6 @@ export const ItemGrid = <T extends {}>({ data, renderItem }: ItemGridProps<T>): 
                     )}
                 </div>
             </div>
-        </section>
+        </Container>
     )
 }

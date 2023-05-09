@@ -5,7 +5,7 @@ import { Card } from '@/components/Card/Card';
 type Construction = {
     category: string;
     name: string;
-    image: StaticImageData;
+    image: StaticImageData | string;
 };
 
 const renderItem: (item: Construction) => JSX.Element = (item) => {

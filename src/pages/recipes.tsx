@@ -6,7 +6,7 @@ type Recipe = {
     page: string;
     category: string;
     name: string;
-    image: StaticImageData;
+    image: StaticImageData | string;
 };
 
 const renderItem: (item: Recipe) => JSX.Element = (item) => {

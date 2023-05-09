@@ -6,7 +6,7 @@ type Creature = {
     page: string;
     sourceSheet: string;
     name: string;
-    iconImage: StaticImageData;
+    iconImage: StaticImageData | string;
 };
 
 const renderItem: (item: Creature) => JSX.Element = (item) => {

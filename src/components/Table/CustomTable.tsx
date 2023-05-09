@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from '../Layout/Container';
 
 type CustomTableProps<T> = {
     data: T[];
@@ -8,7 +9,7 @@ type CustomTableProps<T> = {
 
 export const CustomTable = <T extends {}>({ data, renderHeader, renderBody }: CustomTableProps<T>): JSX.Element => {
     return (
-        <section className="container mx-auto mt-10 mb-10" role="table" aria-label="Achievements table">
+        <Container role="table" aria-label="Achievements table">
             <div className="w-full text-center bg-white dark:bg-darkGray text-darkGray dark:text-white rounded-2xl">
                 {renderHeader && renderBody &&
                     <>
@@ -17,6 +18,6 @@ export const CustomTable = <T extends {}>({ data, renderHeader, renderBody }: Cu
                     </>
                 }
             </div>
-        </section>
+        </Container>
     );
 };

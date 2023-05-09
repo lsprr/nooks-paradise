@@ -26,10 +26,10 @@ export const GridDataView = <T extends {}>({
     renderGridItem,
 }: GridDataViewProps<T>) => (
     <>
-        <Container>
+        {/* <Container>
             <Stats title={category} total={totalItems} />
             <Search onSearchItem={handleSearchItem} />
-        </Container>
+        </Container> */}
         <ItemGrid data={sourceItems} renderItem={renderGridItem} />
         <Pagination
             totalItems={totalItems}

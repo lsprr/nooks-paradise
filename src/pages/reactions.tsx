@@ -6,7 +6,7 @@ type Reaction = {
     page: string;
     sourceSheet: string;
     name: string;
-    image: StaticImageData;
+    image: StaticImageData | string;
 };
 
 const renderItem: (item: Reaction) => JSX.Element = (item) => {

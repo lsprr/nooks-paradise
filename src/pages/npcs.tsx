@@ -7,7 +7,7 @@ type NPC = {
     page: string;
     gender: string;
     name: string;
-    iconImage: StaticImageData;
+    iconImage: StaticImageData | string;
 };
 
 const renderItem: (item: NPC) => JSX.Element = (item) => {

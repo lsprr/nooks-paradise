@@ -5,15 +5,17 @@ type CardProps = {
     page: string;
     category: string;
     name: string;
-    image: StaticImageData;
+    image: StaticImageData | string;
 }
 
 export const Card = ({ page, category, name, image }: CardProps) => {
+    const encodedName = encodeURIComponent(name.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase());
+
     return (
         <>
             {name
                 ?
-                <Link href={`/${page}/${name.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase()}`} className="block overflow-hidden group bg-background rounded-2xl">
+                <Link href={`/${page}/${encodedName}`} className="block overflow-hidden group bg-background rounded-2xl">
                     <Image
                         src={image}
                         alt=""

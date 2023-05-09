@@ -1,10 +1,13 @@
 type ContainerProps = {
     children: React.ReactNode
+    className?: string;
+    role?: string;
+    'aria-label'?: string;
 }
 
-export const Container = ({ children }: ContainerProps) => {
+export const Container = ({ children, className, role, 'aria-label': ariaLabel }: ContainerProps) => {
     return (
-        <section className="mx-auto max-w-screen-xl flex flex-col md:flex-row justify-between px-4 sm:px-6 lg:px-8">
+        <section className={`container mx-auto mt-10 mb-10 ${className ? className : ''}`} role={role} aria-label={ariaLabel}>
             {children}
         </section>
     )

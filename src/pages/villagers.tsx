@@ -6,7 +6,7 @@ type Villager = {
     page: string;
     gender: string;
     name: string;
-    iconImage: StaticImageData;
+    iconImage: StaticImageData | string;
 };
 
 const renderItem: (item: Villager) => JSX.Element = (item) => {

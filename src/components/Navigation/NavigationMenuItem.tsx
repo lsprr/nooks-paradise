@@ -33,7 +33,7 @@ export const MenuItem = ({ label, href, isExternal, active, onLinkClick, mobile 
         linkProps.rel = 'noopener noreferrer';
     }
 
-    let src: StaticImageData;
+    let src: StaticImageData | string;
     switch (label.toLowerCase()) {
         case 'achievements':
             src = achievements;
