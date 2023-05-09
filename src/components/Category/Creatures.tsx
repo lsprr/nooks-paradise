@@ -16,9 +16,9 @@ type CreaturesProps = {
     data: {
         name: string;
         description: string;
-        iconImage: string;
-        critterpediaImage: string;
-        furnitureImage: string;
+        iconImage: StaticImageData | string;
+        critterpediaImage: StaticImageData | string;
+        furnitureImage: StaticImageData | string;
         sourceSheet: string;
         catchPhrase: string;
         catchDifficulty: string;

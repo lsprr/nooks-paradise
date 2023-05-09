@@ -12,7 +12,7 @@ type LabelledSpanProps = {
 type ConstructionProps = {
     data: {
         name: string;
-        image: string;
+        image: StaticImageData | string;
         category: string;
         buy: number;
         source: string;
