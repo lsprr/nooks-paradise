@@ -1,7 +1,7 @@
 import { BackButton } from '../Button/BackButton';
 import { Construction } from '@/components/Item/Category/Construction';
 import { Creatures } from '@components/Item/Category/Creatures';
-import { Items } from '@components/Item/Category/Items';
+// import { Items } from '@components/Item/Category/Items';
 
 export const Item = ({ data }) => {
     let content;
@@ -18,35 +18,35 @@ export const Item = ({ data }) => {
             content = <Creatures data={data} />
             break;
 
-        case 'Accessories':
-        case 'Artwork':
-        case 'Bags':
-        case 'Bottoms':
-        case 'Ceiling Decor':
-        case 'Clothing Other':
-        case 'Dress-Up':
-        case 'Fencing':
-        case 'Floors':
-        case 'Fossils':
-        case 'Gyroids':
-        case 'Headwear':
-        case 'Housewares':
-        case 'Message Cards':
-        case 'Miscellaneous':
-        case 'Music':
-        case 'Other':
-        case 'Photos':
-        case 'Posters':
-        case 'Rugs':
-        case 'Shoes':
-        case 'Socks':
-        case 'Tools/Goods':
-        case 'Tops':
-        case 'Umbrellas':
-        case 'Wall-mounted':
-        case 'Wallpaper':
-            content = <Items data={data} />
-            break;
+        // case 'Accessories':
+        // case 'Artwork':
+        // case 'Bags':
+        // case 'Bottoms':
+        // case 'Ceiling Decor':
+        // case 'Clothing Other':
+        // case 'Dress-Up':
+        // case 'Fencing':
+        // case 'Floors':
+        // case 'Fossils':
+        // case 'Gyroids':
+        // case 'Headwear':
+        // case 'Housewares':
+        // case 'Message Cards':
+        // case 'Miscellaneous':
+        // case 'Music':
+        // case 'Other':
+        // case 'Photos':
+        // case 'Posters':
+        // case 'Rugs':
+        // case 'Shoes':
+        // case 'Socks':
+        // case 'Tools/Goods':
+        // case 'Tops':
+        // case 'Umbrellas':
+        // case 'Wall-mounted':
+        // case 'Wallpaper':
+        //     content = <Items data={data} />
+        //     break;
 
 
     }
