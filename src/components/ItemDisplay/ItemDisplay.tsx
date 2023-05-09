@@ -1,9 +1,13 @@
 import { BackButton } from '../Button/BackButton';
-import { Construction } from '@/components/Item/Category/Construction';
-import { Creatures } from '@components/Item/Category/Creatures';
+import { Construction } from '@/components/ItemDisplay/Category/Construction';
+import { Creatures } from '@components/ItemDisplay/Category/Creatures';
 // import { Items } from '@components/Item/Category/Items';
 
-export const Item = ({ data }) => {
+type ItemDisplayProps = {
+    data: any;
+}
+
+export const ItemDisplay = ({ data }: ItemDisplayProps) => {
     let content;
 
     switch (data.sourceSheet) {

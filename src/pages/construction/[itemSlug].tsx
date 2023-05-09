@@ -1,15 +1,16 @@
 import { useRouter } from 'next/router';
 import { isConstruction } from '@/utils/typeCheckers';
 import { ItemDetails } from '@/components/ItemDetails';
-import { Item } from '@/components/Item/Item';
+import { ItemDisplay } from '@/components/ItemDisplay/ItemDisplay';
+import { Construction } from 'animal-crossing/lib/types/Construction';
 
-const CConstruction = () => {
+const ConstructionPage = () => {
     const router = useRouter();
     const { itemSlug } = router.query;
 
-    const renderItem = (item) => {
+    const renderItem = (item: Construction) => {
         return (
-            <Item data={item} />
+            <ItemDisplay data={item} />
         )
     }
 
@@ -23,4 +24,4 @@ const CConstruction = () => {
     );
 };
 
-export default CConstruction;
+export default ConstructionPage;

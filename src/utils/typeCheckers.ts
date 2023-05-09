@@ -5,33 +5,66 @@ import { Reaction } from 'animal-crossing/lib/types/Reaction';
 import { Recipe } from 'animal-crossing/lib/types/Recipe';
 import { Villager } from 'animal-crossing/lib/types/Villager';
 import { Npc } from 'animal-crossing/lib/types/NPC';
+import { SourceSheet } from 'animal-crossing/lib/types/NPC';
 
-export const isConstruction = (item: any): item is Construction => {
+
+type AllItemTypes = Construction | Creature | Item | Reaction | Recipe | Villager | Npc;
+
+export const isConstruction = (item: AllItemTypes): item is Construction => {
     return 'sourceSheet' in item && item.sourceSheet === 'Construction'
 };
 
-export const isCreature = (item: any): item is Creature => {
-    return 'sourceSheet' in item && item.sourceSheet === 'Fish' || 'Insects' || 'Sea Creatures'
+export const isCreature = (item: AllItemTypes): item is Creature => {
+    return 'sourceSheet' in item && (
+        item.sourceSheet === 'Fish' ||
+        item.sourceSheet === 'Insects' ||
+        item.sourceSheet === 'Sea Creatures')
 };
 
-export const isItem = (item: any): item is Item => {
-    return 'sourceSheet' in item && item.sourceSheet === 'Accessories' || 'Artwork' || 'Bags' || 'Bottoms' || 'Ceiling Decor' || 'Clothing Other' || 'Dress-Up'
-        || 'Fencing' || 'Floors' || 'Fossils' || 'Gyroids' || 'Headwear' || 'Housewares' || 'Message Cards' || 'Miscellaneous' || 'Music' || 'Other' || 'Photos' || 'Posters'
-        || 'Rugs' || 'Shoes' || 'Socks' || 'Tools/Goods' || 'Tops' || 'Umbrellas' || 'Wall-mounted' || 'Wallpaper'
+export const isItem = (item: AllItemTypes): item is Item => {
+    return 'sourceSheet' in item && (
+        item.sourceSheet === 'Accessories' ||
+        item.sourceSheet === 'Artwork' ||
+        item.sourceSheet === 'Bags' ||
+        item.sourceSheet === 'Bottoms' ||
+        item.sourceSheet === 'Ceiling Decor' ||
+        item.sourceSheet === 'Clothing Other' ||
+        item.sourceSheet === 'Dress-Up' ||
+        item.sourceSheet === 'Fencing' ||
+        item.sourceSheet === 'Floors' ||
+        item.sourceSheet === 'Fossils' ||
+        item.sourceSheet === 'Gyroids' ||
+        item.sourceSheet === 'Headwear' ||
+        item.sourceSheet === 'Housewares' ||
+        item.sourceSheet === 'Message Cards' ||
+        item.sourceSheet === 'Miscellaneous' ||
+        item.sourceSheet === 'Music' ||
+        item.sourceSheet === 'Other' ||
+        item.sourceSheet === 'Photos' ||
+        item.sourceSheet === 'Posters' ||
+        item.sourceSheet === 'Rugs' ||
+        item.sourceSheet === 'Shoes' ||
+        item.sourceSheet === 'Socks' ||
+        item.sourceSheet === 'Tools/Goods' ||
+        item.sourceSheet === 'Tops' ||
+        item.sourceSheet === 'Umbrellas' ||
+        item.sourceSheet === 'Wall-mounted' ||
+        item.sourceSheet === 'Wallpaper'
+    );
 };
 
-export const isReaction = (item: any): item is Reaction => {
+export const isReaction = (item: AllItemTypes): item is Reaction => {
     return 'sourceSheet' in item && item.sourceSheet === 'Reactions'
 };
 
-export const isRecipe = (item: any): item is Recipe => {
+export const isRecipe = (item: AllItemTypes): item is Recipe => {
     return 'sourceSheet' in item && item.sourceSheet === 'Recipes'
 };
 
-export const isVillager = (item: any): item is Villager => {
+export const isVillager = (item: AllItemTypes): item is Villager => {
     return 'sourceSheet' in item && item.sourceSheet === 'Villagers'
 };
 
-export const isNpc = (item: any): item is Npc => {
-    return 'sourceSheet' in item && item.sourceSheet === 'Npc'
+export const isNpc = (item: AllItemTypes): item is Npc => {
+    return 'sourceSheet' in item && item.sourceSheet === SourceSheet.SpecialNPCS;
 };

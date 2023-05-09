@@ -1,15 +1,16 @@
 import { useRouter } from 'next/router';
 import { isCreature } from '@/utils/typeCheckers';
 import { ItemDetails } from '@/components/ItemDetails';
-import { Item } from '@/components/Item/Item';
+import { ItemDisplay } from '@/components/ItemDisplay/ItemDisplay';
+import { Creature } from 'animal-crossing/lib/types/Creature';
 
-const CCreatures = () => {
+const CreaturesPage = () => {
     const router = useRouter();
     const { itemSlug } = router.query;
 
-    const renderItem = (item) => {
+    const renderItem = (item: Creature) => {
         return (
-            <Item data={item} />
+            <ItemDisplay data={item} />
         )
     }
 
@@ -23,4 +24,4 @@ const CCreatures = () => {
     );
 };
 
-export default CCreatures;
+export default CreaturesPage;

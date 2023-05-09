@@ -1,15 +1,16 @@
 import { useRouter } from 'next/router';
 import { isItem } from '@/utils/typeCheckers';
 import { ItemDetails } from '@/components/ItemDetails';
-import { Item } from '@/components/Item/Item';
+import { ItemDisplay } from '@/components/ItemDisplay/ItemDisplay';
+import { Item } from 'animal-crossing/lib/types/Item';
 
-const CItems = () => {
+const ItemsPage = () => {
     const router = useRouter();
     const { itemSlug } = router.query;
 
-    const renderItem = (item) => {
+    const renderItem = (item: Item) => {
         return (
-            <Item data={item} />
+            <ItemDisplay data={item} />
         )
     }
 
@@ -23,4 +24,4 @@ const CItems = () => {
     );
 };
 
-export default CItems;
+export default ItemsPage;
