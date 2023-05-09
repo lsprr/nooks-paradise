@@ -1,6 +1,6 @@
-import { BackButton } from '../Button/BackButton';
-import { Construction } from '@/components/ItemDisplay/Category/Construction';
-import { Creatures } from '@components/ItemDisplay/Category/Creatures';
+import { BackButton } from './Button/BackButton';
+import { Construction } from '@/components/Category/Construction';
+import { Creatures } from '@/components/Category/Creatures';
 // import { Items } from '@components/Item/Category/Items';
 
 type ItemDisplayProps = {

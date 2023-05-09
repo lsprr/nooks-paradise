@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { isConstruction } from '@/utils/typeCheckers';
 import { ItemDetails } from '@/components/ItemDetails';
-import { ItemDisplay } from '@/components/ItemDisplay/ItemDisplay';
+import { ItemDisplay } from '@/components/ItemDisplay';
 import { Construction } from 'animal-crossing/lib/types/Construction';
 
 const ConstructionPage = () => {
