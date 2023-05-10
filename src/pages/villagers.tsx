@@ -3,8 +3,6 @@ import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 
 type Villager = {
-    page: string;
-    gender: string;
     name: string;
     iconImage: StaticImageData | string;
 };
@@ -13,7 +11,6 @@ const renderItem: (item: Villager) => JSX.Element = (item) => {
     return (
         <Card
             page={'villagers'}
-            category={item.gender}
             name={item.name}
             image={item.iconImage}
         />

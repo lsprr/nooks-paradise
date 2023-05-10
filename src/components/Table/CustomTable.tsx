@@ -10,7 +10,7 @@ type CustomTableProps<T> = {
 export const CustomTable = <T extends {}>({ data, renderHeader, renderBody }: CustomTableProps<T>): JSX.Element => {
     return (
         <Container role="table" aria-label="Achievements table">
-            <div className="w-full text-center bg-white dark:bg-darkGray text-darkGray dark:text-white rounded-2xl">
+            <div className="w-full text-center bg-creamWhite text-darkGray rounded-2xl">
                 {renderHeader && renderBody &&
                     <>
                         <div className="header" role="rowgroup">{renderHeader()}</div>

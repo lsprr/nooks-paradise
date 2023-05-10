@@ -12,7 +12,7 @@ const menuItems = [
   { label: 'Achievements', href: '/achievements' },
   { label: 'Construction', href: '/construction' },
   { label: 'Creatures', href: '/creatures' },
-  { label: 'Items', href: '/items' },
+  // { label: 'Items', href: '/items' },
   { label: 'NPCs', href: '/npcs' },
   { label: 'Reactions', href: '/reactions' },
   { label: 'Recipes', href: '/recipes' },

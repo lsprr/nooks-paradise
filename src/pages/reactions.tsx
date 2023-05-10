@@ -3,8 +3,6 @@ import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 
 type Reaction = {
-    page: string;
-    sourceSheet: string;
     name: string;
     image: StaticImageData | string;
 };
@@ -13,7 +11,6 @@ const renderItem: (item: Reaction) => JSX.Element = (item) => {
     return (
         <Card
             page={'reactions'}
-            category={item.sourceSheet}
             name={item.name}
             image={item.image}
         />

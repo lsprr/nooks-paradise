@@ -1,7 +1,9 @@
 import { BackButton } from './Button/BackButton';
 import { Construction } from '@/components/Category/Construction';
 import { Creatures } from '@/components/Category/Creatures';
-// import { Items } from '@components/Item/Category/Items';
+// import { Items } from '@components/Category/Items';
+import { NPCs } from '@components/Category/NPCs';
+import { Reactions } from '@components/Category/Reactions';
 
 type ItemDisplayProps = {
     data: any;
@@ -52,7 +54,13 @@ export const ItemDisplay = ({ data }: ItemDisplayProps) => {
         //     content = <Items data={data} />
         //     break;
 
+        case 'Special NPCs':
+            content = <NPCs data={data} />
+            break;
 
+        case 'Reactions':
+            content = <Reactions data={data} />
+            break;
     }
 
     return (

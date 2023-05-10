@@ -42,8 +42,8 @@ const renderBody: (item: SeasonAndEvent, index: number) => JSX.Element = (item, 
     };
 
     return (
-        <div className='season-event-row flex flex-wrap p-2 border-t border-dashed border-darkGray dark:border-white items-center' key={index} role="row">
-            <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold md:border-r border-dashed border-darkGray dark:border-white capitalize" role="cell" tabIndex={0} aria-label={`Name: ${item.name}`}>
+        <div className='season-event-row flex flex-wrap p-2 border-t border-dashed border-sienna dark:border-white items-center' key={index} role="row">
+            <div className="w-full md:w-1/3 p-2 text-xs md:text-base font-bold md:border-r border-dashed border-sienna dark:border-white capitalize" role="cell" tabIndex={0} aria-label={`Name: ${item.name}`}>
                 {item.name}
             </div>
             {renderHemisphereDates()}

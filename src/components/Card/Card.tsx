@@ -3,12 +3,11 @@ import Image from 'next/image';
 
 type CardProps = {
     page: string;
-    category: string;
     name: string;
     image: StaticImageData | string;
 }
 
-export const Card = ({ page, category, name, image }: CardProps) => {
+export const Card = ({ page, name, image }: CardProps) => {
     const encodedName = encodeURIComponent(name.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase());
 
     return (
@@ -25,17 +24,12 @@ export const Card = ({ page, category, name, image }: CardProps) => {
                         loading='lazy'
                     />
 
-                    <div className="relative pt-3 pb-3 bg-white">
+                    <div className="relative pt-3 pb-3 bg-creamWhite">
                         <h3
-                            className="text-base text-center text-darkBlue group-hover:underline group-hover:underline-offset-4 capitalize"
+                            className="text-base text-center text-sienna group-hover:underline group-hover:underline-offset-4 capitalize"
                         >
                             {name}
                         </h3>
-
-                        <p className="mt-2 text-center">
-                            <span className="sr-only">{name}</span>
-                            <span className="tracking-wider text-gray-900">{category}</span>
-                        </p>
                     </div>
                 </Link>
                 :

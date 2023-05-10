@@ -4,8 +4,6 @@ import { Card } from "@/components/Card/Card";
 import question from '@assets/images/question.webp';
 
 type Item = {
-    page: string;
-    sourceSheet: string;
     name: string;
     image: string;
     storageImage: string;
@@ -13,24 +11,11 @@ type Item = {
 };
 
 const renderItem: (item: Item) => JSX.Element = (item) => {
-    const isImageExist = () => {
-        if (item.image) {
-            return item.image
-        } else if (item.storageImage) {
-            return item.storageImage
-        } else if (item.closetImage) {
-            return item.closetImage
-        } else {
-            return question;
-        }
-    }
-
     return (
         <Card
             page={'items'}
-            category={item.sourceSheet}
             name={item.name}
-            image={isImageExist()}
+            image={item.image || item.storageImage || item.closetImage || question}
         />
     );
 };

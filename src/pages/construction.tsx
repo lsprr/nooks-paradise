@@ -3,7 +3,6 @@ import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from '@/components/Card/Card';
 
 type Construction = {
-    category: string;
     name: string;
     image: StaticImageData | string;
 };
@@ -12,7 +11,6 @@ const renderItem: (item: Construction) => JSX.Element = (item) => {
     return (
         <Card
             page={'construction'}
-            category={item.category}
             name={item.name}
             image={item.image}
         />

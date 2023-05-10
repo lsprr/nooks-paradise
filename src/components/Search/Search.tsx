@@ -4,7 +4,7 @@ type SearchProps = {
 
 export const Search = ({ onSearchItem }: SearchProps) => {
     return (
-        <div className="flex items-end justify-between bg-white p-6 mt-8 rounded-2xl md:w-1/3">
+        <div className="flex items-end justify-between bg-creamWhite p-6 mt-8 rounded-2xl md:w-1/3">
             <label
                 htmlFor="search"
                 className="p-4 md:p-0 w-full overflow-hidden border-gray-200 shadow-sm border border-1-darkGray focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 flex flex-col items-center h-full rounded-2xl"

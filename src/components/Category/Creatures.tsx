@@ -1,16 +1,6 @@
-import toComma from '@/utils/numeral';
 import Image from 'next/image';
 import { Container } from '@components/Layout/Container';
-
-type LabelledSpanProps = {
-    label: string;
-    content: string | number;
-    className?: string;
-    isBell?: boolean;
-    isNookCranny?: boolean;
-    isFlick?: boolean;
-    isCJ?: boolean;
-}
+import { LabelledSpan } from '../Accessibility/LabelledSpan';
 
 type CreaturesProps = {
     data: {
@@ -40,37 +30,10 @@ type CreaturesProps = {
     };
 }
 
-const LabelledSpan = ({ label, content, className, isBell, isNookCranny, isFlick, isCJ }: LabelledSpanProps) => {
-    let displayContent;
-
-    if (isBell && typeof content === 'number') {
-        displayContent = `${label}: ${toComma(content)} Bells`;
-    } else if (isNookCranny && typeof content === 'number') {
-        displayContent = `Nook's Cranny: ${toComma(content)} Bells`;
-    } else if (isFlick && typeof content === 'number') {
-        displayContent = `Flick: ${toComma(content)} Bells`;
-    } else if (isCJ && typeof content === 'number') {
-        displayContent = `C.J.: ${toComma(content)} Bells`;
-    } else {
-        displayContent = `${content}`;
-    }
-
-    return (
-        <span
-            className={`${className ? className : 'px-3 py-1 group inline-flex items-center justify-center rounded-full border text-xs font-medium bg-white'}`}
-            tabIndex={0}
-            role="text"
-            aria-label={displayContent}
-        >
-            {displayContent}
-        </span>
-    );
-};
-
 export const Creatures = ({ data }: CreaturesProps) => {
     return (
         <Container>
-            <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-white rounded-2xl">
+            <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">
                 <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
                         <Image
@@ -153,19 +116,19 @@ export const Creatures = ({ data }: CreaturesProps) => {
                                     <div className='rounded-full border px-3' tabIndex={0} role="region" aria-label="Northern Hemisphere information">
                                         <span className='text-xs'>Northern: </span>
                                         {data.hemispheres.north.months.map((month, index) => (
-                                            <LabelledSpan key={index} label='Month' content={month} className='group inline-block px-1 py-1 text-xs font-medium bg-white' />
+                                            <LabelledSpan key={index} label='Month' content={month} className='group inline-block px-1 py-1 text-xs font-medium bg-creamWhite' />
                                         ))}
                                         {data.hemispheres.north.time.map((time, index) => (
-                                            <LabelledSpan key={index} label='Time' content={time} className='group inline-block px-1 py-1 text-xs font-medium bg-white' />
+                                            <LabelledSpan key={index} label='Time' content={time} className='group inline-block px-1 py-1 text-xs font-medium bg-creamWhite' />
                                         ))}
                                     </div>
                                     <div className='rounded-full border px-3' tabIndex={0} role="region" aria-label="Southern Hemisphere information">
                                         <span className='text-xs'>Southern: </span>
                                         {data.hemispheres.south.months.map((month, index) => (
-                                            <LabelledSpan key={index} label='Month' content={month} className='group inline-block px-1 py-1 text-xs font-medium bg-white' />
+                                            <LabelledSpan key={index} label='Month' content={month} className='group inline-block px-1 py-1 text-xs font-medium bg-creamWhite' />
                                         ))}
                                         {data.hemispheres.south.time.map((time, index) => (
-                                            <LabelledSpan key={index} label='Time' content={time} className='group inline-block px-1 py-1 text-xs font-medium bg-white' />
+                                            <LabelledSpan key={index} label='Time' content={time} className='group inline-block px-1 py-1 text-xs font-medium bg-creamWhite' />
                                         ))}
                                     </div>
                                 </div>
@@ -191,12 +154,12 @@ export const Creatures = ({ data }: CreaturesProps) => {
                             <div className="mt-4">
                                 <div className="mb-1 text-sm font-medium">Sell Price</div>
                                 <div className="flex flex-wrap gap-1">
-                                    <LabelledSpan label="Nook's Cranny" content={data.sell} isBell={true} isNookCranny={true} />
+                                    <LabelledSpan label="Nook's Cranny" content={data.sell} isBell isNookCranny />
                                     {data.sourceSheet === 'Insects' && (
-                                        <LabelledSpan label="Flick" content={data.sell * 1.5} isBell={true} isFlick={true} />
+                                        <LabelledSpan label="Flick" content={data.sell * 1.5} isBell isFlick showLabel ariaLabel={`Sell ${data.name} to Flick for ${data.sell * 1.5} Bells`} />
                                     )}
                                     {data.sourceSheet === 'Fish' && (
-                                        <LabelledSpan label="C.J." content={data.sell * 1.5} isBell={true} isCJ={true} />
+                                        <LabelledSpan label="C.J." content={data.sell * 1.5} isBell isCJ showLabel ariaLabel={`Sell ${data.name} to C.J. for ${data.sell * 1.5} Bells`} />
                                     )}
                                 </div>
                             </div>

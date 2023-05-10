@@ -4,7 +4,7 @@ import wilbur from '@assets/images/wilbur.png';
 export const NoItemsFound = () => {
     return (
         <section className="mt-8 mb-8">
-            <div className="grid h-screen px-4 bg-white place-content-center rounded-2xl text-center">
+            <div className="grid h-screen px-4 bg-creamWhite place-content-center rounded-2xl text-center">
                 <div className="flex flex-col items-center">
                     <Image src={wilbur} alt="wilbur" loading='lazy' />
                     <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">

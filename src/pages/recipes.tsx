@@ -3,8 +3,6 @@ import { useFetchData } from '@/hooks/useFetchData';
 import { Card } from "@/components/Card/Card";
 
 type Recipe = {
-    page: string;
-    category: string;
     name: string;
     image: StaticImageData | string;
 };
@@ -13,7 +11,6 @@ const renderItem: (item: Recipe) => JSX.Element = (item) => {
     return (
         <Card
             page={'recipes'}
-            category={item.category}
             name={item.name}
             image={item.image}
         />
