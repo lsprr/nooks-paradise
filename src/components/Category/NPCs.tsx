@@ -29,6 +29,19 @@ export const NPCs = ({ data }: NPCSProps) => {
                             loading='lazy'
                             tabIndex={0}
                         />
+                        <div className="grid grid-cols-2 gap-4 lg:mt-4">
+                            {data.photoImage && (
+                                <Image
+                                    alt={`${data.name} house image`}
+                                    src={data.photoImage}
+                                    className="aspect-square w-full rounded-2xl"
+                                    height={500}
+                                    width={500}
+                                    loading='lazy'
+                                    tabIndex={0}
+                                />
+                            )}
+                        </div>
                     </div>
                     <div className="sticky top-0">
                         <strong

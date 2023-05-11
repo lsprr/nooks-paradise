@@ -7,6 +7,7 @@ import { NPCs } from '@components/Category/NPCs';
 import { Reactions } from '@components/Category/Reactions';
 import { Recipes } from '@components/Category/Recipes';
 import { SeasonsAndEvents } from '@components/Category/SeasonsAndEvents';
+import { Villagers } from '@components/Category/Villagers';
 
 type ItemDisplayProps = {
     data: any;
@@ -75,6 +76,10 @@ export const ItemDisplay = ({ data }: ItemDisplayProps) => {
 
         case 'Seasons and Events':
             content = <SeasonsAndEvents data={data} />
+            break;
+
+        case 'Villagers':
+            content = <Villagers data={data} />
             break;
     }
 

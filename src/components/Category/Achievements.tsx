@@ -70,7 +70,6 @@ export const Achievements = ({ data }: AchievementsProps) => {
                             <h2 className="mb-1 text-sm font-medium">Passport Titles</h2>
                             <h2 className="mb-1 text-sm font-medium">Nook Miles</h2>
                         </div>
-
                         {Object.keys(data.tiers).map((tierKey, index) => {
                             const tier = data.tiers[tierKey];
                             return (

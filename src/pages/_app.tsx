@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
 import { Navigation } from '@/components/Navigation/Navigation';
 
 /**
@@ -33,12 +32,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:description"
           content="🦤 Delta Oscar Delta Oscar is go" />
       </Head>
-      <MantineProvider>
-        <Navigation menuItems={menuItems} />
-        <main>
-          <Component {...pageProps} />
-        </main>
-      </MantineProvider>
+      <Navigation menuItems={menuItems} />
+      <main>
+        <Component {...pageProps} />
+      </main>
     </>
   )
 }
