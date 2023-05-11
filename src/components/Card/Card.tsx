@@ -36,7 +36,7 @@ export const Card = ({ page, name, image }: CardProps) => {
                 :
                 <div className="block overflow-hidden group bg-background">
                     <Image
-                        src={image}
+                        src={image ? image : question}
                         alt=""
                         width={500}
                         height={500}
