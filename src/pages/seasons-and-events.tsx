@@ -9,7 +9,7 @@ type SeasonAndEvent = {
 const renderItem: (item: SeasonAndEvent) => JSX.Element = (item) => {
     return (
         <Card
-            page={'construction'}
+            page={'seasons-and-events'}
             name={item.name}
         />
     );

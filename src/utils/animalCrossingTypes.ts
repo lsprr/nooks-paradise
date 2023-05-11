@@ -4,12 +4,13 @@ import { Creature } from 'animal-crossing/lib/types/Creature';
 import { Item } from 'animal-crossing/lib/types/Item';
 import { Reaction } from 'animal-crossing/lib/types/Reaction';
 import { Recipe } from 'animal-crossing/lib/types/Recipe';
+import { SeasonsAndEvents } from 'animal-crossing/lib/types/SeasonsAndEvents';
 import { Villager } from 'animal-crossing/lib/types/Villager';
 import { Npc } from 'animal-crossing/lib/types/NPC';
 import { SourceSheet } from 'animal-crossing/lib/types/NPC';
 
 
-type AllItemTypes = Achievement | Construction | Creature | Item | Reaction | Recipe | Villager | Npc;
+type AllItemTypes = Achievement | Construction | Creature | Item | Reaction | Recipe | SeasonsAndEvents | Villager | Npc;
 
 export const isAchievement = (item: AllItemTypes): item is Achievement => {
     return 'sourceSheet' in item && item.sourceSheet === 'Achievements'
@@ -64,6 +65,10 @@ export const isReaction = (item: AllItemTypes): item is Reaction => {
 
 export const isRecipe = (item: AllItemTypes): item is Recipe => {
     return 'sourceSheet' in item && item.sourceSheet === 'Recipes'
+};
+
+export const isSeasonsAndEvents = (item: AllItemTypes): item is SeasonsAndEvents => {
+    return 'sourceSheet' in item && item.sourceSheet === 'Seasons and Events'
 };
 
 export const isVillager = (item: AllItemTypes): item is Villager => {

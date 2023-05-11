@@ -6,6 +6,7 @@ import { Creatures } from '@/components/Category/Creatures';
 import { NPCs } from '@components/Category/NPCs';
 import { Reactions } from '@components/Category/Reactions';
 import { Recipes } from '@components/Category/Recipes';
+import { SeasonsAndEvents } from '@components/Category/SeasonsAndEvents';
 
 type ItemDisplayProps = {
     data: any;
@@ -70,6 +71,10 @@ export const ItemDisplay = ({ data }: ItemDisplayProps) => {
 
         case 'Recipes':
             content = <Recipes data={data} />
+            break;
+
+        case 'Seasons and Events':
+            content = <SeasonsAndEvents data={data} />
             break;
     }
 
