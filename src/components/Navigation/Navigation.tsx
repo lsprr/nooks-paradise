@@ -1,10 +1,13 @@
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { MenuItem } from '@/components/Navigation/NavigationMenuItem';
 import { ToggleThemeButton } from '@/components/Navigation/ToggleThemeButton';
 import { MobileMenuButton } from '@/components/Navigation/MobileMenuButton';
 import { useDarkMode } from '@hooks/useDarkMode';
+import logo from '@assets/brand/logo.png';
 
 type MenuItemLink = {
     label: string;
@@ -46,8 +49,11 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
             <header aria-label="Site Header" className="bg-creamWhite z-50 sticky top-0">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
-
-                        <div className="md:flex md:items-center md:gap-12 z-[100] w-full justify-end lg:justify-center">
+                        <Link className="block text-teal-600" href="/">
+                            <span className="sr-only">Home</span>
+                            <Image src={logo} alt="logo" className='h-16 w-16' />
+                        </Link>
+                        <div className="md:flex md:items-center md:gap-12 z-[100] w-full justify-end">
                             <nav aria-label="Site Nav" className="hidden lg:block">
                                 <ul className="flex items-center gap-6 text-sm">
                                     {menuDesktop}
