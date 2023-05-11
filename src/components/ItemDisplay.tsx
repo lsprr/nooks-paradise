@@ -1,10 +1,11 @@
 import { BackButton } from './Button/BackButton';
+import { Achievements } from '@components/Category/Achievements';
 import { Construction } from '@/components/Category/Construction';
 import { Creatures } from '@/components/Category/Creatures';
 // import { Items } from '@components/Category/Items';
 import { NPCs } from '@components/Category/NPCs';
 import { Reactions } from '@components/Category/Reactions';
-import { Achievements } from '@components/Category/Achievements';
+import { Recipes } from '@components/Category/Recipes';
 
 type ItemDisplayProps = {
     data: any;
@@ -14,6 +15,10 @@ export const ItemDisplay = ({ data }: ItemDisplayProps) => {
     let content;
 
     switch (data.sourceSheet) {
+
+        case 'Achievements':
+            content = <Achievements data={data} />
+            break;
 
         case 'Construction':
             content = <Construction data={data} />
@@ -63,8 +68,8 @@ export const ItemDisplay = ({ data }: ItemDisplayProps) => {
             content = <Reactions data={data} />
             break;
 
-        case 'Achievements':
-            content = <Achievements data={data} />
+        case 'Recipes':
+            content = <Recipes data={data} />
             break;
     }
 

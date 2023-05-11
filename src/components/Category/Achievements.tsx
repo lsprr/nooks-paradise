@@ -65,31 +65,28 @@ export const Achievements = ({ data }: AchievementsProps) => {
                                 </div>
                             </div>
                         )}
-                        <div className='mt-4 flex justify-between'>
-                            <div className="mb-1 text-sm font-medium">Milestones</div>
-                            <div className="mb-1 text-sm font-medium">Passport Titles</div>
-                            <div className="mb-1 text-sm font-medium">Nook Miles</div>
+                        <div className='mt-4 flex justify-between' role="region" aria-label="Milestone, Passport Titles, and Nook Miles Headers">
+                            <h2 className="mb-1 text-sm font-medium">Milestones</h2>
+                            <h2 className="mb-1 text-sm font-medium">Passport Titles</h2>
+                            <h2 className="mb-1 text-sm font-medium">Nook Miles</h2>
                         </div>
+
                         {Object.keys(data.tiers).map((tierKey, index) => {
                             const tier = data.tiers[tierKey];
                             return (
-                                <div className="mt-4 flex justify-between" key={index}>
+                                <div className="mt-4 flex justify-between" role="listitem" key={index}>
                                     <LabelledSpan label="Tier" content={index + 1} />
-                                    <div className="flex flex-wrap gap-1">
+                                    <div className="flex flex-wrap gap-1" role="group" aria-label="Modifiers and Nouns">
                                         <LabelledSpan label="Modifier" content={tier.modifier} />
                                         {tier.nouns.map((noun, nounIndex) => {
                                             return (
                                                 <div key={`${index}-${nounIndex}`}>
-                                                    <div className="flex flex-wrap gap-1">
-                                                        <LabelledSpan label="Noun" content={noun} />
-                                                    </div>
+                                                    <LabelledSpan label="Noun" content={noun} />
                                                 </div>
                                             );
                                         })}
                                     </div>
-                                    <div className="flex flex-wrap gap-1">
-                                        <LabelledSpan label="Miles Earned" content={tier.reward} />
-                                    </div>
+                                    <LabelledSpan label="Miles Earned" content={tier.reward} />
                                 </div>
                             );
                         })}
