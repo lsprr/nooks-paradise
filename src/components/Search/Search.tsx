@@ -4,21 +4,33 @@ type SearchProps = {
 
 export const Search = ({ onSearchItem }: SearchProps) => {
     return (
-        <div className="flex items-end justify-between bg-creamWhite p-6 mt-8 rounded-2xl md:w-1/3">
-            <label
-                htmlFor="search"
-                className="p-4 md:p-0 w-full overflow-hidden border-gray-200 shadow-sm border border-1-darkGray focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 flex flex-col items-center h-full rounded-2xl"
-            >
-                <span className="text-base text-darkGray capitalize">Search</span>
+        <div>
+            <label htmlFor="search" className="sr-only">Email</label>
 
+            <div className="relative">
                 <input
-                    type="text"
-                    id="search"
-                    placeholder="Search"
+                    type="input"
                     onChange={(e) => onSearchItem(e.target.value)}
-                    className="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 text-sm text-darkGray text-center"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 shadow-sm bg-creamWhite text-base"
+                    placeholder="Search"
                 />
-            </label>
+
+                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4 text-darkGray">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+            </div>
         </div>
     )
 }

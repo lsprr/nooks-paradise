@@ -5,14 +5,21 @@ type StatsProps = {
 
 export const Stats = ({ title, total }: StatsProps) => {
     return (
-        <>
-            <div className="flex items-end justify-center bg-creamWhite p-6 mt-8 rounded-2xl md:w-1/3">
-                <div className="flex flex-col items-center">
-                    <p className="text-base text-darkGray capitalize">{title}</p>
-                    <p className="text-2xl font-medium text-gray-900">{total}</p>
-                    <p className="text-sm text-gray-500">{total === 1 ? 'Item' : 'Items'}</p>
+        <div>
+            <div
+                className="relative"
+                role="region"
+                aria-label={`${title} statistics`}>
+                <div
+                    className="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm bg-creamWhite"
+                >
+                    <h1 className="capitalize text-darkGray text-base">
+                        <span id={`stats-${title}`}>{title}</span> &mdash;{' '}
+                        <span id={`stats-total-${title}`}>{total}</span>
+                        {total === 1 ? ' Item' : ' Items'}
+                    </h1>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

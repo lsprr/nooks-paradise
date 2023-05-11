@@ -26,7 +26,6 @@ export default function Items() {
     return (
         <DataView
             category="items"
-            viewType='grid'
             fetchFunction={(page, itemsPerPage) => fetchFunction("items", page, itemsPerPage)}
             renderGridItem={renderItem}
         />

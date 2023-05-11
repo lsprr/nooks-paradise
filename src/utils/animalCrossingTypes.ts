@@ -1,3 +1,4 @@
+import { Achievement } from 'animal-crossing/lib/types/Achievement';
 import { Construction } from 'animal-crossing/lib/types/Construction';
 import { Creature } from 'animal-crossing/lib/types/Creature';
 import { Item } from 'animal-crossing/lib/types/Item';
@@ -8,7 +9,11 @@ import { Npc } from 'animal-crossing/lib/types/NPC';
 import { SourceSheet } from 'animal-crossing/lib/types/NPC';
 
 
-type AllItemTypes = Construction | Creature | Item | Reaction | Recipe | Villager | Npc;
+type AllItemTypes = Achievement | Construction | Creature | Item | Reaction | Recipe | Villager | Npc;
+
+export const isAchievement = (item: AllItemTypes): item is Achievement => {
+    return 'sourceSheet' in item && item.sourceSheet === 'Achievements'
+};
 
 export const isConstruction = (item: AllItemTypes): item is Construction => {
     return 'sourceSheet' in item && item.sourceSheet === 'Construction'

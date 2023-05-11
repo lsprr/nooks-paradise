@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
-import { isCreature } from '@/utils/animalCrossingTypes';
+import { isAchievement } from '@/utils/animalCrossingTypes';
 import { ItemDetails } from '@/components/ItemDetails';
 import { ItemDisplay } from '@/components/ItemDisplay';
-import { Creature } from 'animal-crossing/lib/types/Creature';
+import { Achievement } from 'animal-crossing/lib/types/Achievement';
 
-const CreaturesPage = () => {
+const AchievementPage = () => {
     const router = useRouter();
     const { itemSlug } = router.query;
 
-    const renderItem = (item: Creature) => {
+    const renderItem = (item: Achievement) => {
         return (
             <ItemDisplay data={item} />
         )
@@ -16,12 +16,12 @@ const CreaturesPage = () => {
 
     return (
         <ItemDetails
-            category="creatures"
-            isItemType={isCreature}
+            category="Achievements"
+            isItemType={isAchievement}
             itemSlug={itemSlug}
             renderItem={renderItem}
         />
     );
 };
 
-export default CreaturesPage;
+export default AchievementPage;

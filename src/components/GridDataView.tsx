@@ -3,6 +3,7 @@ import { Pagination } from "@/components/Pagination/Pagination";
 import { Container } from "./Layout/Container";
 import { Stats } from "@/components/Stats/Stats";
 import { Search } from "@/components/Search/Search";
+import { Simple } from "./Layout/Simple";
 
 type GridDataViewProps<T> = {
     category: string;
@@ -26,10 +27,9 @@ export const GridDataView = <T extends {}>({
     renderGridItem,
 }: GridDataViewProps<T>) => (
     <>
-        {/* <Container>
-            <Stats title={category} total={totalItems} />
-            <Search onSearchItem={handleSearchItem} />
-        </Container> */}
+        <Container>
+            <Simple left={<Stats title={category} total={totalItems} />} right={<Search onSearchItem={handleSearchItem} />} />
+        </Container>
         <ItemGrid data={sourceItems} renderItem={renderGridItem} />
         <Pagination
             totalItems={totalItems}

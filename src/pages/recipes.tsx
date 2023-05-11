@@ -23,7 +23,6 @@ export default function NPCs() {
     return (
         <DataView
             category="recipes"
-            viewType='grid'
             fetchFunction={(page, itemsPerPage) => fetchFunction("recipes", page, itemsPerPage)}
             renderGridItem={renderItem}
         />

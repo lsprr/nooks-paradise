@@ -23,7 +23,6 @@ export default function Constructions() {
     return (
         <DataView
             category="construction"
-            viewType="grid"
             fetchFunction={(page, itemsPerPage) => fetchFunction('construction', page, itemsPerPage)}
             renderGridItem={renderItem}
         />

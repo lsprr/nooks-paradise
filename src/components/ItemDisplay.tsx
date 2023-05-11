@@ -4,6 +4,7 @@ import { Creatures } from '@/components/Category/Creatures';
 // import { Items } from '@components/Category/Items';
 import { NPCs } from '@components/Category/NPCs';
 import { Reactions } from '@components/Category/Reactions';
+import { Achievements } from '@components/Category/Achievements';
 
 type ItemDisplayProps = {
     data: any;
@@ -60,6 +61,10 @@ export const ItemDisplay = ({ data }: ItemDisplayProps) => {
 
         case 'Reactions':
             content = <Reactions data={data} />
+            break;
+
+        case 'Achievements':
+            content = <Achievements data={data} />
             break;
     }
 

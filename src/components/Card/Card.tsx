@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import question from '@assets/images/question.webp';
 
 type CardProps = {
     page: string;
     name: string;
-    image: StaticImageData | string;
+    image?: StaticImageData | string;
 }
 
 export const Card = ({ page, name, image }: CardProps) => {
@@ -16,7 +17,7 @@ export const Card = ({ page, name, image }: CardProps) => {
                 ?
                 <Link href={`/${page}/${encodedName}`} className="block overflow-hidden group bg-background rounded-2xl">
                     <Image
-                        src={image}
+                        src={image ? image : question}
                         alt=""
                         width={500}
                         height={500}

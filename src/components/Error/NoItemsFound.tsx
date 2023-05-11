@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import wilbur from '@assets/images/wilbur.png';
+import wilbur from '@assets/images/wilbur.webp';
 
 export const NoItemsFound = () => {
     return (
@@ -7,7 +7,7 @@ export const NoItemsFound = () => {
             <div className="grid h-screen px-4 bg-creamWhite place-content-center rounded-2xl text-center">
                 <div className="flex flex-col items-center">
                     <Image src={wilbur} alt="wilbur" loading='lazy' />
-                    <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    <p className="text-2xl font-bold tracking-tight text-darkGray sm:text-4xl">
                         Oh dear, a little hiccup!
                     </p>
                     <p className="mt-4 text-gray-500">It looks like there are no items on this island at the moment! 🍃</p>

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { isReaction } from '@/utils/typeCheckers';
+import { isReaction } from '@/utils/animalCrossingTypes';
 import { ItemDetails } from '@/components/ItemDetails';
 import { ItemDisplay } from '@/components/ItemDisplay';
 import { Reaction } from 'animal-crossing/lib/types/Reaction';

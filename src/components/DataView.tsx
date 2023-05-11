@@ -2,25 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import { ApiError } from "@/components/Error/ApiError";
 import { Loading } from "@/components/Loading/Loading";
 import { GridDataView } from "./GridDataView";
-import { TableDataView } from "./TableDataView";
 
 type DataViewProps<T extends { name: string }> = {
     category: string;
-    viewType: "grid" | "table";
     fetchFunction: (currentPage: number, itemsPerPage: number) => Promise<{ data: T[]; totalCount: number }>;
-    renderGridItem?: (item: T) => JSX.Element | null;
-    renderTableHeader?: () => JSX.Element;
-    renderTableBody?: (item: T, index: number) => JSX.Element;
+    renderGridItem: (item: T) => JSX.Element | null;
 };
 
-export const DataView = <T extends { name: string }>({
-    category,
-    viewType,
-    fetchFunction,
-    renderGridItem,
-    renderTableHeader,
-    renderTableBody,
-}: DataViewProps<T>) => {
+export const DataView = <T extends { name: string }>({ category, fetchFunction, renderGridItem, }: DataViewProps<T>) => {
     const [allItems, setAllItems] = useState<T[] | null>(null);
     const [visibleItems, setVisibleItems] = useState<T[] | null>(null);
     const [filteredItems, setFilteredItems] = useState<T[] | null>(null);
@@ -81,23 +70,18 @@ export const DataView = <T extends { name: string }>({
     const renderContent = () => {
         const sourceItems = filteredItems || visibleItems || [];
 
-        switch (viewType) {
-            case 'grid':
-                return (
-                    <GridDataView
-                        category={category}
-                        totalItems={filteredTotalItems}
-                        sourceItems={sourceItems}
-                        itemsPerPage={itemsPerPage}
-                        currentPage={currentPage}
-                        handleSearchItem={handleSearchItem}
-                        handleCurrentItems={handleCurrentItems}
-                        renderGridItem={renderGridItem}
-                    />
-                );
-            case 'table':
-                return <TableDataView allItems={allItems} renderTableHeader={renderTableHeader} renderTableBody={renderTableBody} />;
-        }
+        return (
+            <GridDataView
+                category={category}
+                totalItems={filteredTotalItems}
+                sourceItems={sourceItems}
+                itemsPerPage={itemsPerPage}
+                currentPage={currentPage}
+                handleSearchItem={handleSearchItem}
+                handleCurrentItems={handleCurrentItems}
+                renderGridItem={renderGridItem}
+            />
+        );
     };
 
     return (

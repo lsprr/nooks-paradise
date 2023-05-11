@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { isConstruction } from '@/utils/typeCheckers';
+import { isConstruction } from '@/utils/animalCrossingTypes';
 import { ItemDetails } from '@/components/ItemDetails';
 import { ItemDisplay } from '@/components/ItemDisplay';
 import { Construction } from 'animal-crossing/lib/types/Construction';

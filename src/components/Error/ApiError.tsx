@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import wilbur from '@assets/images/wilbur.png';
+import wilbur from '@assets/images/wilbur.webp';
 
 export const ApiError = () => {
     return (
@@ -8,10 +8,10 @@ export const ApiError = () => {
             <div className="grid h-screen px-4 bg-creamWhite place-content-center text-center">
                 <div className="flex flex-col items-center">
                     <Image src={wilbur} alt="wilbur" loading='lazy' />
-                    <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    <p className="text-2xl font-bold tracking-tight text-darkGray sm:text-4xl">
                         Oh dear, a little hiccup!
                     </p>
-                    <p className="mt-4 text-gray-500">Whoops-a-daisy! It seems we have run into a little snag while gathering data from our API. No worries, though! Please give it another whirl later.</p>
+                    <p className="mt-4 text-darkGray">Whoops-a-daisy! It seems we have run into a little snag while gathering data from our API. No worries, though! Please give it another whirl later.</p>
                     <strong>We are so grateful for your patience and understanding. Have a delightful day! 🍃</strong>
                     <Link
                         href="/"

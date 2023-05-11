@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { isNpc } from '@/utils/typeCheckers';
+import { isNpc } from '@/utils/animalCrossingTypes';
 import { ItemDetails } from '@/components/ItemDetails';
 import { ItemDisplay } from '@/components/ItemDisplay';
 import { Npc } from 'animal-crossing/lib/types/NPC';

@@ -23,7 +23,6 @@ export default function Creatures() {
     return (
         <DataView
             category="creatures"
-            viewType='grid'
             fetchFunction={(page, itemsPerPage) => fetchFunction("creatures", page, itemsPerPage)}
             renderGridItem={renderItem}
         />
