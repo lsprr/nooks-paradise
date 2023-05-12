@@ -28,14 +28,12 @@ export const GridDataView = <T extends {}>({
 }: GridDataViewProps<T>) => (
     <>
         <Container>
-            <Simple left={<Stats title={category} total={totalItems} />} right={<Search onSearchItem={handleSearchItem} />} />
+            <Simple
+                left={<Stats title={category} total={totalItems} />}
+                right={<Search onSearchItem={handleSearchItem} />}
+            />
         </Container>
         <ItemGrid data={sourceItems} renderItem={renderGridItem} />
-        <Pagination
-            totalItems={totalItems}
-            itemsPerPage={itemsPerPage}
-            current={currentPage}
-            onPageChange={handleCurrentItems}
-        />
+        <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} current={currentPage} onPageChange={handleCurrentItems} />
     </>
 );

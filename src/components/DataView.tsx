@@ -40,7 +40,6 @@ export const DataView = <T extends { name: string }>({ category, fetchFunction, 
             setIsLoading(false);
 
             fetchAllDataInBackground();
-
         } catch (error) {
             setErrorMessage(new Error(`Error fetching data. Please try again.`));
             console.error(`Error fetching ${category}:`, error);
@@ -55,23 +54,21 @@ export const DataView = <T extends { name: string }>({ category, fetchFunction, 
         setCurrentPage(newCurrentPage);
     };
 
-    const handleSearchItem = (query: string) => {
+    const handleSearchItem = useCallback((query: string) => {
         if (!query) {
             setFilteredItems(null);
             setFilteredTotalItems(totalItems);
         } else {
-            const results = (allItems ?? []).filter((item) => {
-                return item.name && item.name.toLowerCase().includes(query.toLowerCase());
-            });
+            const results = (allItems ?? []).filter((item) => item.name && item.name.toLowerCase().includes(query.toLowerCase()));
             setFilteredItems(results);
             setFilteredTotalItems(results.length);
             setCurrentPage(1);
         }
-    };
+    }, [allItems, totalItems]);
 
-    // useEffect(() => {
-    //     handleSearchItem(searchTerm);
-    // }, [searchTerm, handleSearchItem]);
+    useEffect(() => {
+        handleSearchItem(searchTerm);
+    }, [searchTerm, handleSearchItem]);
 
     const renderContent = () => {
         const sourceItems = filteredItems || visibleItems || [];
