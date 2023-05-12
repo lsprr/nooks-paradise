@@ -45,7 +45,7 @@ export default function Home() {
         </div>
         <div className="mx-auto max-w-3xl pt-12 pb-20">
           <h2 className="text-3xl text-DarkGray sm:text-2xl italic" id="signoff">
-            This is your captain Wilbur, signin' off. Happy island-hoppin'!
+            This is your captain Wilbur, signin&apos; off. Happy island-hoppin&apos;!
           </h2>
         </div>
       </div>
