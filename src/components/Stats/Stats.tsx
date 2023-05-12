@@ -5,7 +5,7 @@ type StatsProps = {
 
 export const Stats = ({ title, total }: StatsProps) => {
     return (
-        <div>
+        <div className="max-sm:w-full">
             <div
                 className="relative"
                 role="region"

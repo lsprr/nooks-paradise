@@ -4,7 +4,7 @@ type SearchProps = {
 
 export const Search = ({ onSearchItem }: SearchProps) => {
     return (
-        <div>
+        <div className="max-sm:w-full">
             <label htmlFor="search" className="sr-only">Email</label>
 
             <div className="relative">
