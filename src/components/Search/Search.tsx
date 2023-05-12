@@ -1,16 +1,28 @@
+import { useContext } from "react";
+import { SearchContext } from "@/contexts/SearchContext"
+
 type SearchProps = {
     onSearchItem: (query: string) => void;
 }
 
 export const Search = ({ onSearchItem }: SearchProps) => {
+    const { searchTerm, setSearchTerm } = useContext(SearchContext);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const query = e.target.value;
+        setSearchTerm(query);
+        onSearchItem(query);
+    };
+
     return (
         <div className="max-sm:w-full">
-            <label htmlFor="search" className="sr-only">Email</label>
+            <label htmlFor="search" className="sr-only">Search</label>
 
             <div className="relative">
                 <input
                     type="input"
-                    onChange={(e) => onSearchItem(e.target.value)}
+                    value={searchTerm}
+                    onChange={handleChange}
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 shadow-sm bg-creamWhite text-base"
                     placeholder="Search"
                 />

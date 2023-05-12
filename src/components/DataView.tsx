@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import { ApiError } from "@/components/Error/ApiError";
 import { Loading } from "@/components/Loading/Loading";
 import { GridDataView } from "./GridDataView";
+import { SearchContext } from "@/contexts/SearchContext";
 
 type DataViewProps<T extends { name: string }> = {
     category: string;
@@ -19,6 +20,7 @@ export const DataView = <T extends { name: string }>({ category, fetchFunction, 
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<Error | null>(null);
     const itemsPerPage = 20;
+    const { searchTerm } = useContext(SearchContext);
 
     const fetchAllDataInBackground = useCallback(async () => {
         try {
@@ -53,7 +55,7 @@ export const DataView = <T extends { name: string }>({ category, fetchFunction, 
         setCurrentPage(newCurrentPage);
     };
 
-    const handleSearchItem = (query: string) => {
+    const handleSearchItem = useCallback((query: string) => {
         if (!query) {
             setFilteredItems(null);
             setFilteredTotalItems(totalItems);
@@ -65,7 +67,11 @@ export const DataView = <T extends { name: string }>({ category, fetchFunction, 
             setFilteredTotalItems(results.length);
             setCurrentPage(1);
         }
-    };
+    }, [allItems, totalItems]);
+
+    useEffect(() => {
+        handleSearchItem(searchTerm);
+    }, [searchTerm, handleSearchItem]);
 
     const renderContent = () => {
         const sourceItems = filteredItems || visibleItems || [];
