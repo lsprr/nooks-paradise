@@ -27,10 +27,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Wilbur</title>
-        <meta property="og:title" content="Sea Bass" />
-        <meta name="description" content="🦤 Delta Oscar Delta Oscar is go" key="desc" />
-        <meta property="og:description"
-          content="🦤 Delta Oscar Delta Oscar is go" />
+        <meta property="og:title" content="Wilbur" />
+        <meta name="description" content="This is your one-stop co-pilot for all things Animal Crossing: New Horizons! We got you covered on neighbors, island life, fashion, DIY, critters, K.K. Slider tunes, and special events. So buckle up, and let's fly through the fantastic world of ACNH together!" key="desc" />
+        <meta property="og:description" content="This is your one-stop co-pilot for all things Animal Crossing: New Horizons! We got you covered on neighbors, island life, fashion, DIY, critters, K.K. Slider tunes, and special events. So buckle up, and let's fly through the fantastic world of ACNH together!" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Navigation menuItems={menuItems} />
       <main>
