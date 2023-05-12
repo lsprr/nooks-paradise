@@ -55,7 +55,7 @@ export const DataView = <T extends { name: string }>({ category, fetchFunction, 
         setCurrentPage(newCurrentPage);
     };
 
-    const handleSearchItem = useCallback((query: string) => {
+    const handleSearchItem = (query: string) => {
         if (!query) {
             setFilteredItems(null);
             setFilteredTotalItems(totalItems);
@@ -67,11 +67,11 @@ export const DataView = <T extends { name: string }>({ category, fetchFunction, 
             setFilteredTotalItems(results.length);
             setCurrentPage(1);
         }
-    }, [allItems, totalItems]);
+    };
 
-    useEffect(() => {
-        handleSearchItem(searchTerm);
-    }, [searchTerm, handleSearchItem]);
+    // useEffect(() => {
+    //     handleSearchItem(searchTerm);
+    // }, [searchTerm, handleSearchItem]);
 
     const renderContent = () => {
         const sourceItems = filteredItems || visibleItems || [];

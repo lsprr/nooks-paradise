@@ -6,13 +6,13 @@ type SearchProps = {
 }
 
 export const Search = ({ onSearchItem }: SearchProps) => {
-    const { searchTerm, setSearchTerm } = useContext(SearchContext);
+    // const { searchTerm, setSearchTerm } = useContext(SearchContext);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const query = e.target.value;
-        setSearchTerm(query);
-        onSearchItem(query);
-    };
+    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const query = e.target.value;
+    //     setSearchTerm(query);
+    //     onSearchItem(query);
+    // };
 
     return (
         <div className="max-sm:w-full">
@@ -21,8 +21,8 @@ export const Search = ({ onSearchItem }: SearchProps) => {
             <div className="relative">
                 <input
                     type="input"
-                    value={searchTerm}
-                    onChange={handleChange}
+                    // value={searchTerm}
+                    onChange={(e) => onSearchItem(e.target.value)}
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 shadow-sm bg-creamWhite text-base"
                     placeholder="Search"
                 />
