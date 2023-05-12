@@ -40,7 +40,7 @@ export default function Home() {
             All those original critter thingamajigs, icons, and fancy images belong to Nintendo, and Animal Crossing&apos;s their registered trademark.
           </p>
           <p className="mt-4 text-gray-500 sm:text-xl">
-            For more game info, <Link className="text-sienna group-hover:underline group-hover:underline-offset-4" href="https://www.nintendo.com/games/detail/animal-crossing-new-horizons-switch/" target="_blank" rel="noopener noreferrer">head over to the official Animal Crossing: New Horizons site</Link>.
+            For more game info, <Link className="text-sienna group-hover:underline group-hover:underline-offset-4" href="https://www.animal-crossing.com/new-horizons/" target="_blank" rel="noopener noreferrer">head over to the official Animal Crossing: New Horizons site</Link>.
           </p>
         </div>
         <div className="mx-auto max-w-3xl pt-12 pb-20">
