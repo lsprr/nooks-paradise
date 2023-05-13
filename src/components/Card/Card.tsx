@@ -9,7 +9,7 @@ type CardProps = {
 }
 
 export const Card = ({ page, name, image }: CardProps) => {
-    const encodedName = encodeURIComponent(name.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase());
+    const encodedName = encodeURIComponent(name && name.replace(/'/g, '').replace(/\s+/g, '-').toLowerCase());
 
     return (
         <>
@@ -34,13 +34,13 @@ export const Card = ({ page, name, image }: CardProps) => {
                     </div>
                 </Link>
                 :
-                <div className="block overflow-hidden group bg-background">
+                <div className="block overflow-hidden group bg-background rounded-2xl">
                     <Image
                         src={image ? image : question}
                         alt=""
                         width={500}
                         height={500}
-                        className="h-[350px] w-full transition duration-500 group-hover:scale-105 sm:h-[450px] object-scale-down"
+                        className="h-[350px] w-full transition duration-500 group-hover:scale-105 object-scale-down"
                         loading='lazy'
                     />
                 </div>
