@@ -29,14 +29,11 @@
       "@components/*": [
         "./src/components/*"
       ],
-      "@contexts/*": [
-        "./src/contexts/*"
-      ],
-      "@hoc/*": [
-        "./src/hoc/*"
-      ],
       "@hooks/*": [
         "./src/hooks/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
       ],
       "@utils/*": [
         "./src/utils/*"

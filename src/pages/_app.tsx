@@ -1,9 +1,7 @@
 import '../styles/globals.css'
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { SearchContext } from '@/contexts/SearchContext';
-import { SearchProvider } from '@/contexts/SearchProvider';
-import { Navigation } from '@/components/Navigation/Navigation';
+import { Navigation } from '@/components/Navigation';
 
 /**
  * TODO: Need to move this array of menu items in a separate file.
@@ -49,12 +47,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <SearchProvider>
-        <Navigation menuItems={menuItems} />
-        <main>
-          <Component {...pageProps} />
-        </main>
-      </SearchProvider>
+      <Navigation menuItems={menuItems} />
+      <main>
+        <Component {...pageProps} />
+      </main>
     </>
   )
 }

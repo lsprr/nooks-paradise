@@ -1,21 +1,14 @@
-function getBaseUrl() {
-    if (typeof window !== 'undefined') {
-        return `${window.location.protocol}//${window.location.host}/api/category`;
-    }
-    return '';
-}
-
 export async function fetchData(
-    endpoint: string,
+    category: string,
     currentPage: number,
     itemsPerPage: number,
+    query: string,
 ) {
     try {
-        const baseUrl = getBaseUrl();
-        const response = await fetch(`${baseUrl}/${endpoint}?page=${currentPage}&limit=${itemsPerPage}`);
+        const response = await fetch(`/api/${category}?page=${currentPage}&limit=${itemsPerPage}&q=${query}`);
         if (!response.ok) {
             throw new Error(
-                `Error fetching data from ${endpoint}: ${response.statusText}`
+                `Error fetching data from ${category}: ${response.statusText}`
             );
         }
         const data = await response.json();

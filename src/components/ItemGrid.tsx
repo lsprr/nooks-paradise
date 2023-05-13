@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { NoItemsFound } from "../Error/NoItemsFound";
-import { Container } from "../Layout/Container";
+import { NoItemsFound } from "@components/NoItemsFound";
+import { Container } from "./Container";
 
 type ItemGridProps<T> = {
     data: Array<T> | null,
-    renderItem?: (item: T) => ReactNode | null;
+    renderItem: (item: T) => ReactNode | null;
 };
 
 export const ItemGrid = <T extends {}>({ data, renderItem }: ItemGridProps<T>): JSX.Element => {

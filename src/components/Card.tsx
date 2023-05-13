@@ -18,7 +18,7 @@ export const Card = ({ page, name, image }: CardProps) => {
                 <Link href={`/${page}/${encodedName}`} className="block overflow-hidden group bg-background rounded-2xl">
                     <Image
                         src={image ? image : question}
-                        alt=""
+                        alt={`${encodedName}`}
                         width={500}
                         height={500}
                         className="h-[350px] w-full transition duration-500 group-hover:scale-105 object-scale-down"
@@ -37,7 +37,7 @@ export const Card = ({ page, name, image }: CardProps) => {
                 <div className="block overflow-hidden group bg-background rounded-2xl">
                     <Image
                         src={image ? image : question}
-                        alt=""
+                        alt={`${encodedName}`}
                         width={500}
                         height={500}
                         className="h-[350px] w-full transition duration-500 group-hover:scale-105 object-scale-down"

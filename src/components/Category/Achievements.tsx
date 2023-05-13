@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Container } from '@components/Layout/Container';
-import { LabelledSpan } from '../Accessibility/LabelledSpan';
+import { Container } from '@/components/Container';
+import { LabelledSpan } from '../LabelledSpan';
 import question from '@assets/images/question.webp';
 
 type Tier = {

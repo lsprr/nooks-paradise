@@ -17,8 +17,12 @@ export const Pagination = ({ totalItems, itemsPerPage, current, onPageChange }: 
     const [pageCount, setPageCount] = useState(1);
 
     useEffect(() => {
-        const getPageCount = Math.ceil(totalItems / itemsPerPage);
-        setPageCount(getPageCount);
+        if (totalItems && itemsPerPage) {
+            const getPageCount = Math.ceil(totalItems / itemsPerPage);
+            setPageCount(getPageCount);
+        } else {
+            setPageCount(0);
+        }
     }, [totalItems, itemsPerPage]);
 
     useEffect(() => {

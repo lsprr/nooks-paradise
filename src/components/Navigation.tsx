@@ -3,9 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { MenuItem } from '@/components/Navigation/NavigationMenuItem';
-import { ToggleThemeButton } from '@/components/Navigation/ToggleThemeButton';
-import { MobileMenuButton } from '@/components/Navigation/MobileMenuButton';
+import { MenuItem } from '@/components/NavigationMenuItem';
+import { ToggleThemeButton } from '@/components/ToggleThemeButton';
+import { MobileMenuButton } from '@/components/MobileMenuButton';
 import { useDarkMode } from '@hooks/useDarkMode';
 import logo from '@assets/brand/logo.webp';
 

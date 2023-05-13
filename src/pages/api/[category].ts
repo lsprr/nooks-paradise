@@ -41,7 +41,9 @@ type DataSource = {
     [key: string]: any;
 };
 
-const dataSources: DataSource = {
+export type ItemUnion = Achievement | Construction | Creature | Item | Reaction | Recipe | SeasonsAndEvents | Villager | Npc;
+
+export const dataSources: DataSource = {
     achievements,
     construction,
     creatures,
@@ -55,14 +57,22 @@ const dataSources: DataSource = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
     const page = Number(req.query.page) || 1;
-    const itemsPerPage = Number(req.query.limit) > 0 ? Number(req.query.limit) : Infinity;
-    const searchWord = String(req.query.category);
+    const itemsPerPage = Number(req.query.limit) > 0 ? Number(req.query.limit) : 20;
+    const searchCategory = String(req.query.category);
+    const searchQuery = String(req.query.q || '');
     const dataSourceKey = Object.keys(dataSources).find(
-        key => key.toLowerCase() === searchWord.toLowerCase(),
+        key => key.toLowerCase() === searchCategory.toLowerCase(),
     );
 
     if (dataSourceKey) {
-        const data = dataSources[dataSourceKey];
+        let data = dataSources[dataSourceKey];
+
+        if (searchQuery) {
+            data = data.filter((item: ItemUnion) => {
+                return item && item.name && item.name.toLowerCase().includes(searchQuery.toLowerCase());
+            });
+        }
+
         const indexOfLastItem = page * itemsPerPage;
         const indexOfFirstItem = indexOfLastItem - itemsPerPage;
         const paginatedData = data.slice(indexOfFirstItem, indexOfLastItem);
