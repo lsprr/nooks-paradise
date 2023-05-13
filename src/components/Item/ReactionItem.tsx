@@ -2,20 +2,24 @@ import Image from 'next/image';
 import { Container } from '@/components/Container';
 import { LabelledSpan } from '../LabelledSpan';
 
-type ConstructionProps = {
-    data: {
-        name: string;
-        image: StaticImageData | string;
-        category: string;
-        buy: number;
-        source: string;
-    };
+type ReactionData = {
+    sourceSheet: string;
+    num: number;
+    name: string;
+    image: StaticImageData | string;
+    source: string;
+    seasonEventExclusive: boolean | null;
+    iconFilename: StaticImageData | string;
 }
 
-export const Construction = ({ data }: ConstructionProps) => {
+type ReactionItemProps = {
+    data: ReactionData;
+}
+
+export const ReactionItem = ({ data }: ReactionItemProps) => {
     return (
         <Container>
-            <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite text-darkGray rounded-2xl">
+            <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">
                 <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
                         <Image
@@ -24,17 +28,17 @@ export const Construction = ({ data }: ConstructionProps) => {
                             className="aspect-square w-full rounded-2xl object-scale-down bg-background"
                             height={500}
                             width={500}
-                            loading="lazy"
+                            loading='lazy'
                             tabIndex={0}
                         />
                     </div>
                     <div className="sticky top-0">
                         <strong
                             className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
-                            aria-label={`Category: ${data.category}`}
+                            aria-label={`Category: ${data.sourceSheet}`}
                             tabIndex={0}
                         >
-                            {data.category}
+                            {data.sourceSheet}
                         </strong>
                         <div className="mt-8 flex justify-between">
                             <div className="space-y-2">
@@ -43,14 +47,6 @@ export const Construction = ({ data }: ConstructionProps) => {
                                 </h1>
                             </div>
                         </div>
-                        {data.buy && (
-                            <div className="mt-4">
-                                <div className="mb-1 text-sm font-medium">Buy Price</div>
-                                <div className="flex flex-wrap gap-1">
-                                    <LabelledSpan label="Buy Price" content={data.buy} isBell={true} />
-                                </div>
-                            </div>
-                        )}
                         {data.source && (
                             <div className="mt-4">
                                 <div className="mb-1 text-sm font-medium">Source</div>

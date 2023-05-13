@@ -3,19 +3,19 @@ import { Container } from '@/components/Container';
 import { LabelledSpan } from '../LabelledSpan';
 import question from '@assets/images/question.webp';
 
-type SeasonsAndEventsProps = {
-    data: {
-        name: string;
-        image: StaticImageData | string;
-        type: string;
-        datesNorthernHemisphere: string;
-        datesSouthernHemisphere: string;
-        year: string;
-    };
+type SeasonAndEventData = {
+    name: string;
+    type: string;
+    datesNorthernHemisphere: null | string;
+    datesSouthernHemisphere: null | string;
+    year: string | number | null;
 }
 
-export const SeasonsAndEvents = ({ data }: SeasonsAndEventsProps) => {
-    console.log(data);
+type SeasonAndEventItemProps = {
+    data: SeasonAndEventData;
+}
+
+export const SeasonAndEventItem = ({ data }: SeasonAndEventItemProps) => {
     return (
         <Container>
             <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">

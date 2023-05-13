@@ -1,4 +1,4 @@
-import formatNumberWithCommas from '@/utils/formatNumberWithCommas';
+import toCommas from '@/utils/toCommas';
 
 type LabelledSpanProps = {
     label: string;
@@ -16,13 +16,13 @@ export const LabelledSpan = ({ label, content, className, isBell, isNookCranny, 
     let displayContent;
 
     if (isNookCranny && isBell && typeof content === 'number') {
-        displayContent = `Nook's Cranny: ${formatNumberWithCommas(content)} Bells`;
+        displayContent = `Nook's Cranny: ${toCommas(content)} Bells`;
     } else if (isFlick && isBell && typeof content === 'number') {
-        displayContent = `Flick: ${formatNumberWithCommas(content)} Bells`;
+        displayContent = `Flick: ${toCommas(content)} Bells`;
     } else if (isCJ && isBell && typeof content === 'number') {
-        displayContent = `C.J.: ${formatNumberWithCommas(content)} Bells`;
+        displayContent = `C.J.: ${toCommas(content)} Bells`;
     } else if (isBell && typeof content === 'number') {
-        displayContent = `${formatNumberWithCommas(content)} Bells`;
+        displayContent = `${toCommas(content)} Bells`;
     } else {
         displayContent = showLabel ? `${label}: ${content}` : `${content}`;
     }

@@ -4,10 +4,10 @@ import { Construction } from 'animal-crossing/lib/types/Construction';
 import { Creature } from 'animal-crossing/lib/types/Creature';
 import { Item } from 'animal-crossing/lib/types/Item';
 import { Reaction } from 'animal-crossing/lib/types/Reaction';
+import { Npc } from 'animal-crossing/lib/types/NPC';
 import { Recipe } from 'animal-crossing/lib/types/Recipe';
 import { SeasonsAndEvents } from 'animal-crossing/lib/types/SeasonsAndEvents';
 import { Villager } from 'animal-crossing/lib/types/Villager';
-import { Npc } from 'animal-crossing/lib/types/NPC';
 
 import {
     achievements,
@@ -20,6 +20,7 @@ import {
     villagers,
     npcs,
 } from 'animal-crossing';
+import { toCamelCase } from '@/utils/toCamelCase';
 
 type ResponseData = {
     data: Achievement[] | Construction[] | Creature[] | Item[] | Reaction[] | Recipe[] | SeasonsAndEvents[] | Villager[] | Npc[];
@@ -58,7 +59,7 @@ export const dataSources: DataSource = {
 export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
     const page = Number(req.query.page) || 1;
     const itemsPerPage = Number(req.query.limit) > 0 ? Number(req.query.limit) : 20;
-    const searchCategory = String(req.query.category);
+    const searchCategory = toCamelCase(String(req.query.category));
     const searchQuery = String(req.query.q || '');
     const dataSourceKey = Object.keys(dataSources).find(
         key => key.toLowerCase() === searchCategory.toLowerCase(),

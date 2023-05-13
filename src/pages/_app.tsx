@@ -2,6 +2,8 @@ import '../styles/globals.css'
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Navigation } from '@/components/Navigation';
+import { usePageLoading } from '@/hooks/usePageLoading';
+import { Loading } from '@/components/Loading';
 
 /**
  * TODO: Need to move this array of menu items in a separate file.
@@ -23,6 +25,8 @@ const menuItems = [
  * TODO: Add error boundaries.  
  */
 function MyApp({ Component, pageProps }: AppProps) {
+  const { isPageLoading } = usePageLoading();
+
   return (
     <>
       <Head>
@@ -49,7 +53,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Navigation menuItems={menuItems} />
       <main>
-        <Component {...pageProps} />
+        <>
+          {isPageLoading ? (
+            <Loading />
+          ) : (
+            <Component {...pageProps} />
+          )}
+        </>
       </main>
     </>
   )

@@ -2,35 +2,52 @@ import Image from 'next/image';
 import { Container } from '@/components/Container';
 import { LabelledSpan } from '../LabelledSpan';
 
-type CreaturesProps = {
-    data: {
-        name: string;
-        description: string;
-        iconImage: StaticImageData | string;
-        critterpediaImage: StaticImageData | string;
-        furnitureImage: StaticImageData | string;
-        sourceSheet: string;
-        catchPhrase: string;
-        catchDifficulty: string;
-        colors: string[];
-        hemispheres: {
-            north: { months: string[]; time: string[] };
-            south: { months: string[]; time: string[] };
-        };
-        hhaBasePoints: number;
-        hhaCategory: string;
-        shadow: string;
-        sell: number;
-        size: string;
-        spawnRates: string;
-        totalCatchesToUnlock: number;
-        vision: string;
-        weather: string;
-        whereHow: string;
-    };
+type North = {
+    time: string[];
+    timeArray: Array<number[] | number>;
+    months: string[];
+    monthsArray: number[];
 }
 
-export const Creatures = ({ data }: CreaturesProps) => {
+type Hemispheres = {
+    north: North;
+    south: North;
+}
+
+type CreatureData = {
+    sourceSheet: string;
+    num: number;
+    name: string;
+    iconImage: StaticImageData | string;
+    critterpediaImage: StaticImageData | string;
+    furnitureImage: StaticImageData | string;
+    sell: number;
+    whereHow?: string;
+    weather?: string;
+    totalCatchesToUnlock: number;
+    spawnRates: string;
+    size: string;
+    surface: boolean;
+    description: string[];
+    catchPhrase: string[];
+    hhaBasePoints: number;
+    hhaCategory: string | null;
+    iconFilename: string;
+    critterpediaFilename: string;
+    furnitureFilename: string;
+    hemispheres: Hemispheres;
+    colors: string[];
+    shadow?: string;
+    movementSpeed?: string;
+    catchDifficulty?: string;
+    vision?: string;
+}
+
+type CreatureItemProps = {
+    data: CreatureData;
+}
+
+export const CreatureItem = ({ data }: CreatureItemProps) => {
     return (
         <Container>
             <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">

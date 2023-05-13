@@ -2,25 +2,25 @@ import Image from 'next/image';
 import { Container } from '@/components/Container';
 import { LabelledSpan } from '../LabelledSpan';
 
-type Material = {
-    materials: string;
-}
-
-type RecipesProps = {
-    data: {
-        name: string;
-        image: StaticImageData | string;
-        category: string;
-        materials: Record<string, Material>;
-        recipesToUnlock: number;
-        seasonEvent: string;
-        sell: number;
-        source: string;
-        sourceNotes: string;
+type RecipeData = {
+    name: string;
+    image: StaticImageData | string;
+    category: string;
+    materials: {
+        [key: string]: number;
     };
+    recipesToUnlock: number;
+    seasonEvent: string;
+    sell: number;
+    source: string;
+    sourceNotes: string;
 }
 
-export const Recipes = ({ data }: RecipesProps) => {
+type RecipeItemProps = {
+    data: RecipeData;
+}
+
+export const RecipeItem = ({ data }: RecipeItemProps) => {
     return (
         <Container>
             <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">

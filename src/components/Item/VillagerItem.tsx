@@ -2,32 +2,33 @@ import Image from 'next/image';
 import { Container } from '@/components/Container';
 import { LabelledSpan } from '../LabelledSpan';
 
-type VillagersProps = {
-    data: {
-        name: string;
-        description: string;
-        catchphrase: string;
-        sourceSheet: string;
-        iconImage: StaticImageData | string;
-        photoImage: StaticImageData | string;
-        houseImage: StaticImageData | string;
-        birthday: string;
-        colors: string[];
-        defaultClothing: string;
-        defaultUmbrella: string;
-        favoriteSaying: string;
-        favoriteSong: string;
-        flooring: string;
-        furnitureNameList: string[];
-        gender: string;
-        hobby: string;
-        personality: string;
-        species: string;
-        wallpaper: string;
-    };
+type VillagerData = {
+    name: string;
+    catchphrase: string;
+    sourceSheet: string;
+    iconImage: StaticImageData | string;
+    photoImage: StaticImageData | string;
+    houseImage: StaticImageData | string | null;
+    birthday: string;
+    colors: string[];
+    defaultClothing: string;
+    defaultUmbrella: string;
+    favoriteSaying: string;
+    favoriteSong: string;
+    flooring: string;
+    furnitureNameList: string[];
+    gender: string;
+    hobby: string;
+    personality: string;
+    species: string;
+    wallpaper: string;
 }
 
-export const Villagers = ({ data }: VillagersProps) => {
+type VillagerItemProps = {
+    data: VillagerData;
+}
+
+export const VillagerItem = ({ data }: VillagerItemProps) => {
     console.log(data);
     return (
         <Container>
@@ -83,13 +84,6 @@ export const Villagers = ({ data }: VillagersProps) => {
                                 </h1>
                                 <p className="text-sm italic" tabIndex={0} role="text" aria-label={`Catch phrase: ${data.catchphrase}`}>
                                     {data.catchphrase}
-                                </p>
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <div className="prose max-w-none">
-                                <p tabIndex={0} role="text" aria-label={`Description: ${data.description}`}>
-                                    {data.description}
                                 </p>
                             </div>
                         </div>

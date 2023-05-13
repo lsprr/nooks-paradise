@@ -6,20 +6,22 @@ import question from '@assets/images/question.webp';
 type Tier = {
     modifier: string;
     nouns: string[];
-    reward: number;
+    reward: string | number;
 }
 
-type AchievementsProps = {
-    data: {
-        name: string;
-        sourceSheet: string;
-        achievementDescription: string;
-        achievementCriteria: string;
-        tiers: Record<string, Tier>;
-    };
+type AchievementData = {
+    name: string;
+    sourceSheet: string;
+    achievementDescription: string;
+    achievementCriteria?: string;
+    tiers: Record<string, Tier>;
 }
 
-export const Achievements = ({ data }: AchievementsProps) => {
+type AchievementItemProps = {
+    data: AchievementData;
+}
+
+export const AchievementItem = ({ data }: AchievementItemProps) => {
     return (
         <Container>
             <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">

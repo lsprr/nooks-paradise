@@ -1,20 +1,25 @@
 import Image from 'next/image';
 import { Container } from '@/components/Container';
 import { LabelledSpan } from '../LabelledSpan';
+import question from '@assets/images/question.webp';
 
-type NPCSProps = {
-    data: {
-        name: string;
-        iconImage: StaticImageData | string;
-        photoImage: StaticImageData | string;
-        sourceSheet: string;
-        birthday: string;
-        gender: string;
-        genderAsia: string;
-    };
+type NPCData = {
+    sourceSheet: string;
+    name: string;
+    iconImage: null | string;
+    photoImage: null | string;
+    gender: string;
+    genderAsia: string;
+    birthday: string;
+    iconFilename: null | string;
+    photoFilename: null | string;
 }
 
-export const NPCs = ({ data }: NPCSProps) => {
+type NPCItemProps = {
+    data: NPCData;
+}
+
+export const NPCItem = ({ data }: NPCItemProps) => {
     return (
         <Container>
             <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">
@@ -22,7 +27,7 @@ export const NPCs = ({ data }: NPCSProps) => {
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
                         <Image
                             alt={`${data.name} icon`}
-                            src={data.iconImage}
+                            src={data.iconImage || question}
                             className="aspect-square w-full rounded-2xl object-scale-down bg-background"
                             height={500}
                             width={500}
