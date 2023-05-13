@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { SearchProvider } from '@contexts/SearchProvider';
 import { Navigation } from '@/components/Navigation';
 import { usePageLoading } from '@/hooks/usePageLoading';
 import { Loading } from '@/components/Loading';
@@ -51,16 +52,18 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Navigation menuItems={menuItems} />
-      <main>
-        <>
-          {isPageLoading ? (
-            <Loading />
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </>
-      </main>
+      <SearchProvider>
+        <Navigation menuItems={menuItems} />
+        <main>
+          <>
+            {isPageLoading ? (
+              <Loading />
+            ) : (
+              <Component {...pageProps} />
+            )}
+          </>
+        </main>
+      </SearchProvider>
     </>
   )
 }

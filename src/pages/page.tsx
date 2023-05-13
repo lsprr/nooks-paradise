@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearch } from '@/contexts/SearchProvider';
 import { useFetchAndRenderData } from '@/hooks/useFetchAndRenderData';
 import { ItemGrid } from '@/components/ItemGrid';
 import { Card } from '@/components/Card';
@@ -26,13 +27,12 @@ type RenderItemProps = {
 }
 
 export default function Page({ category }: PageProps) {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [query, setQuery] = useState('');
+    const { search, query, setQuery, currentPage, setCurrentPage } = useSearch();
 
-    const handleSearchItem = (query: string) => {
-        setQuery(query);
+    useEffect(() => {
+        setQuery(search);
         setCurrentPage(1);
-    };
+    }, [search, setCurrentPage, setQuery])
 
     const renderItem = (item: RenderItemProps): JSX.Element => (
         <Card
@@ -48,11 +48,10 @@ export default function Page({ category }: PageProps) {
 
     if (error) return <ApiError />
 
-
     return (
         <>
             <Container>
-                <TwoColumnLayout leftColumn={<Stats title={category} total={totalCount || 0} />} rightColumn={<Search onSearchItem={handleSearchItem} />} />
+                <TwoColumnLayout leftColumn={<Stats title={category} total={totalCount || 0} />} rightColumn={<Search />} />
             </Container>
             <ItemGrid data={data} renderItem={renderItem} />
             <Pagination totalItems={totalCount || 0} itemsPerPage={numPerPage || 0} current={currentPage} onPageChange={setCurrentPage} />

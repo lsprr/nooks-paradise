@@ -1,8 +1,16 @@
+import { useSearch } from "@/contexts/SearchProvider";
+
 type SearchProps = {
     onSearchItem: (query: string) => void;
 }
 
-export const Search = ({ onSearchItem }: SearchProps) => {
+export const Search = () => {
+    const { search, setSearch } = useSearch();
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value);
+    };
+
     return (
         <div className="max-sm:w-full">
             <label htmlFor="search" className="sr-only">Search</label>
@@ -10,7 +18,8 @@ export const Search = ({ onSearchItem }: SearchProps) => {
             <div className="relative">
                 <input
                     type="input"
-                    onChange={(e) => onSearchItem(e.target.value)}
+                    value={search}
+                    onChange={handleSearch}
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 shadow-sm bg-creamWhite text-base"
                     placeholder="Search"
                 />
