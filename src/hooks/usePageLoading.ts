@@ -5,8 +5,10 @@ export const usePageLoading = () => {
     const [isPageLoading, setIsPageLoading] = useState(false);
 
     useEffect(() => {
-        const routeEventStart = () => {
-            setIsPageLoading(true);
+        const routeEventStart = (url: string) => {
+            if (url !== Router.asPath) {
+                setIsPageLoading(true);
+            }
         };
         const routeEventEnd = () => {
             setIsPageLoading(false);

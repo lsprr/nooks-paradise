@@ -30,18 +30,18 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
         setIsExpanded(false)
     }, [pathname])
 
-    const closeMenuIfActive = (isActive: boolean) => {
-        if (isActive) {
+    const closeMenuIfDifferentLink = (linkHref: string) => {
+        if (pathname !== linkHref) {
             setIsExpanded(false);
         }
     };
 
     const menuDesktop = menuItems.map((item) => (
-        <MenuItem key={item.href} {...item} active={pathname === item.href} onLinkClick={() => closeMenuIfActive(pathname === item.href)} />
+        <MenuItem key={item.href} {...item} active={pathname === item.href} />
     ));
 
     const menuMobile = menuItems.map((item) => (
-        <MenuItem key={item.href} {...item} active={pathname === item.href} onLinkClick={() => closeMenuIfActive(pathname === item.href)} mobile />
+        <MenuItem key={item.href} {...item} active={pathname === item.href} onLinkClick={() => closeMenuIfDifferentLink(item.href)} mobile />
     ));
 
     return (
