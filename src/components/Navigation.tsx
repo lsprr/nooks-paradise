@@ -78,9 +78,9 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
                             unmountOnExit
                             nodeRef={menuRef}
                         >
-                            <div className="block lg:hidden fixed inset-0 pt-20 bg-creamWhite z-50">
-                                <div className="container mx-auto px-4 transition-all ease-in-out duration-300 flex justify-center items-center overflow-auto impt-h">
-                                    <div className="max-w-6xl transition-all ease-in-out duration-300 impt-h">
+                            <div className="block lg:hidden fixed inset-0 z-50 container mx-auto mt-10 mb-10 ">
+                                <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex flex-col w-full md:flex-row">
+                                    <div className="bg-creamWhite rounded-2xl w-full mt-8">
                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-10 mt-10">
                                             {menuMobile}
                                         </div>
