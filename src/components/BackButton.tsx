@@ -5,7 +5,7 @@ export const BackButton = () => {
 
     return (
         <div className="container mx-auto mt-10 mb-10">
-            <div className="relative mx-auto max-w-screen-xl py-8 rounded-2xl flex pl-4 md:pl-0">
+            <div className="relative mx-auto max-w-screen-xl rounded-2xl flex">
                 <div className="inline-flex rounded-lg border border-creamWhite bg-creamWhite p-1">
                     <button
                         className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-darkGray focus:relative"
