@@ -13,7 +13,7 @@ export default function Home() {
                                     Welcome to Nook&apos;s Paradise, folks!
                                 </h1>
                                 <p className="mt-4 text-gray-500 sm:text-xl">
-                                    This is your one-stop co-pilot for all things Animal Crossing: New Horizons!
+                                    This is your one-stop co-pilot for everything related to Animal Crossing: New Horizons!
                                     We got you covered on neighbors, island life, fashion, DIY, critters, K.K. Slider tunes,
                                     and special events.
                                 </p>
