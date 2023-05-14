@@ -2,6 +2,13 @@ import { useRouter } from 'next/router'
 
 export const BackButton = () => {
     const router = useRouter()
+    const category = router.query.category as string;
+
+    const handleClick = () => {
+        if (category) {
+            router.push('/' + category)
+        }
+    }
 
     return (
         <div className="container mx-auto mt-10 mb-10">
@@ -9,7 +16,7 @@ export const BackButton = () => {
                 <div className="inline-flex rounded-lg border border-creamWhite bg-creamWhite p-1">
                     <button
                         className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-darkGray focus:relative"
-                        onClick={() => router.back()}
+                        onClick={handleClick}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
