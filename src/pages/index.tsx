@@ -1,61 +1,70 @@
+import { useRouter } from "next/router";
 import { Container } from "@/components/Container";
-import Link from "next/link"
+import Image from "next/image";
+import Wilbur from '@assets/images/wilbur-pose.png';
 
 export default function Home() {
+    const router = useRouter();
+    const categories = ["achievements", "construction", "creatures", "npcs", "reactions", "recipes", "seasons-and-events", "villagers"];
+
+    const getRandomCategory = () => {
+        const randomIndex = Math.floor(Math.random() * categories.length);
+        return categories[randomIndex];
+    }
+
+    const handleButtonClick = () => {
+        const category = getRandomCategory();
+        router.push(`/${category}`);
+    }
+
     return (
         <Container>
-            <section className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-                <div className="lg:col-span-4">
-                    <div className="bg-creamWhite rounded-2xl">
-                        <div className="mx-auto max-w-screen-xl px-4 pt-12 sm:px-6 md:pt-16 lg:px-8 text-center">
-                            <div className="mx-auto max-w-3xl">
-                                <h1 className="text-3xl text-DarkGray sm:text-4xl" id="welcome">
-                                    Welcome to Nook&apos;s Paradise, folks!
-                                </h1>
-                                <p className="mt-4 text-gray-500 sm:text-xl">
-                                    This is your one-stop co-pilot for everything related to Animal Crossing: New Horizons!
-                                    We got you covered on neighbors, island life, fashion, DIY, critters, K.K. Slider tunes,
-                                    and special events.
-                                </p>
-                                <p className="mt-4 text-gray-500 sm:text-xl">
-                                    So buckle up, and let&apos;s fly through the fantastic world of ACNH together!
-                                </p>
-                            </div>
-                            <div className="mx-auto max-w-3xl pt-12 pb-12">
-                                <h2 className="text-3xl text-DarkGray sm:text-4xl" id="thanks">
-                                    Special Thanks
-                                </h2>
-                                <p className="mt-4 text-gray-500 sm:text-xl">
-                                    Big ol&apos; thanks to resources like Animal Crossing Database by Norviah and Google Spreadsheets for Animal Crossing: New Horizons for their info! Some conflicting tidbits were ironed out,
-                                    but feel free to check &apos;em out for more details.
-                                </p>
-                                <p className="mt-4 text-gray-500 sm:text-xl">
-                                    Hats off to Nintendo for creatin&apos; yet another amazin&apos; Animal Crossing adventure!
-                                </p>
-                            </div>
-                            <div className="mx-auto max-w-3xl">
-                                <h2 className="text-3xl text-DarkGray sm:text-4xl" id="legal">
-                                    General Legal Yap-yap
-                                </h2>
-                                <p className="mt-4 text-gray-500 sm:text-xl">
-                                    Wilbur is a fan-made website, just a handy info guide with no ties to Nintendo.
-                                </p>
-                                <p className="mt-4 text-gray-500 sm:text-xl">
-                                    All those original critter thingamajigs, icons, and fancy images belong to Nintendo, and Animal Crossing&apos;s their registered trademark.
-                                </p>
-                                <p className="mt-4 text-gray-500 sm:text-xl">
-                                    For more game info, <Link className="text-sienna group-hover:underline group-hover:underline-offset-4" href="https://www.animal-crossing.com/new-horizons/" target="_blank" rel="noopener noreferrer">head over to the official Animal Crossing: New Horizons site</Link>.
-                                </p>
-                            </div>
-                            <div className="mx-auto max-w-3xl pt-12 pb-20">
-                                <h2 className="text-3xl text-DarkGray sm:text-2xl italic" id="signoff">
-                                    This is your captain Wilbur, signin&apos; off. Happy island-hoppin&apos;!
-                                </h2>
+            <div className="container mx-auto mt-10 mb-10">
+                <div
+                    className="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8"
+                >
+                    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+                        <div
+                            className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full"
+                        >
+                            <Image
+                                alt="Party"
+                                src={Wilbur}
+                                className="absolute inset-0 h-full w-full object-scale-down"
+                            />
+                        </div>
+
+                        <div className="lg:py-24 text-center lg:text-left">
+                            <h2 className="text-3xl font-bold sm:text-4xl">
+                                Welcome to Nook&apos;s Paradise, folks!
+                            </h2>
+
+                            <p className="mt-8 text-darkGray text-xl">
+                                This is your one-stop co-pilot for everything related to Animal Crossing: New Horizons!
+                                We got you covered on neighbors, island life, fashion, DIY, critters, K.K. Slider tunes,
+                                and special events.
+                            </p>
+
+                            <p className="mt-8 text-darkGray text-xl">
+                                So buckle up, and let&apos;s fly through the fantastic world of ACNH together!
+                            </p>
+
+                            <p className="mt-8 text-darkGray text-xl italic">
+                                This is your captain Wilbur, signin&apos; off. Happy island-hoppin&apos;!
+                            </p>
+
+                            <div className="mt-8">
+                                <button
+                                    onClick={handleButtonClick}
+                                    className="inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-lg text-xl"
+                                >
+                                    Explore Random Category
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </Container>
     )
 }
