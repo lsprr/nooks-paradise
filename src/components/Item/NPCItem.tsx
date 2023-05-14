@@ -22,8 +22,8 @@ type NPCItemProps = {
 export const NPCItem = ({ data }: NPCItemProps) => {
     return (
         <Container>
-            <div className="relative mx-auto max-w-screen-xl px-4 py-8 bg-creamWhite rounded-2xl">
-                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+            <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 bg-creamWhite rounded-2xl p-8">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
                         <Image
                             alt={`${data.name} icon`}
