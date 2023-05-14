@@ -41,7 +41,7 @@ export const SeasonAndEventItem = ({ data }: SeasonAndEventItemProps) => {
                         </div>
                         {data.datesNorthernHemisphere && (
                             <div className="mt-4">
-                                <div className="mb-1 text-sm font-medium">Dates in the Northern Hemisphere</div>
+                                <div className="mb-1 text-sm font-medium">Northern Hemisphere</div>
                                 <div className="flex flex-wrap gap-1">
                                     <LabelledSpan label="Dates in the Northern Hemisphere" content={data.datesNorthernHemisphere} />
                                 </div>
@@ -49,7 +49,7 @@ export const SeasonAndEventItem = ({ data }: SeasonAndEventItemProps) => {
                         )}
                         {data.datesSouthernHemisphere && (
                             <div className="mt-4">
-                                <div className="mb-1 text-sm font-medium">Dates in the Southern Hemisphere</div>
+                                <div className="mb-1 text-sm font-medium">Southern Hemisphere</div>
                                 <div className="flex flex-wrap gap-1">
                                     <LabelledSpan label="Dates in the Southern Hemisphere" content={data.datesSouthernHemisphere} />
                                 </div>
