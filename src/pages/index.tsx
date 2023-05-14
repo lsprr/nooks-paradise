@@ -26,7 +26,7 @@ export default function Home() {
                                     Special Thanks
                                 </h2>
                                 <p className="mt-4 text-gray-500 sm:text-xl">
-                                    Big ol&apos; thanks to resources like Nookipedia and Animal Crossing Wiki for their info! Some conflicting tidbits were ironed out,
+                                    Big ol&apos; thanks to resources like Animal Crossing Database by Norviah and Google Spreadsheets for Animal Crossing: New Horizons for their info! Some conflicting tidbits were ironed out,
                                     but feel free to check &apos;em out for more details.
                                 </p>
                                 <p className="mt-4 text-gray-500 sm:text-xl">
