@@ -8,7 +8,7 @@ export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenuProps) => {
         <button
             type="button"
             onClick={onToggle}
-            className="rounded p-2 text-gray-600 transition hover:text-gray-600/75"
+            className="rounded pt-2 pb-2 text-gray-600 transition hover:text-gray-600/75"
             aria-expanded={isExpanded}
             aria-controls="navbar-default"
         >

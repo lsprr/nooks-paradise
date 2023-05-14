@@ -3,8 +3,8 @@ import DAL from '@assets/gifs/DAL.gif';
 
 export const Loading = () => {
     return (
-        <div className="inset-0 flex items-center justify-center z-50 bg-brightBlue h-screen">
-            <Image src={DAL} alt='Loading' loading='eager' />
+        <div className="fixed inset-0 flex items-center justify-center">
+            <Image src={DAL} alt='Loading' loading='eager' className='object-scale-down' />
         </div>
     )
 }
