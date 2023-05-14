@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { useRouter } from "next/router";
-import { Container } from "@/components/Container";
 import Image from "next/image";
+import { Container } from "@/components/Container";
 import Wilbur from '@assets/images/wilbur-pose.png';
+import { SpecialThanks } from '@/components/SpecialThanks';
 
 export default function Home() {
+    const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
     const categories = ["achievements", "construction", "creatures", "npcs", "reactions", "recipes", "seasons-and-events", "villagers"];
 
@@ -25,7 +28,7 @@ export default function Home() {
                 >
                     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
                         <div
-                            className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full"
+                            className="relative h-64 overflow-hidden rounded-2xl sm:h-80 lg:order-last lg:h-full"
                         >
                             <Image
                                 alt="Party"
@@ -53,18 +56,61 @@ export default function Home() {
                                 This is your captain Wilbur, signin&apos; off. Happy island-hoppin&apos;!
                             </p>
 
-                            <div className="mt-8">
+                            <div className="mt-8 flex items-center">
                                 <button
                                     onClick={handleButtonClick}
-                                    className="inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-lg text-xl"
+                                    className="inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
                                 >
                                     Explore Random Category
+                                </button>
+                                <button
+                                    onClick={() => setIsOpen(true)}
+                                    className="inline-block ml-4 bg-darkGray text-creamWhite py-3 px-6 rounded-2xl text-xl"
+                                    aria-haspopup="dialog"
+                                    aria-expanded={isOpen}
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="27"
+                                        height="27"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                    </svg>
+                                    <span className="sr-only">Info</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {isOpen && (
+                <div
+                    className="fixed inset-0 flex items-center justify-center z-50"
+                    style={{ background: 'rgba(0,0,0,0.5)' }}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="modal-heading"
+                    aria-describedby="modal-description"
+                >
+                    <div className="bg-white rounded-2xl max-w-3xl mx-4 text-center py-8 px-4 sm:px-8 sm:py-12">
+                        <SpecialThanks />
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="mt-8 inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </Container>
     )
 }
