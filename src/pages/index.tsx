@@ -104,7 +104,7 @@ export default function Home() {
                         <SpecialThanks />
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
+                            className="mt-4 inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
                         >
                             Close
                         </button>
