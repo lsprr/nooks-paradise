@@ -56,23 +56,23 @@ export default function Home() {
                                 This is your captain Wilbur, signin&apos; off. Happy island-hoppin&apos;!
                             </p>
 
-                            <div className="mt-8 flex items-center flex-col md:flex-row justify-center lg:justify-start">
+                            <div className="mt-8 flex items-center justify-center lg:justify-start">
                                 <button
                                     onClick={handleButtonClick}
-                                    className="inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
+                                    className="inline-block bg-darkYellow text-darkGray p-[0.7rem] rounded-2xl text-xl mr-2"
                                 >
                                     Explore Random Category
                                 </button>
                                 <button
                                     onClick={() => setIsOpen(true)}
-                                    className="inline-block bg-darkGray text-creamWhite py-3 px-6 rounded-2xl text-xl mt-4 md:mt-0 md:ml-4"
+                                    className="inline-block bg-darkGray text-creamWhite py-3 px-6 rounded-2xl text-xl ml-2"
                                     aria-haspopup="dialog"
                                     aria-expanded={isOpen}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="27"
-                                        height="27"
+                                        width="25"
+                                        height="25"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
@@ -104,7 +104,7 @@ export default function Home() {
                         <SpecialThanks />
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="mt-8 inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
+                            className="inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
                         >
                             Close
                         </button>

@@ -11,7 +11,7 @@ export const SpecialThanks = () => (
             <p className="mt-4">
                 Hats off to Nintendo for creatin&apos; yet another amazin&apos; Animal Crossing adventure!
             </p>
-            <h3 className="mt-8 font-bold">General Legal Yap-yap</h3>
+            <h3 className="mt-4 font-bold">General Legal Yap-yap</h3>
             <p className="mt-4">
                 Wilbur is a fan-made website, just a handy info guide with no ties to Nintendo.
             </p>
