@@ -2,10 +2,7 @@ import Link from 'next/link'
 
 export const SpecialThanks = () => (
     <>
-        <h2 className="text-3xl text-darkGray sm:text-4xl" id="modal-heading">
-            Special Thanks & General Legal Yap-yap
-        </h2>
-        <div className="mt-8 text-left text-darkGray sm:text-xl" id="modal-description">
+        <div className="text-left text-darkGray sm:text-xl" id="modal-description">
             <h3 className="font-bold">Special Thanks</h3>
             <p className="mt-4">
                 Big ol&apos; thanks to resources like Animal Crossing Database by Norviah and Google Spreadsheets for Animal Crossing: New Horizons for their info! Some conflicting tidbits were ironed out,
