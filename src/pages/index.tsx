@@ -56,7 +56,7 @@ export default function Home() {
                                 This is your captain Wilbur, signin&apos; off. Happy island-hoppin&apos;!
                             </p>
 
-                            <div className="mt-8 flex items-center">
+                            <div className="mt-8 flex items-center flex-col md:flex-row justify-center lg:justify-start">
                                 <button
                                     onClick={handleButtonClick}
                                     className="inline-block bg-darkYellow text-darkGray py-3 px-6 rounded-2xl text-xl"
@@ -65,7 +65,7 @@ export default function Home() {
                                 </button>
                                 <button
                                     onClick={() => setIsOpen(true)}
-                                    className="inline-block ml-4 bg-darkGray text-creamWhite py-3 px-6 rounded-2xl text-xl"
+                                    className="inline-block bg-darkGray text-creamWhite py-3 px-6 rounded-2xl text-xl mt-4 md:mt-0 md:ml-4"
                                     aria-haspopup="dialog"
                                     aria-expanded={isOpen}
                                 >
