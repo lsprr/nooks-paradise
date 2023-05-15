@@ -100,7 +100,7 @@ export default function Home() {
                     aria-labelledby="modal-heading"
                     aria-describedby="modal-description"
                 >
-                    <div className="bg-white rounded-2xl max-w-3xl mx-4 text-center py-4 px-4 sm:px-8 sm:py-12">
+                    <div className="bg-white rounded-2xl max-w-3xl mx-4 text-center py-4 px-2 sm:px-8 sm:py-12">
                         <SpecialThanks />
                         <button
                             onClick={() => setIsOpen(false)}
