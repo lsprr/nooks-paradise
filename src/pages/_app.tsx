@@ -31,19 +31,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Wilbur</title>
+        <title>Nook&apos;s Paradise</title>
         <meta name="description" content="Discover Nook's Paradise, your ultimate co-pilot for everything related to Animal Crossing: New Horizons! Explore categories like neighbors, island life, fashion, DIY, critters, K.K. Slider tunes, and special events. Join us in this journey through the charming world of ACNH." />
 
-        <meta property="og:url" content="https://wilbur.vercel.app" />
+        <meta property="og:url" content="https://nooks-paradise.vercel.app" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Wilbur" />
+        <meta property="og:title" content="Nook's Paradise" />
         <meta property="og:description" content="Discover Nook's Paradise, your ultimate co-pilot for everything related to Animal Crossing: New Horizons! Explore categories like neighbors, island life, fashion, DIY, critters, K.K. Slider tunes, and special events. Join us in this journey through the charming world of ACNH." />
         <meta property="og:image" content="" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="wilbur.vercel.app" />
-        <meta property="twitter:url" content="https://wilbur.vercel.app" />
-        <meta name="twitter:title" content="Wilbur" />
+        <meta property="twitter:domain" content="nooks-paradise.vercel.app" />
+        <meta property="twitter:url" content="https://nooks-paradise.vercel.app" />
+        <meta name="twitter:title" content="Nook's Paradise" />
         <meta name="twitter:description" content="Discover Nook's Paradise, your ultimate co-pilot for everything related to Animal Crossing: New Horizons! Explore categories like neighbors, island life, fashion, DIY, critters, K.K. Slider tunes, and special events. Join us in this journey through the charming world of ACNH." />
         <meta name="twitter:image" content="" />
 
