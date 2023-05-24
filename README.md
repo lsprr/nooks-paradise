@@ -85,6 +85,9 @@ nooks-paradise
 - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
 - **animal-crossing**: A library that provides detailed information about Animal Crossing game.
 
+## Acknowledgments
+Special thanks to resources like Animal Crossing Database by Norviah and Google Spreadsheets for Animal Crossing: New Horizons for their info! Hats off to Nintendo for creating another amazing Animal Crossing adventure.
+
 ## Contribute
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
