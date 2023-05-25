@@ -88,6 +88,10 @@ nooks-paradise
 ## Acknowledgments
 Special thanks to resources like Animal Crossing Database by Norviah and Google Spreadsheets for Animal Crossing: New Horizons for their info! Hats off to Nintendo for creating another amazing Animal Crossing adventure.
 
+## Disclaimer
+
+Nook's Paradise is a fan made API/Website and claims no ownership of any intellectual property associated with Nintendo or Animal Crossing. All assets found on the site and the repository are the sole property of Nintendo and are only used for non-commercial and educational purpose.
+
 ## Contribute
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
