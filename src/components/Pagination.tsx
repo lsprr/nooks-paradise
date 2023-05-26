@@ -39,7 +39,7 @@ export const Pagination = ({ totalItems, itemsPerPage, current, onPageChange }: 
     };
 
     return (
-        <nav aria-label="Pagination">
+        <div role={"navigation"} aria-label={"pagination"}>
             <ReactPaginate
                 onClick={isPageChange}
                 onPageChange={paginate}
@@ -57,6 +57,6 @@ export const Pagination = ({ totalItems, itemsPerPage, current, onPageChange }: 
                 renderOnZeroPageCount={null}
                 breakLinkClassName={'hidden'}
             />
-        </nav>
+        </div>
     )
 }
