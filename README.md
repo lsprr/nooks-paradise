@@ -107,6 +107,6 @@ This project is created by [Luis Parra](https://github.com/lsprr).
 ## Links
 
 - [GitHub](https://github.com/lsprr/nooks-paradise)
-- [Live Site](https://www.nooks-paradise.com)
+- [Live Site](https://www.nooks-paradise.vercel.app/)
 
 Welcome to Nook's Paradise, your personal Animal Crossing encyclopedia!
