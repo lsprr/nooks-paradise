@@ -26,11 +26,11 @@ export const Card = ({ page, name, image }: CardProps) => {
                     />
 
                     <div className="relative pt-3 pb-3 bg-creamWhite">
-                        <h3
+                        <h2
                             className="text-base text-center text-sienna group-hover:underline group-hover:underline-offset-4 capitalize"
                         >
                             {name}
-                        </h3>
+                        </h2>
                     </div>
                 </Link>
                 :

@@ -38,28 +38,28 @@ export default function Home() {
                         </div>
 
                         <div className="lg:py-24 text-center lg:text-left">
-                            <h2 className="text-3xl font-bold sm:text-4xl">
+                            <h1 className="text-3xl font-bold sm:text-4xl">
                                 Welcome to Nook&apos;s Paradise, folks!
-                            </h2>
+                            </h1>
 
-                            <p className="mt-8 text-darkGray text-xl">
+                            <p className="mt-8 text-black text-xl">
                                 This is your one-stop co-pilot for everything related to Animal Crossing: New Horizons!
                                 We got you covered on neighbors, island life, fashion, DIY, critters, K.K. Slider tunes,
                                 and special events.
                             </p>
 
-                            <p className="mt-8 text-darkGray text-xl">
+                            <p className="mt-8 text-black text-xl">
                                 So buckle up, and let&apos;s fly through the fantastic world of ACNH together!
                             </p>
 
-                            <p className="mt-8 text-darkGray text-xl italic">
+                            <p className="mt-8 text-black text-xl italic">
                                 This is your captain Wilbur, signin&apos; off. Happy island-hoppin&apos;!
                             </p>
 
                             <div className="mt-8 flex items-center justify-center lg:justify-start">
                                 <button
                                     onClick={handleButtonClick}
-                                    className="inline-block bg-darkYellow text-darkGray p-[0.7rem] rounded-2xl text-xl mr-2"
+                                    className="inline-block bg-darkYellow text-black p-[0.7rem] rounded-2xl text-xl mr-2"
                                 >
                                     Explore Random Category
                                 </button>

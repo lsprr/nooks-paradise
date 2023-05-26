@@ -49,9 +49,9 @@ export const Navigation = ({ menuItems }: NavbarProps) => {
             <header aria-label="Site Header" className="z-50 sticky top-0 container mx-auto mt-10 mb-10">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex flex-col w-full md:flex-row">
                     <div className="flex h-16 items-center justify-space w-full bg-creamWhite rounded-2xl pl-4 pr-4">
-                        <Link className="block text-teal-600 z-[100]" href="/">
+                        <Link className="block text-black z-[100]" href="/">
                             <span className="sr-only">Home</span>
-                            <Image src={logo} alt="logo" className='h-14 w-auto' />
+                            <Image src={logo} alt="" className='h-14 w-auto' />
                         </Link>
                         <div className="flex flex-1 items-center justify-end">
                             <nav aria-label="Site Nav" className="hidden lg:block">
