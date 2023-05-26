@@ -54,7 +54,7 @@ export const Pagination = ({ totalItems, itemsPerPage, current, onPageChange }: 
                 nextLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition-colors duration-300 transform sm:inline text-darkGray bg-creamWhite hover:text-creamWhite hover:bg-darkGray rounded-2xl'}
                 activeLinkClassName={'font-semibold px-3 md:px-4 py-2 mx-1 transition colors duration-300 transform !text-creamWhite !bg-darkGray dark:!text-darkGray dark:!bg-creamWhite rounded-2xl'}
                 disabledClassName={'hidden'}
-                renderOnZeroPageCount={null}
+                // renderOnZeroPageCount={null}
                 breakLinkClassName={'hidden'}
             />
         </div>
