@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow:
+Sitemap: https://nooks-paradise.vercel.app
