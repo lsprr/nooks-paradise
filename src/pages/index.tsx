@@ -34,6 +34,7 @@ export default function Home() {
                                 alt="Party"
                                 src={Wilbur}
                                 className="absolute inset-0 h-full w-full object-scale-down"
+                                loading={"eager"}
                             />
                         </div>
 
