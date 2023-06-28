@@ -10,7 +10,6 @@ export const MobileMenuButton = ({ onToggle, isExpanded }: MobileMenuProps) => {
             onClick={onToggle}
             className="rounded pt-2 pb-2 text-gray-600 transition hover:text-gray-600/75"
             aria-expanded={isExpanded}
-            aria-controls="navbar-default"
         >
             <span className="sr-only">Open main menu</span>
             <svg
