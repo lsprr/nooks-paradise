@@ -11,7 +11,7 @@ type MenuItemProps = {
 export const MenuItem = ({ label, href, isExternal, active, onLinkClick, mobile }: MenuItemProps) => {
     const linkProps: React.AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps = {
         href,
-        className: `${mobile ? 'h-full block relative top-0 rounded-3xl px-4 py-5 text-center' : 'block relative top-0 text-center flex items-center flex-col'}`,
+        className: `text-base text-center text-darkGray capitalize ${mobile ? 'h-full block relative top-0 rounded-3xl px-4 py-5 text-center' : 'block relative top-0 text-center flex items-center flex-col'}`,
         'aria-label': `${label} page`,
         onClick: onLinkClick ? () => onLinkClick() : undefined,
     };
@@ -26,13 +26,13 @@ export const MenuItem = ({ label, href, isExternal, active, onLinkClick, mobile 
             {mobile ? (
                 <li className='list-none'>
                     <Link {...linkProps}>
-                        <h3 className="text-base text-center text-darkGray capitalize">{label}</h3>
+                        {label}
                     </Link>
                 </li>
             ) : (
                 <li>
                     <Link {...linkProps}>
-                        <h3 className="text-base text-center text-darkGray capitalize">{label}</h3>
+                        {label}
                     </Link>
                 </li>
             )}
